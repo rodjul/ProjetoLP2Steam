@@ -47,6 +47,9 @@ public class UsersiteCommand implements Command{
             case "login":
                 loginUser();
             break;
+            case "alterarSenha":
+                alterarSenha();
+                break;
             case "logout":
                 request.getSession().invalidate();
                 responsePage = "index.jsp";
@@ -107,6 +110,30 @@ public class UsersiteCommand implements Command{
             request.getSession().setAttribute("user",temp3);
             responsePage = "novosjogos.jsp";
         }
+        
+    }
+    
+    public void alterarSenha(){
+        String senhaAtual = request.getParameter("senhaatual");
+        String senhaNova = request.getParameter("novasenha");
+        String senhaConfir = request.getParameter("confirmasenha");
+        
+        Usersite temp4 = usersiteDAO.findByUsername(username);
+        if(!senhaAtual.equals(temp4.getPassword())){
+            responsePage = "error.jsp";
+            request.getSession().setAttribute("error","Senha atual não confere com a armazenada");
+        }else if(!senhaNova.equals(senhaConfir)){
+            responsePage = "error.jsp";
+            request.getSession().setAttribute("error","Nova e Confirma senha não são iguais");
+        }else{
+            Usersite user = new Usersite();
+            user.setPassword(senhaNova);
+            usersiteDAO.modify(user);
+            
+            responsePage = "minhaconta.jsp";
+        }
+        
+        
         
     }
 
