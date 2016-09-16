@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="jspf/conteudohead.jspf" %>
-        <title>Aboutoe</title>
+        <title>Sobre</title>
     </head>
     <body>
         <%@include file="jspf/menu.jspf" %>
