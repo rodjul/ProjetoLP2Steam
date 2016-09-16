@@ -21,7 +21,6 @@
             <div class="container">
             <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Index</a></li>
-                <li><a href="about.jsp">About</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="singup.jsp">Cadastrar</a></li>
