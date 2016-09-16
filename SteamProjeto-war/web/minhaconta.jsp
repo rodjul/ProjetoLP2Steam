@@ -33,10 +33,10 @@
             </form>
             <form method="post" action="Controller" class="form-group">
                 <h3>Alterar senha</h3>
-                <input type="hidden" name="command" value="" />
-                <p><input type="password" name="" value="" placeholder="Senha atual" class="form-control"/></p>
-                <p><input type="password" name="" value="" placeholder="Nova senha" class="form-control"/></p>
-                <p><input type="password" name="" value="" placeholder="Confirmar senha" class="form-control"/></p>
+                <input type="hidden" name="command" value="Usersite.alterarSenha" />
+                <p><input type="password" name="senhaatual" value="" placeholder="Senha atual" class="form-control"/></p>
+                <p><input type="password" name="novasenha" value="" placeholder="Nova senha" class="form-control"/></p>
+                <p><input type="password" name="confirmasenha" value="" placeholder="Confirmar senha" class="form-control"/></p>
                 <input type="Submit" value="Atualizar senha" class="btn btn-primary" />
             </form>
             
