@@ -1,0 +1,7 @@
+<!--<footer class="navbar navbar-static panel-footer">-->
+<!--<footer class="navbar navbar-default navbar-fixed-bottom">-->
+        <footer class="navbar navbar-default navbar-btn ">
+            <div class="container">
+                <p class="text-center">Desenvolvido por: Gabriel Soares e Rodrigo Juliano</p>
+            </div>
+        </footer>

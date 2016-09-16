@@ -1,0 +1,96 @@
+@import 'https://fonts.googleapis.com/css?family=Cabin';
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cabin Regular'), local('Cabin-Regular'), url(https://fonts.gstatic.com/s/cabin/v9/yQOMOX5hR0-6LTD879t-PQ.woff2) format('woff2');
+  
+}
+*{
+    font-family: 'Cabin', sans-serif;
+    font-size:17px;
+    color:black;
+}
+
+.navbar-default{
+    background-color:#2B4970; /*FF6B49*/
+    color:black;
+}
+.navbar-default .navbar-nav li a{
+    color:white;
+}
+ul.navbar-nav .dropdown .dropdown-menu a{
+    color:black;
+}
+
+.fontstyle{
+    font-style:italic;
+    color:#3C58FF;
+}
+footer div p{
+    padding-top:10px;
+    font-style:italic;
+    color:white;
+}
+input[type='submit']{
+    /*background-color:#2C3E50;*/
+}
+
+//novos jogos
+div.thumbnail{
+    background-color:#E0E0E0;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+	padding-bottom: 100px;
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	/*-webkit-animation-name: fadeIn; /* Fade in the background */
+    /*-webkit-animation-duration: 0.8s;
+    animation-name: fadeIn;
+    animation-duration: 0.8s;*/
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+	/*-webkit-animation-name: slideIn;
+    -webkit-animation-duration: 0.8s;
+    animation-name: slideIn;
+    animation-duration: 0.8s;*/
+}
+
+/* The Close Button */
+.close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*@media screen and (max-width:1250px){*/
+    /*.navbar{*/
+        /*
+    }
+};*/
