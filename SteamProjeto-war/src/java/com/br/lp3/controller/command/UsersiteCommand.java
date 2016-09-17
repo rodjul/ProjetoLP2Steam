@@ -47,12 +47,18 @@ public class UsersiteCommand implements Command{
             case "login":
                 loginUser();
             break;
-            case "alterarSenha":
-                alterarSenha();
-                break;
             case "logout":
                 request.getSession().invalidate();
                 responsePage = "index.jsp";
+                break;
+            case "alterarSenha":
+                alterarSenha();
+                break;
+            case "alterarSteam":
+                alterarSteam();
+                break;
+            case "alterarNome":
+                alterarNome();
                 break;
         }
         
@@ -117,6 +123,7 @@ public class UsersiteCommand implements Command{
         String senhaAtual = request.getParameter("senhaatual");
         String senhaNova = request.getParameter("novasenha");
         String senhaConfir = request.getParameter("confirmasenha");
+        username = request.getParameter("username");
         
         Usersite temp4 = usersiteDAO.findByUsername(username);
         if(!senhaAtual.equals(temp4.getPassword())){
@@ -126,13 +133,43 @@ public class UsersiteCommand implements Command{
             responsePage = "error.jsp";
             request.getSession().setAttribute("error","Nova e Confirma senha não são iguais");
         }else{
-            Usersite user = new Usersite();
-            user.setPassword(senhaNova);
-            usersiteDAO.modify(user);
+
+            temp4.setPassword(senhaNova);
+            usersiteDAO.modify(temp4);
             
             responsePage = "minhaconta.jsp";
+            request.getSession().setAttribute("notificacaoSenha","Senha alterada com sucesso!");
         }
+    }
+    
+    public void alterarSteam(){
+        String newUrlSteam = request.getParameter("steamurl");
+        username = request.getParameter("username");
+        //alguma condição
         
+        Usersite temp = usersiteDAO.findByUsername(username);
+        temp.getUserinfo().setUrlsteam(newUrlSteam);
+        
+        usersiteDAO.modify(temp);
+        request.getSession().setAttribute("user", temp);
+        
+        responsePage = "minhaconta.jsp";
+        request.getSession().setAttribute("notificacaoSteam", "URL alterado com sucesso!");
+        
+    }
+    
+    public void alterarNome(){
+        username = request.getParameter("username");
+        String userNome = request.getParameter("nome");
+        Usersite temp = usersiteDAO.findByUsername(username);
+        temp.getUserinfo().setFirstname(userNome);
+        
+        usersiteDAO.modify(temp);
+        
+        request.getSession().setAttribute("user", temp);
+        
+        responsePage = "minhaconta.jsp";
+        request.getSession().setAttribute("notificacaoNome", "Nome alterado com sucesso!");
         
         
     }
