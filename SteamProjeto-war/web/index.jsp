@@ -21,6 +21,7 @@
             <div class="container">
             <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Index</a></li>
+                <li><a href="about.jsp">About</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="singup.jsp">Cadastrar</a></li>
@@ -36,11 +37,11 @@
             <p>Para ter acesso as funcionalidades, precisa se logar.</p>
             <br>
             <form action="Controller" method="post" class="form-singup">
-                <h2>Login</h2> <br>
+                <!--<h2>Login</h2> <br>-->
                 <input type="hidden" name="command" value="Usersite.login" />
                 <p><input type="text" name="username" class="form-control" placeholder="Insira o login" /></p>
                 <p><input type="password" name="password" class="form-control" placeholder="Insira a senha" />
-                    <a href="">Esqueci minha senha</a></p>
+                    <!--<a href="Controller?command=User.esqueciSenha">Esqueci minha senha</a></p>--><br>
                 <input type="submit" value="Logar" class="btn btn-block btn-primary"/>
             </form>
             

@@ -30,7 +30,7 @@
                 <input type="hidden" name="command" value="Usersite.login" />
                 <p><input type="text" name="username" class="form-control" placeholder="Insira o login" /></p>
                 <p><label for="password">Password: </label><input type="password" name="password" class="form-control" placeholder="Insira a senha" />
-                    <a href="">Esqueci minha senha</a></p>
+                    <!--<a href="">Esqueci minha senha</a></p>-->
                 <input type="submit" value="Logar" class="btn btn-block btn-primary"/>
             </form>
         

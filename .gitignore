@@ -3,3 +3,7 @@
 /SteamProjeto-war/build/
 /build/
 /SteamProjeto-war/dist/
+/nbproject/private/
+/SteamProjeto-war/nbproject/private/
+/SteamProjeto-ejb/nbproject/private/
+/dist/

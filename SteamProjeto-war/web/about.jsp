@@ -4,6 +4,7 @@
     Author     : RodrigoPC
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,13 +14,20 @@
         <title>Sobre</title>
     </head>
     <body>
-        <%@include file="jspf/menu.jspf" %>
+    <c:choose>
+        <c:when test="${user == null}">
+            <%@include file="jspf/menu.jspf" %>
+        </c:when>
+        <c:when test="${user !=  null}">
+            <%@include file="jspf/menulogado.jspf" %>
+        </c:when>
+    </c:choose>
         <section class="container">
             
             <h2>About</h2>
-            
-            <h3>O site foi desenvolvido, para que a pessoa possa descobrir novos games baseado na categoria do seu jogo que mais jogou.
-            Irá mostrar novos jogos antigos ou recém lançados. arrumar</h3>
+            <br>
+            <h3>O objetivo do site é buscar novos jogos baseado na categoria do jogo mais recente que jogou. O novo jogo, pode ser tanto antigo como recém-lançado e 
+                a busca é baseado na plataforma Steam</h3>
             
         
         

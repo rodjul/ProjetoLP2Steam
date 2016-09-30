@@ -51,6 +51,9 @@ public class UsersiteCommand implements Command{
                 request.getSession().invalidate();
                 responsePage = "index.jsp";
                 break;
+            case "esqueciSenha":
+                esqueciSenha();
+                break;
             case "alterarSenha":
                 alterarSenha();
                 break;
@@ -76,14 +79,17 @@ public class UsersiteCommand implements Command{
         Usersite temp1 = usersiteDAO.findByUsername(username);
         Usersite temp2 = usersiteDAO.findByEmail(email);
         if(temp1 != null){
-            responsePage = "error.jsp";
-            request.getSession().setAttribute("error", "Username already registered");
+            responsePage = "singup.jsp";
+            request.getSession().setAttribute("erroruser","Username already registered");
+//            request.getSession().setAttribute("error", "Username already registered");
         }else if(temp2 != null){
-            responsePage = "error.jsp";
-            request.getSession().setAttribute("error", "Email already registered");
+            responsePage = "singup.jsp";
+            request.getSession().setAttribute("erroremail","Email já registrado");
+//            request.getSession().setAttribute("error", "Email already registered");
         }else if(!password.equals(password2)){
-            responsePage = "error.jsp";
-            request.getSession().setAttribute("error", "Passwords don't match");
+            responsePage = "singup.jsp";
+            request.getSession().setAttribute("errorpassword","Passwords don't match");
+//            request.getSession().setAttribute("error", "Passwords don't match");
         }else{
             Usersite user = new Usersite();
             user.setUsername(username);
@@ -116,6 +122,13 @@ public class UsersiteCommand implements Command{
             request.getSession().setAttribute("user",temp3);
             responsePage = "novosjogos.jsp";
         }
+        
+    }
+    
+    public void esqueciSenha(){
+        
+        
+        
         
     }
     

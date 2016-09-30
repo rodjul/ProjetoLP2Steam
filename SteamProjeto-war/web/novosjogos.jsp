@@ -61,9 +61,11 @@
                                 
                                 <article id="epicbattlefantasy3" class="modal">
                                         <article class="modal-content">
-                                            <span class="close">x</span>
+                                            <span class="close" onclick="getElementById('epicbattlefantasy3').style.display='none'">x</span>
+                                            <div class="thumbnail"><div class="caption">
                                             <p>Eu amei o jogo! O sistema de batalha é muito bom, arte bonita e cenários legais!
                                                 10/10.</p>
+                                            </div></div>
                                         </article>
                                 </article>
                                 
@@ -86,7 +88,8 @@
                                 
                                 <article id="theturingtest" class="modal">
                                         <article class="modal-content">
-                                            <span class="close">x</span>
+                                            <span class="close" onclick="getElementById('theturingtest').style.display='none'">x</span>
+                                            <div class="thumbnail"><div class="caption">
                                             <p>Cheguei até o final do chapter 3 e parei para dar uma review rápida sobre esse início do jogo.
                                                Jogo de puzzle mto bom, apesar de ser relativamente fácil até agora.
                                                Notei um problema com a tela de carregamento entre os capítulos, que demora uma eternidade pra carregar no meu CPU da AMD. Já vi outras pessoas reclamando sobre isso, então se você usar um processador da AMD, recomendo esperar um patch do jogo para resolver esse bug.
@@ -95,6 +98,7 @@
                                                O jogo conta com puzzles criativos, história misteriosa e interessante, e com gráficos que não decepcionam, apesar de ter esse bug da tela de carregamento com minha CPU AMD.
                                                Nota 9/10
                                                EDIT: O problema com os processadores da AMD foram resolvidos</p>
+                                            </div></div>
                                         </article>
                                 </article>
                             </div>
@@ -116,7 +120,7 @@
                                 
                                 <article id="thefinalstation" class="modal">
                                     <article class="modal-content">
-                                        <span class="close">x</span>
+                                        <span class="close" onclick="getElementById('thefinalstation').style.display='none'">x</span>
                                         <div class="thumbnail"><div class="caption">
                                         <h3>Recomendado</h3>
                                         <h6>4.5 horas registradas</h6>
@@ -210,23 +214,18 @@
     <script>
     function teste(id_name){
         var articleModal = document.getElementById(id_name);
-        var span = document.getElementById(id_name);
-//        document.getElementById("demo").innerHTML = "modal";
-
+//        document.getElementById("demo").innerHTML = "span";
+//        console.log(span); 
         articleModal.style.display = "block";
         
-        // When the user clicks anywhere outside of the modal, close it
-        span.onclick = function() {
-            articleModal.style.display = "none";
-        }
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
              if (event.target == articleModal) {
                 articleModal.style.display = "none";
              }
-        }
+        };
     }
-    
+
  
     </script>
 </html>
