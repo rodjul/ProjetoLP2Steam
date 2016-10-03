@@ -16,10 +16,19 @@
         <title>Minha Conta</title>
     </head>
     <body>
+        <c:choose>
+            <c:when test="${user == null}">
+                <c:redirect url="index.jsp"></c:redirect>
+            </c:when>
+            <c:when test="${user != null}">
         <%@include file="jspf/menulogado.jspf" %>
+                
+            </c:when>
+        </c:choose>
+        
         <section class="container">
             <h1>Minha Conta</h1>
-            <br>
+            <br><p>teste ${username.getValue()}</p>
             
             <form method="post" action="Controller" class="form-group">
                 <h3>Atualizar nome</h3>
@@ -29,6 +38,18 @@
                 <input type="submit" value="Atualizar nome" class="btn btn-primary" /><c:if test="${notificacaoNome != null }">
                     <span>${notificacaoNome}</span>
                     <c:set var="notificacaoNome" value="" scope="session" ></c:set>
+                </c:if>
+                
+            </form>
+            
+            <form method="post" action="Controller" class="form-group">
+                <h3>Atualizar email</h3>
+                <input type="hidden" name="command" value="Usersite.alterarEmail" />
+                <input type="hidden" name="username" value="${user.username}" />
+                <p><input type="text" name="email" value="${user.userinfo.email}" placeholder="Nome" class="form-control"/></p>
+                <input type="submit" value="Atualizar email" class="btn btn-primary" /><c:if test="${notificacaoEmail != null }">
+                    <span>${notificacaoEmail}</span>
+                    <c:set var="notificacaoEmail" value="" scope="session" ></c:set>
                 </c:if>
                 
             </form>
@@ -56,7 +77,31 @@
                 </c:if>
             </form>
             
+            <input type="button" name="botao" class="btn btn-danger" value="Excluir conta" onclick="deletarConta()"/>
+            
+            <article id="deletar-conta" class="modal">
+                <article class="modal-content deletar-conta">
+                    <p>Tem certeza que deseja deletar sua conta? Não será possível recuperar futuramente.</p>
+                    <div class="col-lg-13 text-center">
+                    <!--<a href="Controller?command=Usersite.deletar&username=${user.username}">-->
+                        <form method="post" action="Controller">
+                            <input type="hidden" name="command" value="Usersite.deletarConta" />
+                            <input type="hidden" name="username" value="${user.username}" />
+                            <input type="submit" value="Sim" class="btn btn-danger" /><input type="button" value="Não" class="btn btn-primary" onclick="getElementById('deletar-conta').style.display='none'" />
+                        </form>
+                        
+                    </div>
+                </article>
+            </article>
+            
         </section>
         <%@include file="jspf/footer.jspf" %>
     </body>
+    <script>
+        function deletarConta(){
+            var del = document.getElementById("deletar-conta");
+            del.style.display = "block";
+            
+        }
+    </script>
 </html>
