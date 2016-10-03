@@ -24,7 +24,7 @@ import javax.persistence.Query;
 @LocalBean
 public class UsersiteDAO implements GenericDAO<Usersite>{
     
-    @PersistenceContext(unitName = "SteamProjeto-ejbPU", type = PersistenceContextType.TRANSACTION)
+    @PersistenceContext(unitName = "SteamProjeto-ejbPU", type = PersistenceContextType.EXTENDED)
     private EntityManager em;
     
     @Override
@@ -37,7 +37,7 @@ public class UsersiteDAO implements GenericDAO<Usersite>{
         Query query = em.createNamedQuery("Userinfo.findAll");
         return (List<Usersite>)query.getResultList();
     }
-
+    
     @Override
     public Usersite findById(long id) {
         return em.find(Usersite.class, id);
