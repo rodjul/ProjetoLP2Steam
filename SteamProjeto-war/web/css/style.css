@@ -126,3 +126,14 @@ div.thumbnail{
     text-align:justify;
 }
 
+
+/*deletar conta*/
+.deletar-conta p{
+    text-align:center;
+}
+.deletar-conta input[type="button"]{
+    /*text-align: center;*/
+    margin-left:50px;
+    position:relative;
+    right:40px;
+}
