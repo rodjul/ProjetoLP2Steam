@@ -5,7 +5,6 @@
  */
 package com.br.lp3.controller.command;
 
-import com.br.lp3.controller.command.Command;
 import com.br.lp3.model.dao.UsersiteDAO;
 import com.br.lp3.model.entities.Userinfo;
 import com.br.lp3.model.entities.Usersite;
@@ -14,6 +13,7 @@ import java.util.logging.Logger;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -48,6 +48,11 @@ public class UsersiteCommand implements Command{
                 loginUser();
             break;
             case "logout":
+                //http://www.javatpoint.com/servlet-login-and-logout-example-using-cookies
+//                Cookie ck = new Cookie("name","");
+//                ck.setMaxAge(0);
+//                response.addCookie(ck);
+                
                 request.getSession().invalidate();
                 responsePage = "index.jsp";
                 break;
@@ -62,6 +67,12 @@ public class UsersiteCommand implements Command{
                 break;
             case "alterarNome":
                 alterarNome();
+                break;
+            case "alterarEmail":
+                alterarEmail();
+                break;
+            case "deletarConta":
+                deletarConta();
                 break;
         }
         
@@ -119,6 +130,11 @@ public class UsersiteCommand implements Command{
             responsePage = "error.jsp";
             request.getSession().setAttribute("error","Passwords don't match");
         }else{
+//            Cookie cookie = new Cookie("username", username);
+//            response.addCookie(cookie);
+//            Cookie ck [] = request.getCookies();
+//            String name = ck[0].getValue();
+                    
             request.getSession().setAttribute("user",temp3);
             responsePage = "novosjogos.jsp";
         }
@@ -186,7 +202,32 @@ public class UsersiteCommand implements Command{
         
         
     }
+    
+    public void alterarEmail(){
+        responsePage = "minhaconta.jsp";
+        username = request.getParameter("username");
+        String email = request.getParameter("email");
+        Usersite temp = usersiteDAO.findByEmail("email");
+        Usersite temp2 = usersiteDAO.findByUsername(username);
+        if(temp == null){
+            temp2.getUserinfo().setEmail(email);
+            usersiteDAO.modify(temp2);
+            request.getSession().setAttribute("user",temp2);
+            request.getSession().setAttribute("notificacaoEmail","Email atualizado com sucesso");
+        }else{
+            request.getSession().setAttribute("notificacaoEmail","Email já está sendo utilizado, tente outro.");
+        }
+    }
 
+    public void deletarConta(){
+        username = request.getParameter("username");
+        Usersite temp = usersiteDAO.findByUsername(username);
+        usersiteDAO.remove(temp);
+        request.getSession().invalidate();
+        responsePage = "index.jsp";
+        
+    }
+    
     @Override
     public String getResponsePage() {
         return this.responsePage;
