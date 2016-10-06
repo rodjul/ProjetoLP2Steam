@@ -6,6 +6,7 @@
 package com.br.lp3.model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,10 +17,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -35,6 +38,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Userinfo.findByEmail", query = "SELECT u FROM Userinfo u WHERE u.email = :email"),
     @NamedQuery(name = "Userinfo.findByUrlsteam", query = "SELECT u FROM Userinfo u WHERE u.urlsteam = :urlsteam")})
 public class Userinfo implements Serializable {
+    @OneToMany(mappedBy = "idUserinfo")
+    private List<Games> gamesList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -136,6 +141,15 @@ public class Userinfo implements Serializable {
     @Override
     public String toString() {
         return "com.br.lp3.model.entities.Userinfo[ idUserinfo=" + idUserinfo + " ]";
+    }
+
+    @XmlTransient
+    public List<Games> getGamesList() {
+        return gamesList;
+    }
+
+    public void setGamesList(List<Games> gamesList) {
+        this.gamesList = gamesList;
     }
     
 }
