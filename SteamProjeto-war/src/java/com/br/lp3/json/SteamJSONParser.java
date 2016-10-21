@@ -25,6 +25,7 @@ public class SteamJSONParser {
     
     private String api_key = "88CD5D6FFEDAEB520848A84DDEFE2610";
     
+    
     public static String openURL(String uri){
         String content = "";
         
@@ -61,41 +62,47 @@ public class SteamJSONParser {
         return content;
     }
     
-    public static void testeURLContent() {
-
-        URL url;
-
+    public static String getUserID(String url_user) {
+        String userid = "";
         try {
             // get URL content
-
-            String a="http://www.steamcommunity.com/id/numericobr";
-            url = new URL(a);
+//            String a="http://www.steamcommunity.com/id/numericobr";
+            URL url = new URL(url_user);
             Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10",3128));
             URLConnection conn = url.openConnection(proxy);
 
             // open the stream and put it into BufferedReader
-            BufferedReader br = new BufferedReader(
-                               new InputStreamReader(conn.getInputStream()));
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
-            String inputLine;
+            String inputLine="";
             while ((inputLine = br.readLine()) != null) {
                 //		g_rgProfileData = {"url":"http:\/\/steamcommunity.com\/id\/numericobr\/","steamid":"76561198056805863","personaname":"Numerico","summary":"No information given."};
                 // \t\tg_rgProfileData={\"url\":\"http:\\/\\/steamcommunity.com\\/id\\/numericobr\\/\",\"steamid\":
-                //deu certo, agora é so pegar o id
-                if(inputLine.startsWith("		g_rgProfileData"))
-                    System.out.println(inputLine);
+               
+                if(inputLine.startsWith("		g_rgProfileData")){
+                    String [] split = inputLine.split(",");
+                    String [] splitId = split[1].split(":");
+                    userid = splitId[1];
+                }
             }
             br.close();
 
-            System.out.println("Done");
+//            System.out.println("Done");
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        
+        return userid;
     }
-    
-    
+
+    public String getApi_key() {
+        return api_key;
+    }
+
+    public void setApi_key(String api_key) {
+        this.api_key = api_key;
+    }
 }
