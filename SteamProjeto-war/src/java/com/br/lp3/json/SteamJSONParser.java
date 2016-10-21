@@ -8,6 +8,7 @@ package com.br.lp3.json;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
@@ -16,6 +17,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
 
 /**
  *
@@ -23,7 +28,7 @@ import java.util.logging.Logger;
  */
 public class SteamJSONParser {
     
-    private String api_key = "88CD5D6FFEDAEB520848A84DDEFE2610";
+    private static String api_key = "88CD5D6FFEDAEB520848A84DDEFE2610";
     
     
     public static String openURL(String uri){
@@ -98,6 +103,28 @@ public class SteamJSONParser {
         return userid;
     }
 
+//    public static void getPlayerSumaries(String id){
+    public static void getPlayerSumaries(){
+        String id = "76561198056805863";
+        String url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key="+api_key+"&steamids="+id;
+        
+        String content = openURL(url);
+        
+        JsonReader reader = Json.createReader(new StringReader(content));
+        JsonObject root = reader.readObject();
+        reader.close();
+        
+        JsonArray players = root.getJsonArray("response");
+        JsonObject obj = players.getJsonObject(0);
+        
+        String steamid = obj.getString("steamid");
+        
+        
+        
+        
+    }
+    
+    
     public String getApi_key() {
         return api_key;
     }
