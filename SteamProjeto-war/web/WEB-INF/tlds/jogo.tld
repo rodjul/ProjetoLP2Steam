@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+  <tlib-version>1.0</tlib-version>
+  <short-name>jogo</short-name>
+  <uri>/WEB-INF/tlds/jogo</uri>
+  <tag>
+      <name>meusJogos</name>
+      <tag-class>com.br.lp3.taglibs.MeuJogoTag</tag-class>
+      <body-content>empty</body-content>
+      <attribute>
+          <name>user</name>
+          <required>true</required>
+          <rtexprvalue>true</rtexprvalue>
+          <description>Name of the user</description>
+      </attribute>
+  </tag>
+  <tag>
+      <name>pesquisarJogos</name>
+      <tag-class>com.br.lp3.taglibs.PesquisarJogoTag</tag-class>
+      <body-content>empty</body-content>
+  </tag>
+</taglib>

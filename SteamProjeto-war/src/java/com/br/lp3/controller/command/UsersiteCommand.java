@@ -5,9 +5,13 @@
  */
 package com.br.lp3.controller.command;
 
+import com.br.lp3.json.SteamJSONParser;
 import com.br.lp3.model.dao.UsersiteDAO;
+import com.br.lp3.model.entities.Games;
 import com.br.lp3.model.entities.Userinfo;
 import com.br.lp3.model.entities.Usersite;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -22,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author RodrigoPC
  */
 public class UsersiteCommand implements Command{
+
     UsersiteDAO usersiteDAO = lookupUsersiteDAOBean();
 
     private HttpServletRequest request;
@@ -49,9 +54,9 @@ public class UsersiteCommand implements Command{
             break;
             case "logout":
                 //http://www.javatpoint.com/servlet-login-and-logout-example-using-cookies
-//                Cookie ck = new Cookie("name","");
-//                ck.setMaxAge(0);
-//                response.addCookie(ck);
+                Cookie ck = new Cookie("username","");
+                ck.setMaxAge(0);
+                response.addCookie(ck);
                 
                 request.getSession().invalidate();
                 responsePage = "index.jsp";
@@ -73,6 +78,15 @@ public class UsersiteCommand implements Command{
                 break;
             case "deletarConta":
                 deletarConta();
+                break;
+            case "meusJogos":
+                meusJogos();
+                break;
+            case "pesquisarJogos":
+                pesquisarJogos();
+                break;
+            case "mostrarJogos":
+                mostrarJogos();
                 break;
         }
         
@@ -130,23 +144,18 @@ public class UsersiteCommand implements Command{
             responsePage = "error.jsp";
             request.getSession().setAttribute("error","Passwords don't match");
         }else{
-//            Cookie cookie = new Cookie("username", username);
-//            response.addCookie(cookie);
+            Cookie cookie = new Cookie("username", username);
+            response.addCookie(cookie);
 //            Cookie ck [] = request.getCookies();
 //            String name = ck[0].getValue();
-                    
+                  
             request.getSession().setAttribute("user",temp3);
             responsePage = "novosjogos.jsp";
         }
         
     }
     
-    public void esqueciSenha(){
-        
-        
-        
-        
-    }
+    public void esqueciSenha(){}
     
     public void alterarSenha(){
         String senhaAtual = request.getParameter("senhaatual");
@@ -228,6 +237,38 @@ public class UsersiteCommand implements Command{
         
     }
     
+    public void meusJogos(){
+        Cookie ck [] = request.getCookies();
+        String name_user = ck[1].getValue();
+//        
+//        List<Games> games = new ArrayList<>();
+//        Usersite temp = usersiteDAO.findByUsername(name_user);
+//        String userid = temp.getUserinfo().getUrlsteam().split("/")[2];
+//        List<Games> jogos_obtidos = SteamJSONParser.getOwnedGames(userid);
+//        for (Games jogos_obtido : jogos_obtidos) {
+//            String id = String.valueOf(jogos_obtido.getAppid());
+//            games.add(
+//                    SteamJSONParser.getAppDetails(id)
+//            );
+//            break;
+//            
+//        }
+        request.getSession().setAttribute("cookieuser",name_user);
+        request.getSession().setAttribute("pagina", "meusJogos");
+        responsePage = "novosjogos.jsp";
+
+    }
+    
+    public void pesquisarJogos(){
+        request.getSession().setAttribute("pagina","pesquisarJogos");
+        responsePage = "novosjogos.jsp";
+    }
+    
+    public void mostrarJogos(){
+        request.getSession().setAttribute("pagina","mostrarJogos");
+        responsePage = "novosjogos.jsp";
+    }
+    
     @Override
     public String getResponsePage() {
         return this.responsePage;
@@ -242,6 +283,6 @@ public class UsersiteCommand implements Command{
             throw new RuntimeException(ne);
         }
     }
-    
+
     
 }

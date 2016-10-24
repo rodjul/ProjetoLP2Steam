@@ -51,6 +51,7 @@
             
         </section>
         <%@include file="jspf/footer.jspf" %>
+        <a href="Controller" >Cont</a>
     </body>
     
     

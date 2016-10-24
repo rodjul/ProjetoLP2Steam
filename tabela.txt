@@ -17,9 +17,12 @@ create table userinfo(
 create table games(
     id_games bigint primary key generated always as identity(start with 1, increment by 1),
     nome_game varchar(40) not null,
+    appid bigint,
     descricao varchar(200) not null,
-    tags varchar(30),
+    tags varchar(100),
     url_steam varchar(50),
+    price intenger,
+    free boolean,
     id_userinfo bigint
 );
 

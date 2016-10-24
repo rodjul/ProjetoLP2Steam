@@ -28,7 +28,8 @@
         
         <section class="container">
             <h1>Minha Conta</h1>
-            <br><p>teste ${username.getValue()}</p>
+            <!--<br><p>teste ${username.getValue()}</p>-->
+            <br>
             
             <form method="post" action="Controller" class="form-group">
                 <h3>Atualizar nome</h3>

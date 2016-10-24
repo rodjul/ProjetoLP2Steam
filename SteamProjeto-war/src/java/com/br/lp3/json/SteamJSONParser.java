@@ -5,6 +5,7 @@
  */
 package com.br.lp3.json;
 
+import com.br.lp3.model.entities.Games;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,6 +16,8 @@ import java.net.MalformedURLException;
 import java.net.Proxy;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.json.Json;
@@ -28,19 +31,26 @@ import javax.json.JsonReader;
  */
 public class SteamJSONParser {
     
-    private static String api_key = "88CD5D6FFEDAEB520848A84DDEFE2610";
     
+    private static String api_key = "88CD5D6FFEDAEB520848A84DDEFE2610";
+    public String getApi_key() {
+        return api_key;
+    }
+
+    public void setApi_key(String api_key) {
+        this.api_key = api_key;
+    }
     
     public static String openURL(String uri){
         String content = "";
         
         try {
             URL url = new URL(uri);
-            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10",3128));
             //            sem proxy para usar em casa        
-//            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+            HttpURLConnection con = (HttpURLConnection)url.openConnection();
             //usar com proxy no mackenzie
-            HttpURLConnection con = (HttpURLConnection)url.openConnection(proxy);
+            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10",3128));
+//            HttpURLConnection con = (HttpURLConnection)url.openConnection(proxy);
             
             int code = con.getResponseCode();
             if(code == 407) System.out.println("Falha na autenticação do Proxy");
@@ -70,7 +80,6 @@ public class SteamJSONParser {
     public static String getUserID(String url_user) {
         String userid = "";
         try {
-            // get URL content
 //            String a="http://www.steamcommunity.com/id/numericobr";
             URL url = new URL(url_user);
             Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10",3128));
@@ -85,9 +94,9 @@ public class SteamJSONParser {
                 // \t\tg_rgProfileData={\"url\":\"http:\\/\\/steamcommunity.com\\/id\\/numericobr\\/\",\"steamid\":
                
                 if(inputLine.startsWith("		g_rgProfileData")){
-                    String [] split = inputLine.split(",");
-                    String [] splitId = split[1].split(":");
-                    userid = splitId[1];
+                    String split = inputLine.split(",")[1].split(":")[1];
+//                    String [] splitId = split[1].split(":");
+                    userid = split;
                 }
             }
             br.close();
@@ -114,22 +123,191 @@ public class SteamJSONParser {
         JsonObject root = reader.readObject();
         reader.close();
         
-        JsonArray players = root.getJsonArray("response");
+        JsonObject response = root.getJsonObject("response");
+        JsonArray players = response.getJsonArray("players");
         JsonObject obj = players.getJsonObject(0);
         
         String steamid = obj.getString("steamid");
+        String personaname = obj.getString("personaname");
         
+        //funcionando
+    }
+    
+    public static List<Games> getOwnedGames(String userid){
+        String id = "76561198056805863";
+        String url = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key="+api_key+"&steamid="+userid+"&format=json";
+        List<Games> gameList = new ArrayList<>();
         
+        String content = openURL(url);
         
+        JsonReader reader = Json.createReader(new StringReader(content));
+        JsonObject root = reader.readObject();
+        reader.close();
+        
+        JsonObject response = root.getJsonObject("response");
+//        int games_count = response.getInt("game_count");
+        int games_count = 5;
+        JsonArray games = response.getJsonArray("games");
+        
+        for (int i = 0; i < games_count; i++) {
+            JsonObject gamesObj = games.getJsonObject(i);
+            int appid = gamesObj.getInt("appid");
+            int playtime_forever = gamesObj.getInt("playtime_forever");
+            
+            gameList.add(new Games(appid));
+        }
+        
+        return gameList;
         
     }
     
+//    public static void searchGameByTag(){
+//        String uri = "http://www.google.com";
+//        ArrayList games = new ArrayList<>();
+//        try {
+//            URL url = new URL(uri);
+//            URLConnection con = url.openConnection();
+//            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+//            
+//            String inputLine;
+//            while((inputLine = br.readLine())!= null){
+//                if(inputLine.startsWith("<tr class=\"app\" data-appid=\"")){
+//                    System.out.println(inputLine);
+//                }
+//            }
+//            
+//        } catch (MalformedURLException ex) {
+//            Logger.getLogger(SteamJSONParser.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(SteamJSONParser.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//        
+//        
+//    }
     
-    public String getApi_key() {
-        return api_key;
+    
+    /**
+     * Obtem todos os ids de todos os jogos cadastrados
+     */
+    public static void getAppList(){
+        String url = "https://api.steampowered.com/ISteamApps/GetAppList/v1";
+        String content = openURL(url);
+        
+        JsonReader reader = Json.createReader(new StringReader(content));
+        JsonObject root = reader.readObject();
+        reader.close();
+        
+        JsonObject applist = root.getJsonObject("applist");
+        JsonObject apps = applist.getJsonObject("apps");
+        JsonArray appArray = apps.getJsonArray("app");
+        for (int i = 0; i < appArray.size(); i++) {
+            JsonObject list_app = appArray.getJsonObject(i);
+            String appid = list_app.getString("appid");
+            String name_game = list_app.getString("name");
+            
+        }
+    
     }
+    
+    
+    public static Games getAppDetails(String appid){
+//        String url = "http://store.steampowered.com/api/appdetails?appids=730";
+        String url = "http://store.steampowered.com/api/appdetails?appids="+appid+"&l=br";
+        
+//        List categorieList = new ArrayList<>();
+        String tags = "";
 
-    public void setApi_key(String api_key) {
-        this.api_key = api_key;
+        String content = openURL(url);
+        
+        JsonReader reader = Json.createReader(new StringReader(content));
+        JsonObject root = reader.readObject();
+        reader.close();
+        
+        JsonObject idgame = root.getJsonObject(appid);
+        boolean result = idgame.getBoolean("success");
+        if(!result){
+            System.out.println("Não foi possível obter os dados do game");
+            return null;
+        }else{
+            JsonObject data = idgame.getJsonObject("data");
+            String name = data.getString("name");
+            boolean is_free = data.getBoolean("is_free");
+            String detailed_description = data.getString("detailed_description");
+//            String header_img_url = data.getString("header_img");
+            
+            int price = 0;
+//            if(!is_free){
+//                JsonObject price_overview = data.getJsonObject("price_overview");
+//                price = price_overview.getInt("initial");
+//            }
+            
+            JsonArray categories = data.getJsonArray("categories");
+            for (int i = 0; i < categories.size(); i++) {
+                JsonObject categoriesObj = categories.getJsonObject(i);
+                String description = categoriesObj.getString("description");
+//                categorieList.add(description);
+                tags = tags.concat(description+ ", ");
+            }
+            
+            JsonArray genres = data.getJsonArray("genres");
+            for (int i = 0; i < genres.size(); i++) {
+                JsonObject genresObj = genres.getJsonObject(i);
+                String description = genresObj.getString("description");
+//                categorieList.add(description);
+                if(i+1<genres.size())
+                    tags = tags.concat(description+", ");
+                else
+                    tags = tags.concat(description);
+            }
+            String url_game = "http://store.steampowered.com/app/"+appid+"/";
+            long appid_long = Long.parseLong(appid);
+            return new Games(appid_long, name, detailed_description, tags, url_game, price, is_free);
+        }
     }
+    
+    
+    public static void getRecentlyPlayedGames(String id){
+//        String id = "76561198056805863";
+        String url = "https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/?key="+api_key+"&format=json&steamid="+id;
+        
+//        ArrayList<Games> gamesArray = new ArrayList<>();
+        ArrayList gamesArray = new ArrayList<>();
+        
+        String content = openURL(url);
+        
+        JsonReader reader = Json.createReader(new StringReader(content));
+        JsonObject root = reader.readObject();
+        reader.close();
+        
+        JsonObject response = root.getJsonObject("response");
+        int total_count_games = response.getInt("total_count");
+        
+        JsonArray games = response.getJsonArray("games");
+        for (int i = 0; i < total_count_games; i++) {
+            JsonObject gamesObject = games.getJsonObject(i);
+            String name = gamesObject.getString("name");
+            int appid = gamesObject.getInt("appid");
+            gamesArray.add(new GameTemp(appid,name));
+            
+        }
+        //funcionando
+        
+    }
+    
+    
+
+    
+}
+class GameTemp{
+    
+    private String name;
+    private int id;
+    
+    public GameTemp(int id, String name){
+        this.id = id;
+        this.name = name;
+    }
+    
+    
 }

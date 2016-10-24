@@ -52,17 +52,23 @@ public class Games implements Serializable {
     @Size(min = 1, max = 40)
     @Column(name = "NOME_GAME")
     private String nomeGame;
+    @Column(name = "APPID")
+    private Long appid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
     @Column(name = "DESCRICAO")
     private String descricao;
-    @Size(max = 30)
+    @Size(max = 100)
     @Column(name = "TAGS")
     private String tags;
     @Size(max = 50)
     @Column(name = "URL_STEAM")
     private String urlSteam;
+    @Column(name = "PRICE")
+    private int price;
+    @Column(name = "FREE")
+    private boolean free;
     @JoinTable(name = "GAMES_ANALISE", joinColumns = {
         @JoinColumn(name = "ID_GAMES", referencedColumnName = "ID_GAMES")}, inverseJoinColumns = {
         @JoinColumn(name = "ID_GAME_ANALISES", referencedColumnName = "ID_GAME_ANALISES")})
@@ -80,13 +86,50 @@ public class Games implements Serializable {
     public Games(Long idGames) {
         this.idGames = idGames;
     }
+    
+    public Games(long appid){
+        this.appid = appid;
+    }
+    
+    public Games(Long idGames,String nomeGame){
+        this.idGames = idGames;
+        this.nomeGame = nomeGame;
+    }
 
     public Games(Long idGames, String nomeGame, String descricao) {
         this.idGames = idGames;
         this.nomeGame = nomeGame;
         this.descricao = descricao;
     }
+    
+    public Games(Long idGame, String nomeGame, String description, String tags){
+        this.idGames = idGame;
+        this.nomeGame = nomeGame;
+        this.descricao = description;
+        this.tags = tags;
+    }
 
+    public Games(Long idGames, String nomeGame, String descricao, String tags, String urlSteam, int price, boolean free) {
+        this.idGames = idGames;
+        this.nomeGame = nomeGame;
+        this.descricao = descricao;
+        this.tags = tags;
+        this.urlSteam = urlSteam;
+        this.price = price;
+        this.free = free;
+    }
+    public Games(long appid, String nomeGame, String descricao, String tags, String urlSteam, int price, boolean free) {
+        this.appid = appid;
+        this.nomeGame = nomeGame;
+        this.descricao = descricao;
+        this.tags = tags;
+        this.urlSteam = urlSteam;
+        this.price = price;
+        this.free = free;
+    }
+
+    
+    
     public Long getIdGames() {
         return idGames;
     }
@@ -103,6 +146,16 @@ public class Games implements Serializable {
         this.nomeGame = nomeGame;
     }
 
+    public long getAppid() {
+        return appid;
+    }
+
+    public void setAppid(Long appid) {
+        this.appid = appid;
+    }
+
+    
+    
     public String getDescricao() {
         return descricao;
     }
@@ -127,6 +180,24 @@ public class Games implements Serializable {
         this.urlSteam = urlSteam;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public boolean isFree() {
+        return free;
+    }
+
+    public void setFree(boolean free) {
+        this.free = free;
+    }
+
+    
+    
     @XmlTransient
     public List<Analises> getAnalisesList() {
         return analisesList;

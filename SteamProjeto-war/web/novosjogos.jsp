@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="j" uri="/WEB-INF/tlds/jogo.tld" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,25 +26,36 @@
             <br>
             <!--<p>aqui vai ter um botao que add os novos jogos</p>-->
             <section class="row">
-                <div class="col-lg-2">
-                    <form method="post" action="">
-                        <input type="hidden" value="" />
-                        <input type="submit" value="Pesquisar novos jogos!" class="btn btn-primary"/>
+                <div class="col-sm-1">
+                    <!--<a href="Controller?command=Usersite.meusJogos"><button type="button" class="btn btn-primary">Meus jogos</button></a>-->
+                    <form method="post" action="Controller">
+                        <input type="hidden" name="command" value="Usersite.meusJogos" />
+                        <input type="submit" class="btn btn-primary" value="Meus jogos" />
                     </form>
                 </div>
-                <div class="col-lg-2">
-                    <!--<p>esse aqui vai listar os jogos que já foram pesquisados</p>-->
-                    <form method="post" action="">
-                        <input type="hidden" value="" />
-                        <input type="submit" value="Mostrar jogos pesquisados" class="btn btn-primary"/>
-                    </form>
+                <div class="col-sm-2">
+                    <a href="Controller?command=Usersite.pesquisarJogos"><button type="button" class="btn btn-primary">Pesquisar novos jogos</button></a>
+                </div>
+                <div class="col-sm-1s">
+                    <a href="Controller?command=Usersite.mostrarJogos"><button type="button" class="btn btn-primary">Mostrar jogos pesquisados</button></a>
                 </div>
             </section>
             <br>
             <!--<p>Usar essa msm página para listar?</p>-->
             
-                
-                <section id="teste" class="row">
+            <c:choose>
+                <c:when test="${pagina.equals('meusJogos')}">
+                    <h3>Meus jogos</h3>
+                    <j:meusJogos user="${cookieuser}"/>
+                </c:when>
+                <c:when test="${pagina.equals('pesquisarJogos')}">
+                    <j:pesquisarJogos/>
+                </c:when>
+                <c:when test="${pagina.equals('mostrarJogos')}">
+                    <p>dasasd</p>
+                </c:when>
+            </c:choose>  
+<!--                <section id="teste" class="row">
                     <article class="col-xs-6 col-lg-4">
                         <div class="thumbnail">
                             <img src="img/epicbattlefantasyiii.jpg" alt="game" />
@@ -205,7 +217,7 @@
                     </article>
                     
             
-                </section>
+                </section>-->
             
             
         </section>

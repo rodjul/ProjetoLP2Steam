@@ -137,3 +137,7 @@ div.thumbnail{
     position:relative;
     right:40px;
 }
+/* ajustando botao na pagina novos jogos */
+.col-sm-1{
+    width:9.333333%;
+}
