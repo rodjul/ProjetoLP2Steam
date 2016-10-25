@@ -54,30 +54,50 @@ public class MeuJogoTag extends SimpleTagSupport {
         for (Games jogos_obtido : jogos_obtidos) {
             String id = String.valueOf(jogos_obtido.getAppid());
             games.add(
-                    SteamJSONParser.getAppDetails(id)
+                    SteamJSONParser.getShortAppDetails(id)
             );
             
         }
+        out.println("<div class='container'>");
         out.println("<section id=\"teste\" class=\"row\">");
         
         for (Games game : games) {
-            if(game.getNomeGame() != null){
-                out.println("<article class=\"col-xs-6 col-lg-4\">\n" +
-                "                        <div class=\"thumbnail\">");
-                out.println("                 <div class=\"thumbnail\">");
-                out.println("<img src=\"img/epicbattlefantasyiii.jpg\" alt=\"game\" />");
-                out.println("<h3>"+game.getNomeGame()+"</h3>");
-                out.println("<p>"+game.getDescricao()+"<p>");
-                out.println("<p><b>Categoria(s):<b></p>");
-                out.println("<b><p class='fontstyle'>"+game.getTags()+"</p></b>");
-                out.println("<a href='"+game.getUrlSteam()+"'</a>");
-                out.println("</article>");
-                
+            if(game != null){
+            out.println("<article class=\"col-lg-5\">\n" +
+"                        <div class=\"thumbnail\">\n" +
+"                            <img src=\"img/epicbattlefantasyiii.jpg\" alt=\"game\" />\n" +
+"                            <div class=\"caption\">\n" +
+"                                <h3>"+game.getNomeGame()+"</h3>\n" +
+"                                \n" +
+"                                <p>"+game.getDescricao()+"</p>\n" +
+"                                \n" +
+"                                <p><b>Categoria(s):</b></p>\n" +
+"                                <b><p class=\"fontstyle\">"+game.getTags()+"</p></b>\n" +
+"\n" +
+"                                <a href='"+game.getUrlSteam()+"' target=\"_blank\"><input type=\"button\" class=\"btn btn-primary\" value=\"Ir para a Loja Steam\" />\n" +
+"                                \n" +
+"                                </a> <input type=\"button\" onfocus=\"teste('"+game.getNomeGame()+"')\" class=\"btn btn-primary\" value=\"Ver análises\"/>\n" +
+"                                \n" +
+"                                <article id=\"epicbattlefantasy3\" class=\"modal\">\n" +
+"                                        <article class=\"modal-content\">\n" +
+"                                            <span class=\"close\" onclick=\"getElementById('"+game.getNomeGame()+"').style.display='none'\">x</span>\n" +
+"                                            <div class=\"thumbnail\"><div class=\"caption\">\n" +
+"                                            </div></div>\n" +
+"                                        </article>\n" +
+"                                </article>\n" +
+"                                \n" +
+"                            </div>\n" +
+"                        </div>\n" +
+"                    </article>");                
             }
+            
+
+            
         }
         out.println("</section>");
+        out.println("</div>");
                             
-
+    }
 //                                <a href="http://store.steampowered.com/app/521200/" target="_blank"><input type="button" class="btn btn-primary" value="Ir para a Loja Steam" />
 //                                </a> <input type="button" onfocus="teste('epicbattlefantasy3')" class="btn btn-primary" value="Ver análises"/>
 //                                <article id="epicbattlefantasy3" class="modal">
@@ -93,9 +113,6 @@ public class MeuJogoTag extends SimpleTagSupport {
 //                            </div>
 //                        </div>
 //                    </article>
-        
-        
-    }
     
     private UsersiteDAO lookupUsersiteDAOBean() {
         try {

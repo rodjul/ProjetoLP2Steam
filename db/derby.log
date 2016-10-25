@@ -1,7 +1,7 @@
-Sun Oct 23 22:43:07 BRST 2016 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
+Mon Oct 24 22:38:43 BRST 2016 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Sun Oct 23 22:45:40 BRST 2016:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0157-f424-0041-ffffb3a5d052 
+Mon Oct 24 22:45:20 BRST 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0157-f946-55fc-ffffb3a5d052 
 on database directory C:\Users\RodrigoPC\Desktop\github\ProjetoLP2Steam\db\SteamDB with class loader sun.misc.Launcher$AppClassLoader@60e53b93 
 Loaded from file:/D:/COMPUTACAO/faculdade%20mackenzie/NetBeans%20arquivos/banco%20de%20dados%20glass%20fish/glassfish-4.1/glassfish4/javadb/lib/derby.jar
 java.vendor=Oracle Corporation
