@@ -127,13 +127,19 @@ public class Games implements Serializable {
         this.price = price;
         this.free = free;
     }
-    public Games(long appid, String nomeGame, String tags, String urlSteam) {
+    public Games(long appid, String nomeGame, String descricao, String tags, String urlSteam) {
         this.appid = appid;
         this.nomeGame = nomeGame;
+        this.descricao = descricao;
         this.tags = tags;
         this.urlSteam = urlSteam;
     }
 
+    public Games(long appid, String nomeGame){
+        this.appid = appid;
+        this.nomeGame = nomeGame;
+    }
+    
     
     
     public Long getIdGames() {

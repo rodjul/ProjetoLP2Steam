@@ -18,6 +18,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.json.Json;
@@ -190,7 +191,7 @@ public class SteamJSONParser {
     /**
      * Obtem todos os ids de todos os jogos cadastrados
      */
-    public static void getAppList(){
+    public static List<Games> getAppList(){
         String url = "https://api.steampowered.com/ISteamApps/GetAppList/v1";
         String content = openURL(url);
         
@@ -198,16 +199,43 @@ public class SteamJSONParser {
         JsonObject root = reader.readObject();
         reader.close();
         
+        List<Games> games = new ArrayList<>();
+        
         JsonObject applist = root.getJsonObject("applist");
         JsonObject apps = applist.getJsonObject("apps");
         JsonArray appArray = apps.getJsonArray("app");
         for (int i = 0; i < appArray.size(); i++) {
             JsonObject list_app = appArray.getJsonObject(i);
-            String appid = list_app.getString("appid");
+            int appid = list_app.getInt("appid");
             String name_game = list_app.getString("name");
-            
+            games.add(new Games(appid, name_game));
         }
+        return games;
+    }
     
+    public static List<Games> getNewGames(){
+        List<Games> games = new ArrayList<>();
+        
+        List<Games> listOfGames = getAppList();
+        
+        Random random = new Random();
+        int random_number = 0, number_of_game = 3;
+        int i=0;
+        int length = listOfGames.size()-1;
+        do{
+            random_number = random.nextInt(length);
+            if(random_number != 5 && random_number != 7 && random_number != 8){
+            Games get_game = getShortAppDetails( String.valueOf( listOfGames.get(random_number).getAppid() ) );
+                
+                if(get_game!=null){
+                    games.add(get_game);
+                    i++;
+                }
+                
+            }
+        }while(i<number_of_game);
+        
+        return games;
     }
     
     public static Games getShortAppDetails(String appid){
@@ -222,15 +250,25 @@ public class SteamJSONParser {
         JsonObject idgame = root.getJsonObject(appid);
         boolean result = idgame.getBoolean("success");
         if(!result){
-            System.out.println("Não foi possível obter os dados do game");
+            System.out.println(idgame + "= Não foi possível obter os dados do game");
             return null;
         }else{
             JsonObject data = idgame.getJsonObject("data");
             String name = data.getString("name");
-//            String detailed_description = data.getString("detailed_description");
+            String detailed_description = data.getString("detailed_description");
             String url_game = "http://store.steampowered.com/app/"+appid+"/";
             long appid_long = Long.parseLong(appid);
-            return new Games(appid_long, name, tags, url_game);
+            
+            JsonArray categories = data.getJsonArray("categories");
+            JsonObject categoriesObj = categories.getJsonObject(0);
+            
+            tags = tags.concat(categoriesObj.getString("description"));
+            
+            for (int i = 1; i < categories.size(); i++) {
+                categoriesObj = categories.getJsonObject(i);
+                tags = tags.concat(", "+categoriesObj.getString("description"));
+            }
+            return new Games(appid_long, name, detailed_description, tags, url_game);
         }
     }
     

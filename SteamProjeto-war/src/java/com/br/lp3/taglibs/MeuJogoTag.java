@@ -63,9 +63,9 @@ public class MeuJogoTag extends SimpleTagSupport {
         
         for (Games game : games) {
             if(game != null){
-            out.println("<article class=\"col-lg-5\">\n" +
+            out.println("<article class=\"col-lg-4\">\n" +
 "                        <div class=\"thumbnail\">\n" +
-"                            <img src=\"img/epicbattlefantasyiii.jpg\" alt=\"game\" />\n" +
+"                            <img src=\"http://cdn.akamai.steamstatic.com//steam//apps//"+game.getAppid()+"//header.jpg\" alt=\"game\" />\n" +
 "                            <div class=\"caption\">\n" +
 "                                <h3>"+game.getNomeGame()+"</h3>\n" +
 "                                \n" +
