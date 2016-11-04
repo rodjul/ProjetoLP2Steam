@@ -6,6 +6,7 @@
 package com.br.lp3.model.entities;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -14,8 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -37,9 +36,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Games.findAll", query = "SELECT g FROM Games g"),
     @NamedQuery(name = "Games.findByIdGames", query = "SELECT g FROM Games g WHERE g.idGames = :idGames"),
     @NamedQuery(name = "Games.findByNomeGame", query = "SELECT g FROM Games g WHERE g.nomeGame = :nomeGame"),
+    @NamedQuery(name = "Games.findByAppid", query = "SELECT g FROM Games g WHERE g.appid = :appid"),
     @NamedQuery(name = "Games.findByDescricao", query = "SELECT g FROM Games g WHERE g.descricao = :descricao"),
     @NamedQuery(name = "Games.findByTags", query = "SELECT g FROM Games g WHERE g.tags = :tags"),
-    @NamedQuery(name = "Games.findByUrlSteam", query = "SELECT g FROM Games g WHERE g.urlSteam = :urlSteam")})
+    @NamedQuery(name = "Games.findByUrlSteam", query = "SELECT g FROM Games g WHERE g.urlSteam = :urlSteam"),
+    @NamedQuery(name = "Games.findByPrice", query = "SELECT g FROM Games g WHERE g.price = :price"),
+    @NamedQuery(name = "Games.findByFree", query = "SELECT g FROM Games g WHERE g.free = :free")})
 public class Games implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -53,7 +55,7 @@ public class Games implements Serializable {
     @Column(name = "NOME_GAME")
     private String nomeGame;
     @Column(name = "APPID")
-    private Long appid;
+    private long appid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
@@ -66,19 +68,16 @@ public class Games implements Serializable {
     @Column(name = "URL_STEAM")
     private String urlSteam;
     @Column(name = "PRICE")
-    private int price;
+    private Integer price;
     @Column(name = "FREE")
-    private boolean free;
-    @JoinTable(name = "GAMES_ANALISE", joinColumns = {
-        @JoinColumn(name = "ID_GAMES", referencedColumnName = "ID_GAMES")}, inverseJoinColumns = {
-        @JoinColumn(name = "ID_GAME_ANALISES", referencedColumnName = "ID_GAME_ANALISES")})
-    @ManyToMany
-    private List<Analises> analisesList;
-    @JoinColumn(name = "ID_USERINFO", referencedColumnName = "ID_USERINFO")
+    private Boolean free;
+    @JoinColumn(name = "FK_USERINFO", referencedColumnName = "ID_USERINFO")
     @ManyToOne
-    private Userinfo idUserinfo;
-    @OneToMany(mappedBy = "idGames")
-    private List<Analises> analisesList1;
+    private Userinfo fkUserinfo;
+    @OneToMany(mappedBy = "fkGames")
+    private List<GamesAnalise> gamesAnaliseList;
+    @OneToMany(mappedBy = "fkGames")
+    private List<Analises> analisesList;
 
     public Games() {
     }
@@ -91,57 +90,36 @@ public class Games implements Serializable {
         this.appid = appid;
     }
     
-    public Games(Long idGames,String nomeGame){
-        this.idGames = idGames;
-        this.nomeGame = nomeGame;
+    public Games(long appid, String name){
+        this.appid = appid;
+        this.nomeGame = name;
     }
+    
+    public Games(long appid, String name, String description, String tags, String url_game){
+        this.appid = appid;
+        this.descricao = description;
+        this.tags = tags;
+        this.urlSteam = url_game;
+    }
+
+    public Games(long appid, String nomeGame, String descricao, String tags, String urlSteam, Integer price, Boolean free){
+        this.appid = appid;
+        this.nomeGame = nomeGame;
+        this.descricao = descricao;
+        this.tags = tags;
+        this.urlSteam = urlSteam;
+        this.price = price;
+        this.free = free;
+    }
+    
+    
 
     public Games(Long idGames, String nomeGame, String descricao) {
         this.idGames = idGames;
         this.nomeGame = nomeGame;
         this.descricao = descricao;
     }
-    
-    public Games(Long idGame, String nomeGame, String description, String tags){
-        this.idGames = idGame;
-        this.nomeGame = nomeGame;
-        this.descricao = description;
-        this.tags = tags;
-    }
 
-    public Games(Long idGames, String nomeGame, String descricao, String tags, String urlSteam, int price, boolean free) {
-        this.idGames = idGames;
-        this.nomeGame = nomeGame;
-        this.descricao = descricao;
-        this.tags = tags;
-        this.urlSteam = urlSteam;
-        this.price = price;
-        this.free = free;
-    }
-    public Games(long appid, String nomeGame, String descricao, String tags, String urlSteam, int price, boolean free) {
-        this.appid = appid;
-        this.nomeGame = nomeGame;
-        this.descricao = descricao;
-        this.tags = tags;
-        this.urlSteam = urlSteam;
-        this.price = price;
-        this.free = free;
-    }
-    public Games(long appid, String nomeGame, String descricao, String tags, String urlSteam) {
-        this.appid = appid;
-        this.nomeGame = nomeGame;
-        this.descricao = descricao;
-        this.tags = tags;
-        this.urlSteam = urlSteam;
-    }
-
-    public Games(long appid, String nomeGame){
-        this.appid = appid;
-        this.nomeGame = nomeGame;
-    }
-    
-    
-    
     public Long getIdGames() {
         return idGames;
     }
@@ -162,12 +140,10 @@ public class Games implements Serializable {
         return appid;
     }
 
-    public void setAppid(Long appid) {
+    public void setAppid(long appid) {
         this.appid = appid;
     }
 
-    
-    
     public String getDescricao() {
         return descricao;
     }
@@ -192,24 +168,39 @@ public class Games implements Serializable {
         this.urlSteam = urlSteam;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
-    public boolean isFree() {
+    public Boolean getFree() {
         return free;
     }
 
-    public void setFree(boolean free) {
+    public void setFree(Boolean free) {
         this.free = free;
     }
 
-    
-    
+    public Userinfo getFkUserinfo() {
+        return fkUserinfo;
+    }
+
+    public void setFkUserinfo(Userinfo fkUserinfo) {
+        this.fkUserinfo = fkUserinfo;
+    }
+
+    @XmlTransient
+    public List<GamesAnalise> getGamesAnaliseList() {
+        return gamesAnaliseList;
+    }
+
+    public void setGamesAnaliseList(List<GamesAnalise> gamesAnaliseList) {
+        this.gamesAnaliseList = gamesAnaliseList;
+    }
+
     @XmlTransient
     public List<Analises> getAnalisesList() {
         return analisesList;
@@ -217,23 +208,6 @@ public class Games implements Serializable {
 
     public void setAnalisesList(List<Analises> analisesList) {
         this.analisesList = analisesList;
-    }
-
-    public Userinfo getIdUserinfo() {
-        return idUserinfo;
-    }
-
-    public void setIdUserinfo(Userinfo idUserinfo) {
-        this.idUserinfo = idUserinfo;
-    }
-
-    @XmlTransient
-    public List<Analises> getAnalisesList1() {
-        return analisesList1;
-    }
-
-    public void setAnalisesList1(List<Analises> analisesList1) {
-        this.analisesList1 = analisesList1;
     }
 
     @Override

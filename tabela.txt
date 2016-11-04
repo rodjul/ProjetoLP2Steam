@@ -1,4 +1,4 @@
-db account: login: mack / password: mack
+--db account: login: mack / password: mack
 
 create table usersite(
     id_usersite bigint not null primary key generated always as identity(start with 1, increment by 1),
@@ -21,9 +21,9 @@ create table games(
     descricao varchar(200) not null,
     tags varchar(100),
     url_steam varchar(50),
-    price intenger,
+    price Intenger,
     free boolean,
-    id_userinfo bigint
+    fk_userinfo bigint
 );
 
 create table analises(
@@ -31,19 +31,20 @@ create table analises(
     aprovacao varchar(12),
     horas bigint,
     analise varchar(300),
-    id_games bigint
+    fk_games bigint
 );
 
 create table games_analise(
-    id_games bigint,
-    id_game_analises bigint
+    id_games_analise bigint primary key generated always as identity(start with 1, increment by 1),
+    fk_games bigint,
+    fk_game_analises bigint
 );
 --usersite 1 - 1 userinfo
 alter table userinfo add foreign key(id_userinfo) references usersite(id_usersite) on delete cascade;
 -- userinfo 1 - N games
-alter table games add foreign key(id_userinfo) references userinfo(id_userinfo) on delete cascade;
+alter table games add foreign key(fk_userinfo) references userinfo(id_userinfo) on delete cascade;
 --games N - N analise
-alter table analises add foreign key(id_games) references games(id_games) on delete cascade;
-alter table games_analise add foreign key(id_games) references games(id_games) on delete cascade;
-alter table games_analise add foreign key(id_game_analises) references analises(id_game_analises) on delete cascade;
+alter table analises add foreign key(fk_games) references games(id_games) on delete cascade;
+alter table games_analise add foreign key(fk_games) references games(id_games) on delete cascade;
+alter table games_analise add foreign key(fk_game_analises) references analises(id_game_analises) on delete cascade;
 

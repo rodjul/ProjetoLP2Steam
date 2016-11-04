@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author RodrigoPC
+ * @author 31597947
  */
 @Entity
 @Table(name = "USERINFO")
@@ -34,12 +34,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Userinfo.findAll", query = "SELECT u FROM Userinfo u"),
     @NamedQuery(name = "Userinfo.findByIdUserinfo", query = "SELECT u FROM Userinfo u WHERE u.idUserinfo = :idUserinfo"),
-    @NamedQuery(name = "Userinfo.findByFirtname", query = "SELECT u FROM Userinfo u WHERE u.firtname = :firtname"),
+    @NamedQuery(name = "Userinfo.findByFirstname", query = "SELECT u FROM Userinfo u WHERE u.firstname = :firstname"),
     @NamedQuery(name = "Userinfo.findByEmail", query = "SELECT u FROM Userinfo u WHERE u.email = :email"),
     @NamedQuery(name = "Userinfo.findByUrlsteam", query = "SELECT u FROM Userinfo u WHERE u.urlsteam = :urlsteam")})
 public class Userinfo implements Serializable {
-    @OneToMany(mappedBy = "idUserinfo")
-    private List<Games> gamesList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,21 +45,23 @@ public class Userinfo implements Serializable {
     @Column(name = "ID_USERINFO")
     private Long idUserinfo;
     @Size(max = 50)
-    @Column(name = "FIRTNAME")
-    private String firtname;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Column(name = "FIRSTNAME")
+    private String firstname;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="E-mail inválido")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 100)
     @Column(name = "EMAIL")
     private String email;
-    @Lob
-    @Column(name = "PICTURE")
-    private Serializable picture;
     @Size(max = 100)
     @Column(name = "URLSTEAM")
     private String urlsteam;
+    @Lob
+    @Column(name = "PICTURE")
+    private Serializable picture;
     @JoinColumn(name = "ID_USERINFO", referencedColumnName = "ID_USERSITE", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Usersite usersite;
+    @OneToMany(mappedBy = "fkUserinfo")
+    private List<Games> gamesList;
 
     public Userinfo() {
     }
@@ -79,11 +79,11 @@ public class Userinfo implements Serializable {
     }
 
     public String getFirstname() {
-        return firtname;
+        return firstname;
     }
 
-    public void setFirstname(String firtname) {
-        this.firtname = firtname;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getEmail() {
@@ -94,14 +94,6 @@ public class Userinfo implements Serializable {
         this.email = email;
     }
 
-    public Serializable getPicture() {
-        return picture;
-    }
-
-    public void setPicture(Serializable picture) {
-        this.picture = picture;
-    }
-
     public String getUrlsteam() {
         return urlsteam;
     }
@@ -110,12 +102,29 @@ public class Userinfo implements Serializable {
         this.urlsteam = urlsteam;
     }
 
+    public Serializable getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Serializable picture) {
+        this.picture = picture;
+    }
+
     public Usersite getUsersite() {
         return usersite;
     }
 
     public void setUsersite(Usersite usersite) {
         this.usersite = usersite;
+    }
+
+    @XmlTransient
+    public List<Games> getGamesList() {
+        return gamesList;
+    }
+
+    public void setGamesList(List<Games> gamesList) {
+        this.gamesList = gamesList;
     }
 
     @Override
@@ -141,15 +150,6 @@ public class Userinfo implements Serializable {
     @Override
     public String toString() {
         return "com.br.lp3.model.entities.Userinfo[ idUserinfo=" + idUserinfo + " ]";
-    }
-
-    @XmlTransient
-    public List<Games> getGamesList() {
-        return gamesList;
-    }
-
-    public void setGamesList(List<Games> gamesList) {
-        this.gamesList = gamesList;
     }
     
 }

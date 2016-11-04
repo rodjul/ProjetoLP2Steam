@@ -15,10 +15,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -48,15 +48,15 @@ public class Analises implements Serializable {
     @Column(name = "APROVACAO")
     private String aprovacao;
     @Column(name = "HORAS")
-    private long horas;
+    private BigInteger horas;
     @Size(max = 300)
     @Column(name = "ANALISE")
     private String analise;
-    @ManyToMany(mappedBy = "analisesList")
-    private List<Games> gamesList;
-    @JoinColumn(name = "ID_GAMES", referencedColumnName = "ID_GAMES")
+    @OneToMany(mappedBy = "fkGameAnalises")
+    private List<GamesAnalise> gamesAnaliseList;
+    @JoinColumn(name = "FK_GAMES", referencedColumnName = "ID_GAMES")
     @ManyToOne
-    private Games idGames;
+    private Games fkGames;
 
     public Analises() {
     }
@@ -81,11 +81,11 @@ public class Analises implements Serializable {
         this.aprovacao = aprovacao;
     }
 
-    public long getHoras() {
+    public BigInteger getHoras() {
         return horas;
     }
 
-    public void setHoras(long horas) {
+    public void setHoras(BigInteger horas) {
         this.horas = horas;
     }
 
@@ -98,20 +98,20 @@ public class Analises implements Serializable {
     }
 
     @XmlTransient
-    public List<Games> getGamesList() {
-        return gamesList;
+    public List<GamesAnalise> getGamesAnaliseList() {
+        return gamesAnaliseList;
     }
 
-    public void setGamesList(List<Games> gamesList) {
-        this.gamesList = gamesList;
+    public void setGamesAnaliseList(List<GamesAnalise> gamesAnaliseList) {
+        this.gamesAnaliseList = gamesAnaliseList;
     }
 
-    public Games getIdGames() {
-        return idGames;
+    public Games getFkGames() {
+        return fkGames;
     }
 
-    public void setIdGames(Games idGames) {
-        this.idGames = idGames;
+    public void setFkGames(Games fkGames) {
+        this.fkGames = fkGames;
     }
 
     @Override
