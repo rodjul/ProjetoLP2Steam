@@ -44,9 +44,6 @@ public class MeuJogoTag extends SimpleTagSupport {
     public void doTag() throws JspException, IOException {
         JspWriter out = getJspContext().getOut();
         
-//        Cookie ck [] = request.getCookies();
-//        String name_user = ck[1].getValue();
-        
         List<Games> games = new ArrayList<>();
         Usersite temp = usersiteDAO.findByUsername(user);
         String userid = temp.getUserinfo().getUrlsteam().split("/")[2];

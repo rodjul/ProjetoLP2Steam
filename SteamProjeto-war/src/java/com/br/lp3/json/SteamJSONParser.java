@@ -239,6 +239,9 @@ public class SteamJSONParser {
     }
     
     public static Games getShortAppDetails(String appid){
+        
+        // http://jsonviewer.stack.hu/#http://store.steampowered.com/api/appdetails?appids=730    em caso de n funcionar no mack
+        
         String url = "http://store.steampowered.com/api/appdetails?appids="+appid+"&l=br";
         String tags = "";
         String content = openURL(url);
@@ -255,7 +258,12 @@ public class SteamJSONParser {
         }else{
             JsonObject data = idgame.getJsonObject("data");
             String name = data.getString("name");
-            String detailed_description = data.getString("detailed_description");
+            String description = data.getString("short_description");
+            if(description == ""){
+                String detailed_description = data.getString("detailed_description");
+                description = detailed_description;
+            }
+            
             String url_game = "http://store.steampowered.com/app/"+appid+"/";
             long appid_long = Long.parseLong(appid);
             
@@ -268,7 +276,7 @@ public class SteamJSONParser {
                 categoriesObj = categories.getJsonObject(i);
                 tags = tags.concat(", "+categoriesObj.getString("description"));
             }
-            return new Games(appid_long, name, detailed_description, tags, url_game);
+            return new Games(appid_long, name, description, tags, url_game);
         }
     }
     
