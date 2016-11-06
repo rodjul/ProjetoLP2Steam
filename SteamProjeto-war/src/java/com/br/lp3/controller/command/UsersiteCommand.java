@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author RodrigoPC
  */
 public class UsersiteCommand implements Command{
-
+    
     UsersiteDAO usersiteDAO = lookupUsersiteDAOBean();
 
     private HttpServletRequest request;
@@ -284,5 +284,5 @@ public class UsersiteCommand implements Command{
         }
     }
 
-    
+        
 }

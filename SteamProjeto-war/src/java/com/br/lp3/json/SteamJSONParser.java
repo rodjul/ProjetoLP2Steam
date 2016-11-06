@@ -259,7 +259,7 @@ public class SteamJSONParser {
             JsonObject data = idgame.getJsonObject("data");
             String name = data.getString("name");
             String description = data.getString("short_description");
-            if(description == ""){
+            if(description.equals("")){
                 String detailed_description = data.getString("detailed_description");
                 description = detailed_description;
             }

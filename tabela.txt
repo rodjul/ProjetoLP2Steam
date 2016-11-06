@@ -21,7 +21,7 @@ create table games(
     descricao varchar(200) not null,
     tags varchar(100),
     url_steam varchar(50),
-    price Intenger,
+    price int,
     free boolean,
     fk_userinfo bigint
 );

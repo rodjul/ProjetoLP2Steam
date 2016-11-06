@@ -68,7 +68,7 @@ public class Games implements Serializable {
     @Column(name = "URL_STEAM")
     private String urlSteam;
     @Column(name = "PRICE")
-    private Integer price;
+    private int price;
     @Column(name = "FREE")
     private Boolean free;
     @JoinColumn(name = "FK_USERINFO", referencedColumnName = "ID_USERINFO")
@@ -95,14 +95,15 @@ public class Games implements Serializable {
         this.nomeGame = name;
     }
     
-    public Games(long appid, String name, String description, String tags, String url_game){
+    public Games(long appid, String nomeGame, String description, String tags, String url_game){
         this.appid = appid;
+        this.nomeGame = nomeGame;
         this.descricao = description;
         this.tags = tags;
         this.urlSteam = url_game;
     }
 
-    public Games(long appid, String nomeGame, String descricao, String tags, String urlSteam, Integer price, Boolean free){
+    public Games(long appid, String nomeGame, String descricao, String tags, String urlSteam, int price, Boolean free){
         this.appid = appid;
         this.nomeGame = nomeGame;
         this.descricao = descricao;
@@ -172,7 +173,7 @@ public class Games implements Serializable {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
