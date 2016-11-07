@@ -253,7 +253,7 @@ public class SteamJSONParser {
         JsonObject idgame = root.getJsonObject(appid);
         boolean result = idgame.getBoolean("success");
         if(!result){
-            System.out.println(idgame + "= Não foi possível obter os dados do game");
+//            System.out.println(idgame + "= Não foi possível obter os dados do game");
             return null;
         }else{
             JsonObject data = idgame.getJsonObject("data");

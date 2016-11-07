@@ -38,6 +38,10 @@ public class GamesDAO implements GenericDAO<Games>{
         return (List<Games>)query.getResultList();
     }
     
+    public List<Games> findByUser(Userinfo ui){
+        return em.createNamedQuery("Games.findByUser", Games.class).setParameter("fkUserinfo", ui).getResultList();
+    }
+    
     @Override
     public Games findById(long id) {
         return em.find(Games.class, id);

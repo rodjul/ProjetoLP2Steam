@@ -18,8 +18,8 @@ create table games(
     id_games bigint primary key generated always as identity(start with 1, increment by 1),
     nome_game varchar(40) not null,
     appid bigint,
-    descricao varchar(200) not null,
-    tags varchar(100),
+    descricao varchar(20000) not null,
+    tags varchar(500),
     url_steam varchar(50),
     price int,
     free boolean,
@@ -48,3 +48,4 @@ alter table analises add foreign key(fk_games) references games(id_games) on del
 alter table games_analise add foreign key(fk_games) references games(id_games) on delete cascade;
 alter table games_analise add foreign key(fk_game_analises) references analises(id_game_analises) on delete cascade;
 
+alter table games alter column tags set data type varchar(500);

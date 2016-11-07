@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Games.findByTags", query = "SELECT g FROM Games g WHERE g.tags = :tags"),
     @NamedQuery(name = "Games.findByUrlSteam", query = "SELECT g FROM Games g WHERE g.urlSteam = :urlSteam"),
     @NamedQuery(name = "Games.findByPrice", query = "SELECT g FROM Games g WHERE g.price = :price"),
+    @NamedQuery(name = "Games.findByUserInfo", query = "SELECT g FROM Games g WHERE g.fkUserinfo = :fkUserinfo"),
     @NamedQuery(name = "Games.findByFree", query = "SELECT g FROM Games g WHERE g.free = :free")})
 public class Games implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -50,18 +51,18 @@ public class Games implements Serializable {
     @Column(name = "ID_GAMES")
     private Long idGames;
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
     @Size(min = 1, max = 40)
     @Column(name = "NOME_GAME")
     private String nomeGame;
     @Column(name = "APPID")
     private long appid;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 200)
+//    @NotNull
+    @Size(min = 1, max = 20000)
     @Column(name = "DESCRICAO")
     private String descricao;
-    @Size(max = 100)
+    @Size(max = 500)
     @Column(name = "TAGS")
     private String tags;
     @Size(max = 50)
@@ -101,6 +102,14 @@ public class Games implements Serializable {
         this.descricao = description;
         this.tags = tags;
         this.urlSteam = url_game;
+    }
+    public Games(long appid, String nomeGame, String description, String tags, String url_game, Userinfo fkuser){
+        this.appid = appid;
+        this.nomeGame = nomeGame;
+        this.descricao = description;
+        this.tags = tags;
+        this.urlSteam = url_game;
+        this.fkUserinfo = fkuser;
     }
 
     public Games(long appid, String nomeGame, String descricao, String tags, String urlSteam, int price, Boolean free){

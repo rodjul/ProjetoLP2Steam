@@ -7,6 +7,7 @@ package com.br.lp3.taglibs;
 
 import com.br.lp3.controller.command.UsersiteCommand;
 import com.br.lp3.json.SteamJSONParser;
+import com.br.lp3.model.dao.GamesDAO;
 import com.br.lp3.model.dao.UsersiteDAO;
 import com.br.lp3.model.entities.Games;
 import com.br.lp3.model.entities.Usersite;
@@ -31,13 +32,14 @@ import javax.servlet.jsp.JspWriter;
  * @author Patrícia
  */
 public class MeuJogoTag extends SimpleTagSupport {
+    
 
     public String user = "";
     public void setUser(String user) {
         this.user = user;
     }
     
-    
+    GamesDAO gamesDAO = lookupGamesDAOBean();
     UsersiteDAO usersiteDAO = lookupUsersiteDAOBean();
     
     @Override
@@ -45,15 +47,36 @@ public class MeuJogoTag extends SimpleTagSupport {
         JspWriter out = getJspContext().getOut();
         
         List<Games> games = new ArrayList<>();
+        
         Usersite temp = usersiteDAO.findByUsername(user);
         String userid = temp.getUserinfo().getUrlsteam().split("/")[2];
+        
+        //gamesDAO.findByUser(temp.getUserinfo());
+        
         List<Games> jogos_obtidos = SteamJSONParser.getOwnedGames(userid);
         for (Games jogos_obtido : jogos_obtidos) {
             String id = String.valueOf(jogos_obtido.getAppid());
-            games.add(
-                    SteamJSONParser.getShortAppDetails(id)
+            Games game = SteamJSONParser.getShortAppDetails(id);
+            
+            games.add(game);
+//            gamesDAO.findById(1);
+            Games temp1 = new Games();
+            long appid = game.getAppid();
+            String nomeGame = game.getNomeGame();
+            String descricao = game.getDescricao();
+            String tags = game.getTags();
+            String url = game.getUrlSteam();
+            
+            temp1.setAppid(appid);
+            temp1.setNomeGame(nomeGame);
+            temp1.setDescricao(descricao);
+            temp1.setTags(tags);
+            temp1.setUrlSteam(url);
+            gamesDAO.insert(
+                    new Games(temp1.getAppid(), temp1.getNomeGame(),temp1.getDescricao(),temp1.getTags(),temp1.getUrlSteam(), temp.getUserinfo())
             );
             
+            //colocar verificacao se tem 5 jogos no banco
         }
         out.println("<div class='container'>");
         out.println("<section id=\"teste\" class=\"row\">");
@@ -115,6 +138,18 @@ public class MeuJogoTag extends SimpleTagSupport {
         try {
             Context c = new InitialContext();
             return (UsersiteDAO) c.lookup("java:global/SteamProjeto/SteamProjeto-ejb/UsersiteDAO!com.br.lp3.model.dao.UsersiteDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+   
+
+    private GamesDAO lookupGamesDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (GamesDAO) c.lookup("java:global/SteamProjeto/SteamProjeto-ejb/GamesDAO!com.br.lp3.model.dao.GamesDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
