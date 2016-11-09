@@ -43,10 +43,10 @@
             <br>
             <!--<p>Usar essa msm página para listar?</p>-->
             
-            <c:choose>
+            <c:choose> http://steamcommunity.com/id/numericobr/games?tab=all&xml=1
                 <c:when test="${pagina.equals('meusJogos')}">
                     <h3>Meus jogos</h3>
-                    <j:meusJogos user="${cookieuser}"/>
+                    <%--<j:meusJogos user="${cookieuser}"/>--%>
                 </c:when>
                 <c:when test="${pagina.equals('pesquisarJogos')}">
                     <j:pesquisarJogos/>
@@ -55,7 +55,7 @@
                     <p>dasasd</p>
                 </c:when>
             </c:choose>  
-<!--                <section id="teste" class="row">
+                <section id="teste" class="row">
                     <article class="col-xs-6 col-lg-4">
                         <div class="thumbnail">
                             <img src="img/epicbattlefantasyiii.jpg" alt="game" />
@@ -67,9 +67,10 @@
                                 <p><b>Categoria(s):</b></p>
                                 <b><p class="fontstyle"> RPG, Indie, Aventura, Gratuito para Jogar</p></b>
 
-                                <a href="http://store.steampowered.com/app/521200/" target="_blank"><input type="button" class="btn btn-primary" value="Ir para a Loja Steam" />
-                                
-                                </a> <input type="button" onfocus="teste('epicbattlefantasy3')" class="btn btn-primary" value="Ver análises"/>
+                                <a href="http://store.steampowered.com/app/521200/" target="_blank"><input type="button" class="btn btn-primary" value="Ir para a Loja Steam" /></a>
+                                <input type="button" onfocus="teste('epicbattlefantasy3')" class="btn btn-primary" value="Ver análises"/>
+                                <br>
+                                <input type="button" class="btn btn-primary" onfocus="form_analise()" value="Adicionar uma análise"/>
                                 
                                 <article id="epicbattlefantasy3" class="modal">
                                         <article class="modal-content">
@@ -79,6 +80,19 @@
                                                 10/10.</p>
                                             </div></div>
                                         </article>
+                                </article>
+                                
+                                <article id="formulario" class="modal">
+                                    <article class="modal-content">
+                                        <span class="close" onclick="getElementById('epicbattlefantasy3').style.display='none'">x</span>
+                                        <form method="post" action="" class="form-group">
+                                            <input type="hidden" name="command" value="" />
+                                            <input type="hidden" name="user" value="${cookieuser}" />
+                                            <p><input type="text" placeholder="Insira se recomenda ou não recomenda" name="recomenda" value="" class="form-control"/></p>
+                                            <label for="comment">Comentário:</label>
+                                            <textarea class="form-control" rows="5" id="comment" name="comentario"></textarea>
+                                        </form>
+                                    </article>
                                 </article>
                                 
                             </div>
@@ -217,7 +231,7 @@
                     </article>
                     
             
-                </section>-->
+                </section>
             
             
         </section>
@@ -226,6 +240,19 @@
     <script>
     function teste(id_name){
         var articleModal = document.getElementById(id_name);
+//        document.getElementById("demo").innerHTML = "span";
+//        console.log(span); 
+        articleModal.style.display = "block";
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+             if (event.target == articleModal) {
+                articleModal.style.display = "none";
+             }
+        };
+    }
+    function form_analise(){
+        var articleModal = document.getElementById("formulario");
 //        document.getElementById("demo").innerHTML = "span";
 //        console.log(span); 
         articleModal.style.display = "block";
