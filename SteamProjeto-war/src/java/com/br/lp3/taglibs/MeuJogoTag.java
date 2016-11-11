@@ -96,7 +96,11 @@ public class MeuJogoTag extends SimpleTagSupport {
 "                                <a href='"+game.getUrlSteam()+"' target=\"_blank\"><input type=\"button\" class=\"btn btn-primary\" value=\"Ir para a Loja Steam\" />\n" +
 "                                \n" +
 "                                </a> <input type=\"button\" onfocus=\"teste('"+game.getNomeGame()+"')\" class=\"btn btn-primary\" value=\"Ver análises\"/>\n" +
+"                                <br>\n" +
+"                                <input type=\"button\" id=\"botao_analise\" class=\"btn btn-primary\" onclick=\"form_analise()\" value=\"Adicionar uma análise\"/>"+
+"                                <input type=\"button\" id=\"botao_analise_rm\" class=\"btn btn-primary\" onclick=\"\" value=\"Remover sua Análise\" />\n      "+                    
 "                                \n" +
+                    
 "                                <article id=\"epicbattlefantasy3\" class=\"modal\">\n" +
 "                                        <article class=\"modal-content\">\n" +
 "                                            <span class=\"close\" onclick=\"getElementById('"+game.getNomeGame()+"').style.display='none'\">x</span>\n" +
@@ -104,6 +108,21 @@ public class MeuJogoTag extends SimpleTagSupport {
 "                                            </div></div>\n" +
 "                                        </article>\n" +
 "                                </article>\n" +
+                    
+"                                <article id=\"formulario\" class=\"modal\">\n" +
+"                                    <article class=\"modal-content\">\n" +
+"                                        <span class=\"close\" onclick=\"getElementById('epicbattlefantasy3').style.display='none'\">x</span>\n" +
+"                                        <form method=\"post\" action=\"Controller\" class=\"form-group\">\n" +
+"                                            <input type=\"hidden\" name=\"command\" value=\"Games.analise\" />\n" +
+"                                            <input type=\"hidden\" name=\"user\" value=\""+user+"\" />\n" +
+                    "<select class=\"form-control\" name=\"op_avaliacao\"> <option value=\"recomendo\">Recomendo</option> <option value=\"naorecomendo\">Não Recomendo</option>  </select>\n"+
+//"                                            <p><input type=\"text\" placeholder=\"Insira se recomenda ou não recomenda\" name=\"recomenda\" value=\"\" class=\"form-control\"/></p>\n" +
+"                                            <br><label for=\"comment\">Comentário:</label>\n" +
+"                                            <textarea class=\"form-control\" rows=\"5\" id=\"comment\" name=\"comentario\"></textarea>\n" +
+"                                            <br><input type=\"submit\" value=\"Enviar análise\" class=\"btn btn-primary\"/> "+
+"                                        </form>\n" +
+"                                    </article>\n" +
+"                                </article>"+
 "                                \n" +
 "                            </div>\n" +
 "                        </div>\n" +

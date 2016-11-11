@@ -65,6 +65,13 @@ div.thumbnail{
     background-color:#E0E0E0;
 }
 
+#botao_analise{
+    margin-top:5px;
+}
+#botao_analise_rm{
+    margin-top:5px;
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
