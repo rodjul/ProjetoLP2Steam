@@ -42,20 +42,20 @@
             </section>
             <br>
             <!--<p>Usar essa msm página para listar?</p>-->
-            
-            <c:choose> http://steamcommunity.com/id/numericobr/games?tab=all&xml=1
+            <!--http://steamcommunity.com/id/numericobr/games?tab=all&xml=1-->
+            <c:choose> 
                 <c:when test="${pagina.equals('meusJogos')}">
                     <h3>Meus jogos</h3>
-                    <%--<j:meusJogos user="${cookieuser}"/>--%>
+                    <j:meusJogos user="${cookieuser}"/>
                 </c:when>
                 <c:when test="${pagina.equals('pesquisarJogos')}">
-                    <j:pesquisarJogos/>
+                    <j:pesquisarJogos user="${cookieuser}"/>
                 </c:when>
                 <c:when test="${pagina.equals('mostrarJogos')}">
                     <p>dasasd</p>
                 </c:when>
             </c:choose>  
-                <section id="teste" class="row">
+<!--                <section id="teste" class="row">
                     <article class="col-xs-6 col-lg-4">
                         <div class="thumbnail">
                             <img src="img/epicbattlefantasyiii.jpg" alt="game" />
@@ -231,7 +231,7 @@
                     </article>
                     
             
-                </section>
+                </section>-->
             
             
         </section>

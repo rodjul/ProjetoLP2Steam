@@ -6,9 +6,17 @@
 package com.br.lp3.taglibs;
 
 import com.br.lp3.json.SteamJSONParser;
+import com.br.lp3.model.dao.GamesDAO;
+import com.br.lp3.model.dao.UsersiteDAO;
 import com.br.lp3.model.entities.Games;
+import com.br.lp3.model.entities.Usersite;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
@@ -18,15 +26,25 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
  * @author Patrícia
  */
 public class PesquisarJogoTag extends SimpleTagSupport{
+    public String user = "";
+    public void setUser(String user) {
+        this.user = user;
+    }
+    
+        
+    UsersiteDAO usersiteDAO = lookupUsersiteDAOBean();
+    GamesDAO gamesDAO = lookupGamesDAOBean();
 
     @Override
     public void doTag() throws JspException, IOException {
         JspWriter out = getJspContext().getOut();
         
-        
+        Usersite temp = usersiteDAO.findByUsername(user);
         List<Games> games = SteamJSONParser.getNewGames();
         
-        out.println("<h1>pesquisar jogo</h1>");
+//        gamesDAO.
+        
+        out.println("<h1>Pesquisar jogo</h1><br>");
         
         out.println("<div class='container'>");
         out.println("<section id=\"teste\" class=\"row\">");
@@ -67,6 +85,28 @@ public class PesquisarJogoTag extends SimpleTagSupport{
         out.println("</section>");
         out.println("</div>");
         
+    }
+
+    
+    
+    private GamesDAO lookupGamesDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (GamesDAO) c.lookup("java:global/SteamProjeto/SteamProjeto-ejb/GamesDAO!com.br.lp3.model.dao.GamesDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private UsersiteDAO lookupUsersiteDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (UsersiteDAO) c.lookup("java:global/SteamProjeto/SteamProjeto-ejb/UsersiteDAO!com.br.lp3.model.dao.UsersiteDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
     }
     
     

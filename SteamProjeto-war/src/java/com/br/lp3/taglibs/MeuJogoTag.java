@@ -45,39 +45,38 @@ public class MeuJogoTag extends SimpleTagSupport {
     @Override
     public void doTag() throws JspException, IOException {
         JspWriter out = getJspContext().getOut();
-        
+        boolean get = false;
         List<Games> games = new ArrayList<>();
+        List<Games> games1 = new ArrayList<>();
         
         Usersite temp = usersiteDAO.findByUsername(user);
         String userid = temp.getUserinfo().getUrlsteam().split("/")[2];
-        
-        //gamesDAO.findByUser(temp.getUserinfo());
-        
-        List<Games> jogos_obtidos = SteamJSONParser.getOwnedGames(userid);
-        for (Games jogos_obtido : jogos_obtidos) {
-            String id = String.valueOf(jogos_obtido.getAppid());
-            Games game = SteamJSONParser.getShortAppDetails(id);
-            
-            games.add(game);
-//            gamesDAO.findById(1);
-            Games temp1 = new Games();
-            long appid = game.getAppid();
-            String nomeGame = game.getNomeGame();
-            String descricao = game.getDescricao();
-            String tags = game.getTags();
-            String url = game.getUrlSteam();
-            
-            temp1.setAppid(appid);
-            temp1.setNomeGame(nomeGame);
-            temp1.setDescricao(descricao);
-            temp1.setTags(tags);
-            temp1.setUrlSteam(url);
-            gamesDAO.insert(
-                    new Games(temp1.getAppid(), temp1.getNomeGame(),temp1.getDescricao(),temp1.getTags(),temp1.getUrlSteam(), temp.getUserinfo())
-            );
-            
-            //colocar verificacao se tem 5 jogos no banco
+        //verifica se já tem 6 games no banco para não precisar processar os request
+        if(temp.getUserinfo().getGamesList().size() == 6){
+            games = temp.getUserinfo().getGamesList();
+            get = true;
+        }else{
+            games1 = temp.getUserinfo().getGamesList();
+            for (Games game : games1) {
+                gamesDAO.remove(game);
+            }
         }
+        if(!get){
+            List<Games> jogos_obtidos = SteamJSONParser.getOwnedGames(userid);
+                for (Games jogos_obtido : jogos_obtidos) {
+                    String id = String.valueOf(jogos_obtido.getAppid());
+                    Games game = SteamJSONParser.getShortAppDetails(id);
+                    if(game != null){
+                        games.add(game);
+                        gamesDAO.insert(
+                                new Games(game.getAppid(),game.getNomeGame(),game.getDescricao(),game.getTags(),game.getUrlSteam(),temp.getUserinfo())
+                        );
+                    }
+                }
+        }
+//        gamesDAO.findByUser(temp.getUserinfo());
+        
+        
         out.println("<div class='container'>");
         out.println("<section id=\"teste\" class=\"row\">");
         

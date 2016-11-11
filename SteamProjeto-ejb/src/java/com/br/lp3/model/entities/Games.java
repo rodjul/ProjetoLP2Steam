@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Games.findByTags", query = "SELECT g FROM Games g WHERE g.tags = :tags"),
     @NamedQuery(name = "Games.findByUrlSteam", query = "SELECT g FROM Games g WHERE g.urlSteam = :urlSteam"),
     @NamedQuery(name = "Games.findByPrice", query = "SELECT g FROM Games g WHERE g.price = :price"),
+    @NamedQuery(name = "Games.findByPesquisa", query = "SELECT g FROM Games g WHERE g.pesquisa = :pesquisa"),
     @NamedQuery(name = "Games.findByUserInfo", query = "SELECT g FROM Games g WHERE g.fkUserinfo = :fkUserinfo"),
     @NamedQuery(name = "Games.findByFree", query = "SELECT g FROM Games g WHERE g.free = :free")})
 public class Games implements Serializable {
@@ -68,6 +69,8 @@ public class Games implements Serializable {
     @Size(max = 50)
     @Column(name = "URL_STEAM")
     private String urlSteam;
+    @Column(name = "PESQUISA")
+    private Boolean pesquisa;
     @Column(name = "PRICE")
     private int price;
     @Column(name = "FREE")
@@ -109,6 +112,14 @@ public class Games implements Serializable {
         this.descricao = description;
         this.tags = tags;
         this.urlSteam = url_game;
+        this.fkUserinfo = fkuser;
+    }
+    public Games(Games e,Userinfo fkuser, Boolean pesquisa){
+        this.appid = e.getAppid();
+        this.nomeGame = e.getNomeGame();
+        this.descricao = e.getDescricao();
+        this.tags = e.getTags();
+        this.urlSteam = e.getUrlSteam();
         this.fkUserinfo = fkuser;
     }
 
@@ -201,6 +212,15 @@ public class Games implements Serializable {
     public void setFkUserinfo(Userinfo fkUserinfo) {
         this.fkUserinfo = fkUserinfo;
     }
+
+    public Boolean getPesquisa() {
+        return pesquisa;
+    }
+
+    public void setPesquisa(Boolean pesquisa) {
+        this.pesquisa = pesquisa;
+    }
+    
 
     @XmlTransient
     public List<GamesAnalise> getGamesAnaliseList() {

@@ -54,8 +54,7 @@ public class GamesDAO implements GenericDAO<Games>{
 
     @Override
     public void remove(Games e) {
-        em.merge(e);
-        em.remove(e);
+        em.remove(em.merge(e));
     }
     
 }
