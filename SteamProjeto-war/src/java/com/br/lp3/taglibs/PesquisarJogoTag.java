@@ -41,8 +41,11 @@ public class PesquisarJogoTag extends SimpleTagSupport{
         
         Usersite temp = usersiteDAO.findByUsername(user);
         List<Games> games = SteamJSONParser.getNewGames();
+        for (Games game : games) { //verificar se não ta no banco de dados
+            gamesDAO.insert(new Games(game.getAppid(), game.getNomeGame(), game.getDescricao(), game.getTags(), game.getUrlSteam(), temp.getUserinfo(), game.getPesquisa() ));
+        }
         
-//        gamesDAO.
+        List<Games> test = gamesDAO.findSearch(temp.getUserinfo());
         
         out.println("<h1>Pesquisar jogo</h1><br>");
         

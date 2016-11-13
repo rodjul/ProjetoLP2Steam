@@ -50,7 +50,7 @@ public class SteamJSONParser {
             //            sem proxy para usar em casa        
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             //usar com proxy no mackenzie
-            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10",3128));
+//            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10",3128));
 //            HttpURLConnection con = (HttpURLConnection)url.openConnection(proxy);
             
             int code = con.getResponseCode();
@@ -276,7 +276,7 @@ public class SteamJSONParser {
                 categoriesObj = categories.getJsonObject(i);
                 tags = tags.concat(", "+categoriesObj.getString("description"));
             }
-            return new Games(appid_long, name, description, tags, url_game);
+            return new Games(appid_long, name, description, tags, url_game, true);
         }
     }
     
@@ -357,7 +357,7 @@ public class SteamJSONParser {
             JsonObject gamesObject = games.getJsonObject(i);
             String name = gamesObject.getString("name");
             int appid = gamesObject.getInt("appid");
-            gamesArray.add(new GameTemp(appid,name));
+//            gamesArray.add(new GameTemp(appid,name));
             
         }
         //funcionando
@@ -366,17 +366,5 @@ public class SteamJSONParser {
     
     
 
-    
-}
-class GameTemp{
-    
-    private String name;
-    private int id;
-    
-    public GameTemp(int id, String name){
-        this.id = id;
-        this.name = name;
-    }
-    
     
 }

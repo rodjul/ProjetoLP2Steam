@@ -42,13 +42,14 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Games.findByUrlSteam", query = "SELECT g FROM Games g WHERE g.urlSteam = :urlSteam"),
     @NamedQuery(name = "Games.findByPrice", query = "SELECT g FROM Games g WHERE g.price = :price"),
     @NamedQuery(name = "Games.findByPesquisa", query = "SELECT g FROM Games g WHERE g.pesquisa = :pesquisa"),
+//    @NamedQuery(name = "Games.findByPesquisaAndUserinfo", query = "SELECT g FROM Games g WHERE g.pesquisa = :pesquisa AND g.fkUseinfo = :fkUserinfo"),
     @NamedQuery(name = "Games.findByUserInfo", query = "SELECT g FROM Games g WHERE g.fkUserinfo = :fkUserinfo"),
     @NamedQuery(name = "Games.findByFree", query = "SELECT g FROM Games g WHERE g.free = :free")})
 public class Games implements Serializable {
     @Column(name = "APPID")
     private long appid;
     @Column(name = "PRICE")
-    private int price;
+    private Integer price;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -106,6 +107,14 @@ public class Games implements Serializable {
         this.tags = tags;
         this.urlSteam = url_game;
     }
+    public Games(long appid, String nomeGame, String description, String tags, String url_game, Boolean pesquisa){
+        this.appid = appid;
+        this.nomeGame = nomeGame;
+        this.descricao = description;
+        this.tags = tags;
+        this.urlSteam = url_game;
+        this.pesquisa = pesquisa;
+    }
     public Games(long appid, String nomeGame, String description, String tags, String url_game, Userinfo fkuser){
         this.appid = appid;
         this.nomeGame = nomeGame;
@@ -113,6 +122,15 @@ public class Games implements Serializable {
         this.tags = tags;
         this.urlSteam = url_game;
         this.fkUserinfo = fkuser;
+    }
+    public Games(long appid, String nomeGame, String description, String tags, String url_game, Userinfo fkuser, Boolean pesquisa){
+        this.appid = appid;
+        this.nomeGame = nomeGame;
+        this.descricao = description;
+        this.tags = tags;
+        this.urlSteam = url_game;
+        this.fkUserinfo = fkuser;
+        this.pesquisa = pesquisa;
     }
     public Games(Games e,Userinfo fkuser, Boolean pesquisa){
         this.appid = e.getAppid();

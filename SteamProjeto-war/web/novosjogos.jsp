@@ -43,6 +43,7 @@
             <br>
             <!--<p>Usar essa msm página para listar?</p>-->
             <!--http://steamcommunity.com/id/numericobr/games?tab=all&xml=1-->
+            <p>${cookieuser}</p>
             <c:choose> 
                 <c:when test="${pagina.equals('meusJogos')}">
                     <h3>Meus jogos</h3>
@@ -50,6 +51,7 @@
                 </c:when>
                 <c:when test="${pagina.equals('pesquisarJogos')}">
                     <j:pesquisarJogos user="${cookieuser}"/>
+                    <p>${cookieuser}</p>
                 </c:when>
                 <c:when test="${pagina.equals('mostrarJogos')}">
                     <p>dasasd</p>
