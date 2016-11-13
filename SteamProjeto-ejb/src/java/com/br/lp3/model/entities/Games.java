@@ -45,6 +45,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Games.findByUserInfo", query = "SELECT g FROM Games g WHERE g.fkUserinfo = :fkUserinfo"),
     @NamedQuery(name = "Games.findByFree", query = "SELECT g FROM Games g WHERE g.free = :free")})
 public class Games implements Serializable {
+    @Column(name = "APPID")
+    private long appid;
+    @Column(name = "PRICE")
+    private int price;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,8 +60,6 @@ public class Games implements Serializable {
     @Size(min = 1, max = 40)
     @Column(name = "NOME_GAME")
     private String nomeGame;
-    @Column(name = "APPID")
-    private long appid;
     @Basic(optional = false)
 //    @NotNull
     @Size(min = 1, max = 20000)
@@ -71,8 +73,6 @@ public class Games implements Serializable {
     private String urlSteam;
     @Column(name = "PESQUISA")
     private Boolean pesquisa;
-    @Column(name = "PRICE")
-    private int price;
     @Column(name = "FREE")
     private Boolean free;
     @JoinColumn(name = "FK_USERINFO", referencedColumnName = "ID_USERINFO")
@@ -157,13 +157,6 @@ public class Games implements Serializable {
         this.nomeGame = nomeGame;
     }
 
-    public long getAppid() {
-        return appid;
-    }
-
-    public void setAppid(long appid) {
-        this.appid = appid;
-    }
 
     public String getDescricao() {
         return descricao;
@@ -189,13 +182,6 @@ public class Games implements Serializable {
         this.urlSteam = urlSteam;
     }
 
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
 
     public Boolean getFree() {
         return free;
@@ -263,6 +249,22 @@ public class Games implements Serializable {
     @Override
     public String toString() {
         return "com.br.lp3.model.entities.Games[ idGames=" + idGames + " ]";
+    }
+
+    public long getAppid() {
+        return appid;
+    }
+
+    public void setAppid(long appid) {
+        this.appid = appid;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
     
 }

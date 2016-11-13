@@ -5,6 +5,20 @@
  */
 package com.br.lp3.controller.command;
 
+import com.br.lp3.model.dao.AnalisesDAO;
+import com.br.lp3.model.dao.GamesAnaliseDAO;
+import com.br.lp3.model.dao.GamesDAO;
+import com.br.lp3.model.dao.UsersiteDAO;
+import com.br.lp3.model.entities.Analises;
+import com.br.lp3.model.entities.Games;
+import com.br.lp3.model.entities.GamesAnalise;
+import com.br.lp3.model.entities.Userinfo;
+import com.br.lp3.model.entities.Usersite;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,6 +27,10 @@ import javax.servlet.http.HttpServletResponse;
  * @author 31597947
  */
 public class GamesCommand implements Command{
+    GamesDAO gamesDAO = lookupGamesDAOBean();
+    UsersiteDAO usersiteDAO = lookupUsersiteDAOBean();
+    GamesAnaliseDAO gamesAnaliseDAO = lookupGamesAnaliseDAOBean();
+    AnalisesDAO analisesDAO = lookupAnalisesDAOBean();
     
     private HttpServletRequest request;
     private HttpServletResponse response;
@@ -41,6 +59,14 @@ public class GamesCommand implements Command{
         String user = request.getParameter("user");
         String op_avaliacao = request.getParameter("op_avaliacao");
         String comentario = request.getParameter("comentario");
+        long gameid = Long.parseLong(request.getParameter("gameid"));
+        
+        Usersite username = usersiteDAO.findByUsername(user);
+        Games game = gamesDAO.findById(gameid);
+        Analises analise = new Analises(username.getUserinfo(), op_avaliacao, comentario, game);
+        
+        analisesDAO.insert(analise);
+        gamesAnaliseDAO.insert(new GamesAnalise(analise, game));
         
         System.out.println(user + " "+op_avaliacao + " "+comentario);
         responsePage = "novosjogos.jsp";
@@ -50,5 +76,49 @@ public class GamesCommand implements Command{
     public String getResponsePage() {
         return this.responsePage;
     }
+
+    
+    
+    private AnalisesDAO lookupAnalisesDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (AnalisesDAO) c.lookup("java:global/SteamProjeto/SteamProjeto-ejb/AnalisesDAO!com.br.lp3.model.dao.AnalisesDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private GamesAnaliseDAO lookupGamesAnaliseDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (GamesAnaliseDAO) c.lookup("java:global/SteamProjeto/SteamProjeto-ejb/GamesAnaliseDAO!com.br.lp3.model.dao.GamesAnaliseDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private UsersiteDAO lookupUsersiteDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (UsersiteDAO) c.lookup("java:global/SteamProjeto/SteamProjeto-ejb/UsersiteDAO!com.br.lp3.model.dao.UsersiteDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private GamesDAO lookupGamesDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (GamesDAO) c.lookup("java:global/SteamProjeto/SteamProjeto-ejb/GamesDAO!com.br.lp3.model.dao.GamesDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+    
+    
     
 }

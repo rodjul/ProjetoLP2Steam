@@ -55,7 +55,7 @@
                     <p>dasasd</p>
                 </c:when>
             </c:choose>  
-                <section id="teste" class="row">
+<!--                <section id="teste" class="row">
                     <article class="col-xs-6 col-lg-4">
                         <div class="thumbnail">
                             <img src="img/epicbattlefantasyiii.jpg" alt="game" />
@@ -97,7 +97,7 @@
                                 
                             </div>
                         </div>
-                    </article><!--
+                    </article>
                     
                     <article class="col-xs-6 col-lg-4">
                         <div class="thumbnail">
@@ -251,8 +251,9 @@
              }
         };
     }
-    function form_analise(){
-        var articleModal = document.getElementById("formulario");
+    function form_analise(idgame){
+//        var articleModal = document.getElementById("formulario");
+        var articleModal = document.getElementById("formulario"+idgame);
 //        document.getElementById("demo").innerHTML = "span";
 //        console.log(span); 
         articleModal.style.display = "block";

@@ -49,3 +49,12 @@ alter table games_analise add foreign key(fk_games) references games(id_games) o
 alter table games_analise add foreign key(fk_game_analises) references analises(id_game_analises) on delete cascade;
 
 alter table games alter column tags set data type varchar(500);
+
+alter table analises add column fk_userinfo bigint;
+alter table analises add foreign key (fk_userinfo) references userinfo(id_userinfo) on delete cascade;
+
+create table Imagem(
+    id_imagem bigint primary key generated always as identity(start with 1, increment by 1),
+    appid int,
+    imagem blob
+);

@@ -38,6 +38,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Analises.findByHoras", query = "SELECT a FROM Analises a WHERE a.horas = :horas"),
     @NamedQuery(name = "Analises.findByAnalise", query = "SELECT a FROM Analises a WHERE a.analise = :analise")})
 public class Analises implements Serializable {
+    @JoinColumn(name = "FK_USERINFO", referencedColumnName = "ID_USERINFO")
+    @ManyToOne
+    private Userinfo fkUserinfo;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,6 +63,15 @@ public class Analises implements Serializable {
 
     public Analises() {
     }
+
+    public Analises(Userinfo fkUserinfo, String aprovacao, String analise, Games fkGames) {
+        this.fkUserinfo = fkUserinfo;
+        this.aprovacao = aprovacao;
+        this.analise = analise;
+        this.fkGames = fkGames;
+    }
+    
+    
 
     public Analises(Long idGameAnalises) {
         this.idGameAnalises = idGameAnalises;
@@ -137,6 +149,14 @@ public class Analises implements Serializable {
     @Override
     public String toString() {
         return "com.br.lp3.model.entities.Analises[ idGameAnalises=" + idGameAnalises + " ]";
+    }
+
+    public Userinfo getFkUserinfo() {
+        return fkUserinfo;
+    }
+
+    public void setFkUserinfo(Userinfo fkUserinfo) {
+        this.fkUserinfo = fkUserinfo;
     }
     
 }

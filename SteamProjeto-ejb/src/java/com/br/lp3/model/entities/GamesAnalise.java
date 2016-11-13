@@ -46,6 +46,11 @@ public class GamesAnalise implements Serializable {
     public GamesAnalise() {
     }
 
+    public GamesAnalise(Analises fkGameAnalises, Games fkGames) {
+        this.fkGameAnalises = fkGameAnalises;
+        this.fkGames = fkGames;
+    }
+    
     public GamesAnalise(Long idGamesAnalise) {
         this.idGamesAnalise = idGamesAnalise;
     }

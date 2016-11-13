@@ -38,6 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Userinfo.findByEmail", query = "SELECT u FROM Userinfo u WHERE u.email = :email"),
     @NamedQuery(name = "Userinfo.findByUrlsteam", query = "SELECT u FROM Userinfo u WHERE u.urlsteam = :urlsteam")})
 public class Userinfo implements Serializable {
+    @OneToMany(mappedBy = "fkUserinfo")
+    private List<Analises> analisesList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -150,6 +152,15 @@ public class Userinfo implements Serializable {
     @Override
     public String toString() {
         return "com.br.lp3.model.entities.Userinfo[ idUserinfo=" + idUserinfo + " ]";
+    }
+
+    @XmlTransient
+    public List<Analises> getAnalisesList() {
+        return analisesList;
+    }
+
+    public void setAnalisesList(List<Analises> analisesList) {
+        this.analisesList = analisesList;
     }
     
 }

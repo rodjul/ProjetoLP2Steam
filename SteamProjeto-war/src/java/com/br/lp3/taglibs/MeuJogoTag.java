@@ -97,7 +97,7 @@ public class MeuJogoTag extends SimpleTagSupport {
 "                                \n" +
 "                                </a> <input type=\"button\" onfocus=\"teste('"+game.getNomeGame()+"')\" class=\"btn btn-primary\" value=\"Ver análises\"/>\n" +
 "                                <br>\n" +
-"                                <input type=\"button\" id=\"botao_analise\" class=\"btn btn-primary\" onclick=\"form_analise()\" value=\"Adicionar uma análise\"/>"+
+"                                <input type=\"button\" id=\"botao_analise\" class=\"btn btn-primary\" onclick=\"form_analise("+game.getIdGames()+")\" value=\"Adicionar uma análise\"/>"+
 "                                <input type=\"button\" id=\"botao_analise_rm\" class=\"btn btn-primary\" onclick=\"\" value=\"Remover sua Análise\" />\n      "+                    
 "                                \n" +
                     
@@ -109,12 +109,13 @@ public class MeuJogoTag extends SimpleTagSupport {
 "                                        </article>\n" +
 "                                </article>\n" +
                     
-"                                <article id=\"formulario\" class=\"modal\">\n" +
+"                                <article id=\"formulario"+game.getIdGames()+"\" class=\"modal\">\n" +
 "                                    <article class=\"modal-content\">\n" +
-"                                        <span class=\"close\" onclick=\"getElementById('epicbattlefantasy3').style.display='none'\">x</span>\n" +
+"                                        <span class=\"close\" onclick=\"getElementById('"+game.getNomeGame()+"').style.display='none'\">x</span>\n" +
 "                                        <form method=\"post\" action=\"Controller\" class=\"form-group\">\n" +
 "                                            <input type=\"hidden\" name=\"command\" value=\"Games.analise\" />\n" +
 "                                            <input type=\"hidden\" name=\"user\" value=\""+user+"\" />\n" +
+"                                            <input type=\"hidden\" name=\"gameid\" value=\""+game.getIdGames()+"\" />\n" +
                     "<select class=\"form-control\" name=\"op_avaliacao\"> <option value=\"recomendo\">Recomendo</option> <option value=\"naorecomendo\">Não Recomendo</option>  </select>\n"+
 //"                                            <p><input type=\"text\" placeholder=\"Insira se recomenda ou não recomenda\" name=\"recomenda\" value=\"\" class=\"form-control\"/></p>\n" +
 "                                            <br><label for=\"comment\">Comentário:</label>\n" +
