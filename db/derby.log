@@ -12,3 +12,8 @@ os.arch=amd64
 os.version=6.3
 derby.system.home=C:\Users\RodrigoPC\Desktop\github\github2\ProjetoLP2Steam\db
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sun Nov 13 19:47:27 BRST 2016: Shutting down Derby engine
+----------------------------------------------------------------
+Sun Nov 13 19:47:28 BRST 2016:
+Shutting down instance a816c00e-0158-5f9f-8e88-ffffa03b6f9f on database directory C:\Users\RodrigoPC\Desktop\github\github2\ProjetoLP2Steam\db\SteamDB with class loader sun.misc.Launcher$AppClassLoader@60e53b93 

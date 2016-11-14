@@ -51,7 +51,6 @@
                 </c:when>
                 <c:when test="${pagina.equals('pesquisarJogos')}">
                     <j:pesquisarJogos user="${cookieuser}"/>
-                    <p>${cookieuser}</p>
                 </c:when>
                 <c:when test="${pagina.equals('mostrarJogos')}">
                     <p>dasasd</p>

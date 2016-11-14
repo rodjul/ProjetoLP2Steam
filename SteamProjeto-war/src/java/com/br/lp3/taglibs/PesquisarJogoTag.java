@@ -5,6 +5,7 @@
  */
 package com.br.lp3.taglibs;
 
+import com.br.lp3.io.LogGames;
 import com.br.lp3.json.SteamJSONParser;
 import com.br.lp3.model.dao.GamesDAO;
 import com.br.lp3.model.dao.UsersiteDAO;
@@ -41,8 +42,10 @@ public class PesquisarJogoTag extends SimpleTagSupport{
         
         Usersite temp = usersiteDAO.findByUsername(user);
         List<Games> games = SteamJSONParser.getNewGames();
+        LogGames log = new LogGames();
         for (Games game : games) { //verificar se não ta no banco de dados
-            gamesDAO.insert(new Games(game.getAppid(), game.getNomeGame(), game.getDescricao(), game.getTags(), game.getUrlSteam(), temp.getUserinfo(), game.getPesquisa() ));
+            log.addLog(game);
+//            gamesDAO.insert(new Games(game.getAppid(), game.getNomeGame(), game.getDescricao(), game.getTags(), game.getUrlSteam(), temp.getUserinfo(), game.getPesquisa() ));
         }
         
         List<Games> test = gamesDAO.findSearch(temp.getUserinfo());
