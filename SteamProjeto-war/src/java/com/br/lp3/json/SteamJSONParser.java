@@ -5,6 +5,7 @@
  */
 package com.br.lp3.json;
 
+import com.br.lp3.io.LogGames;
 import com.br.lp3.model.entities.Games;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -257,26 +258,38 @@ public class SteamJSONParser {
             return null;
         }else{
             JsonObject data = idgame.getJsonObject("data");
-            String name = data.getString("name");
-            String description = data.getString("short_description");
-            if(description.equals("")){
-                String detailed_description = data.getString("detailed_description");
-                description = detailed_description;
-            }
-            
-            String url_game = "http://store.steampowered.com/app/"+appid+"/";
-            long appid_long = Long.parseLong(appid);
-            
-            JsonArray categories = data.getJsonArray("categories");
-            JsonObject categoriesObj = categories.getJsonObject(0);
-            
-            tags = tags.concat(categoriesObj.getString("description"));
-            
-            for (int i = 1; i < categories.size(); i++) {
-                categoriesObj = categories.getJsonObject(i);
-                tags = tags.concat(", "+categoriesObj.getString("description"));
-            }
-            return new Games(appid_long, name, description, tags, url_game, true);
+            String type = data.getString("type");
+            if(!type.equals("movie") && !type.equals("dlc") && !type.equals("advertising") && !type.equals("episode") && !type.equals("hardware")){
+                
+                String name = data.getString("name");
+                String description = data.getString("short_description");
+                if(description.equals("")){
+                    String detailed_description = data.getString("detailed_description");
+                    description = detailed_description;
+                }else if(description.equals("")){
+                    description = "Não existe descrição no momento.";
+                }
+
+                String url_game = "http://store.steampowered.com/app/"+appid+"/";
+                long appid_long = Long.parseLong(appid);
+                
+                LogGames log = new LogGames(); log.addStringTest("ERRO: "+appid+"\n");
+                
+                JsonArray categories = data.getJsonArray("categories");
+                if(!(categories == null)){
+                    JsonObject categoriesObj = categories.getJsonObject(0);
+                    tags = tags.concat(categoriesObj.getString("description"));
+                    for (int i = 1; i < categories.size(); i++) {
+                        categoriesObj = categories.getJsonObject(i);
+                        tags = tags.concat(", "+categoriesObj.getString("description"));
+                    }
+
+                }else{
+                    tags = "";
+                }
+                return new Games(appid_long, name, description, tags, url_game, true);
+            }else
+                return null;
         }
     }
     

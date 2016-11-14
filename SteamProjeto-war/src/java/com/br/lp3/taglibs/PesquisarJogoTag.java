@@ -45,7 +45,8 @@ public class PesquisarJogoTag extends SimpleTagSupport{
         LogGames log = new LogGames();
         for (Games game : games) { //verificar se não ta no banco de dados
             log.addLog(game);
-//            gamesDAO.insert(new Games(game.getAppid(), game.getNomeGame(), game.getDescricao(), game.getTags(), game.getUrlSteam(), temp.getUserinfo(), game.getPesquisa() ));
+            gamesDAO.insert(new Games(game.getAppid(), game.getNomeGame(), game.getDescricao(), game.getTags(), game.getUrlSteam(), temp.getUserinfo(), game.getPesquisa() ));
+//            gamesDAO.insert(new Games(game.getAppid(),game.getNomeGame(),game.getDescricao(),game.getTags(),game.getUrlSteam(),temp.getUserinfo() ));
         }
         
         List<Games> test = gamesDAO.findSearch(temp.getUserinfo());

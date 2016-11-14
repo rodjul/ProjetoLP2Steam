@@ -1,3 +1,217 @@
 {java.text.SimpleDateFormat@85d3e0e0 - Nome:War on Folvos Demo APPID:326800 Descricao.length=230 Tags.length:37}
 {java.text.SimpleDateFormat@85d3e0e0 - Nome:Cities in Motion 2:  Trekking Trolleys APPID:225429 Descricao.length=1391 Tags.length:125}
 {java.text.SimpleDateFormat@85d3e0e0 - Nome:Professor Why™ Chemistry 1 APPID:372950 Descricao.length=167 Tags.length:46}
+{13/11/2016 23:05:44 - Nome:Praetorians APPID:277460 Descricao.length=261 Tags.length:27}
+{13/11/2016 23:05:44 - Nome:Steam Sheep APPID:372910 Descricao.length=308 Tags.length:46}
+{13/11/2016 23:05:44 - Nome:State of Decay APPID:241540 Descricao.length=420 Tags.length:78}
+{13/11/2016 23:05:55 - Nome:Tree of Savior - Veteran's Pack for SA Servers APPID:474803 Descricao.length=2081 Tags.length:79}
+{13/11/2016 23:05:55 - Nome:Alien Hallway Trailer APPID:81041 Descricao.length=0 Tags.length:13}
+{13/11/2016 23:05:55 - Nome:Rocksmith - Pantera 3-Song Pack APPID:222057 Descricao.length=168 Tags.length:56}
+ERRO: 2870
+ERRO: 404280
+ERRO: 390412
+{13/11/2016 23:36:26 - Nome:X Rebirth APPID:2870 Descricao.length=3601 Tags.length:128}
+{13/11/2016 23:36:26 - Nome:Construction Simulator 2015: Vertical Skyline APPID:404280 Descricao.length=330 Tags.length:161}
+{13/11/2016 23:36:26 - Nome:Rocksmith® 2014 – Stone Temple Pilots - “Plush” APPID:390412 Descricao.length=118 Tags.length:158}
+ERRO: 82019
+ERRO: 200510
+ERRO: 437520
+ERRO: 463520
+{13/11/2016 23:40:49 - Nome:XCOM: Enemy Unknown APPID:200510 Descricao.length=58 Tags.length:134}
+{13/11/2016 23:40:49 - Nome:ZeGame APPID:437520 Descricao.length=179 Tags.length:135}
+{13/11/2016 23:40:49 - Nome:Pristine world APPID:463520 Descricao.length=145 Tags.length:67}
+ERRO: 364325
+ERRO: 312600
+ERRO: 322190
+{13/11/2016 23:41:16 - Nome:FSX: Steam Edition - Piper Pacer 180 Add-On APPID:364325 Descricao.length=2365 Tags.length:77}
+{13/11/2016 23:41:16 - Nome:Rime Berta APPID:312600 Descricao.length=213 Tags.length:82}
+{13/11/2016 23:41:16 - Nome:SteamWorld Heist APPID:322190 Descricao.length=272 Tags.length:92}
+{13/11/2016 23:41:38 - Nome:Fantasy Grounds - D&D Complete Core Monster Pack APPID:360115 Descricao.length=315 Tags.length:69}
+{13/11/2016 23:41:38 - Nome:Rocksmith® 2014 Edition – Remastered – Zombie Song Pack APPID:509647 Descricao.length=162 Tags.length:158}
+{13/11/2016 23:41:38 - Nome:FSX Steam Edition: Final Approach Add-On APPID:500230 Descricao.length=1947 Tags.length:77}
+{13/11/2016 23:45:07 - Nome:Shutshimi APPID:332530 Descricao.length=282 Tags.length:133}
+{13/11/2016 23:45:07 - Nome:Blood of Magic APPID:426590 Descricao.length=206 Tags.length:54}
+{13/11/2016 23:45:07 - Nome:Kikoriki: Plus Snow, Minus Christmas tree APPID:518895 Descricao.length=160 Tags.length:56}
+{13/11/2016 23:45:24 - Nome:BioShock Infinite - Season Pass APPID:214933 Descricao.length=3847 Tags.length:35}
+{13/11/2016 23:45:24 - Nome:Fallout 4 - Contraptions Workshop APPID:480630 Descricao.length=376 Tags.length:93}
+{13/11/2016 23:45:24 - Nome:Football Manager™ 2010 Demo APPID:34110 Descricao.length=0 Tags.length:23}
+{13/11/2016 23:45:35 - Nome:Zula - Europe APPID:513650 Descricao.length=322 Tags.length:51}
+{13/11/2016 23:45:35 - Nome:Batman Arkham City: Harley Quinn's Revenge APPID:200891 Descricao.length=145 Tags.length:96}
+{13/11/2016 23:48:01 - Nome:We Slay Monsters APPID:332540 Descricao.length=394 Tags.length:13}
+{13/11/2016 23:48:03 - Nome:RPG Maker VX Ace - Classic School Tiles APPID:406073 Descricao.length=906 Tags.length:57}
+{13/11/2016 23:48:04 - Nome:C. Kane APPID:385030 Descricao.length=118 Tags.length:41}
+ERRO: 12120
+ERRO: 23490
+ERRO: 43110
+ERRO: 70000
+ERRO: 226700
+ERRO: 11020
+ERRO: 485270
+ERRO: 440050
+ERRO: 436662
+{13/11/2016 23:51:19 - Nome:Arachnophobia APPID:485270 Descricao.length=224 Tags.length:13}
+{13/11/2016 23:51:20 - Nome:Star Realms - Events APPID:440050 Descricao.length=127 Tags.length:77}
+{13/11/2016 23:51:21 - Nome:Rocksmith® 2014 – Flyleaf  - “Cassie” APPID:436662 Descricao.length=108 Tags.length:158}
+ERRO: 522980
+ERRO: 97340
+ERRO: 10606
+{13/11/2016 23:52:37 - Nome:Rollout - Everything Ever APPID:522980 Descricao.length=122 Tags.length:62}
+{13/11/2016 23:52:37 - Nome:Magic: The Gathering - Duels of the Planeswalkers 2013 Demo APPID:97340 Descricao.length=0 Tags.length:9}
+ERRO: 431270
+ERRO: 42730
+ERRO: 278460
+{13/11/2016 23:55:26 - Nome:GooCubelets: The Algoorithm APPID:431270 Descricao.length=307 Tags.length:62}
+{13/11/2016 23:55:26 - Nome:James Bond: Blood Stone APPID:42730 Descricao.length=111 Tags.length:27}
+{13/11/2016 23:55:26 - Nome:Skyborn APPID:278460 Descricao.length=785 Tags.length:54}
+ERRO: 12120
+ERRO: 23490
+ERRO: 43110
+ERRO: 70000
+ERRO: 226700
+ERRO: 11020
+ERRO: 396800
+ERRO: 201000
+ERRO: 356580
+{13/11/2016 23:55:35 - Nome:12 Labours of Hercules IV: Mother Nature (Platinum Edition) APPID:396800 Descricao.length=215 Tags.length:67}
+ERRO: 466000
+ERRO: 273130
+ERRO: 10150
+{14/11/2016 00:01:44 - Nome:Maze: Subject 360 Collector's Edition APPID:466000 Descricao.length=49 Tags.length:13}
+{14/11/2016 00:01:44 - Nome:Castlevania: Lords of Shadow 2 Demo APPID:273130 Descricao.length=611 Tags.length:49}
+{14/11/2016 00:01:44 - Nome:Prototype™ APPID:10150 Descricao.length=1376 Tags.length:13}
+ERRO: 512790
+ERRO: 539670
+ERRO: 226320
+{14/11/2016 00:03:28 - Nome:Quern - Undying Thoughts APPID:512790 Descricao.length=306 Tags.length:82}
+{14/11/2016 00:03:28 - Nome:Sakura Nova APPID:539670 Descricao.length=192 Tags.length:54}
+{14/11/2016 00:03:28 - Nome:Marvel Heroes 2016 APPID:226320 Descricao.length=223 Tags.length:49}
+ERRO: 320610
+ERRO: 2310
+ERRO: 488760
+{14/11/2016 00:03:44 - Nome:Questerium: Sinister Trinity HD Collector's Edition APPID:320610 Descricao.length=455 Tags.length:54}
+ERRO: 12120
+ERRO: 23490
+ERRO: 43110
+ERRO: 70000
+ERRO: 226700
+ERRO: 11020
+ERRO: 207930
+ERRO: 336150
+ERRO: 318860
+207930 Sacred Citadel Sharpen your axe, string your bow, brew your potions!  Ancaria needs heroes like you. Grab your friends to join the resistance!<br><br>The once peaceful land of Ancaria is in grave danger. The evil Ashen empire has enslaved its population and is using the orc-like Grimmoc to wipe out the Seraphim, who swore to protect it. In order to defeat the  empire you will have to prove yourself as a warrior by riding terrifying mounts, acquiring earth shattering skills and looting  powerful weapons and valuable treasures. Grab your friends and join the resistance!<h2 class="bb_tag">Key Features:</h2><ul class="bb_ul"><li>Battle it out with up to 3 player co-op<br></li><li>Take charge of 1 of 4 unique playable character classes with their own set of skills<br></li><li>Explore the vast world of Ancaria<br></li><li>Ride thumping mounts and use devastating war-machines<br></li><li>Tons of loot!<br></li><li>Define your own fighting style with different weapon combinations</li></ul> Single-player, Multi-player, Shared/Split Screen, Steam Achievements, Full controller support, Stats, Steam Leaderboards http://store.steampowered.com/app/207930/ true336150 Virtual Pool 4 Play 8-Ball, 9-Ball, Snooker, Billiards, Pub Pool, 27 games total! <br><strong>“So realistic it will make your real life pool game better!”</strong><br>Two career play modes, trick shots, video tutorials, multi-player online. Virtual Pool 4 is the most comprehensive cue sport game ever! Single-player, Multi-player, Steam Achievements, Stats, Steam Leaderboards http://store.steampowered.com/app/336150/ true318860 Malebolgia Abandon all hope, ye who enter <strong>Malebolgia</strong>! Explore this haunted palace and fight the terrible demons and beasts within, as you struggle to escape the cold and desolate wasteland of Hell. Single-player, Steam Achievements, Steam Trading Cards, Partial Controller Support, Steam Cloud http://store.steampowered.com/app/318860/ trueERRO: 253110
+ERRO: 356670
+ERRO: 491080
+253110 The Cat Lady 720 Single-player, Steam Achievements, Steam Trading Cards http://store.steampowered.com/app/253110/ true
+356670 Spooky's Jump Scare Mansion 472 Single-player http://store.steampowered.com/app/356670/ true
+491080 BoneBone: Rise of the Deathlord 393 Single-player, Steam Achievements, Steam Trading Cards http://store.steampowered.com/app/491080/ true
+ERRO: 547970
+ERRO: 98600
+ERRO: 448780
+547970 Celestial Breach 285 Single-player, Multi-player, Co-op, Online Co-op, Steam Achievements, Partial Controller Support, Steam Cloud http://store.steampowered.com/app/547970/ true
+98600 Demolition Inc. 101 Single-player, Steam Achievements, Full controller support, Steam Workshop, Steam Cloud, Stats, Steam Leaderboards, Includes level editor http://store.steampowered.com/app/98600/ true
+448780 Sixtieth Kilometer 269 Single-player, Steam Trading Cards http://store.steampowered.com/app/448780/ true
+ERRO: 324460
+ERRO: 23320
+ERRO: 252230
+324460 Magicmaker Demo 0 Single-player, Game demo, Full controller support http://store.steampowered.com/app/324460/ true
+ERRO: 372930
+ERRO: 27050
+ERRO: 305880
+372930 New York Mysteries: Secrets of the Mafia 32 Single-player, Steam Achievements http://store.steampowered.com/app/372930/ true
+27050 Fatale 3671 Single-player http://store.steampowered.com/app/27050/ true
+305880 Leona's Tricky Adventures 32 Single-player, Partial Controller Support, Steam Cloud http://store.steampowered.com/app/305880/ true
+ERRO: 478020
+ERRO: 345370
+ERRO: 208640
+ERRO: 523970
+ERRO: 211206
+208640 Midnight Mysteries 4: Haunted Houdini 1060 Single-player http://store.steampowered.com/app/208640/ true
+523970 Atomic Butcher: Homo Metabolicus 32 Single-player, Steam Trading Cards, Partial Controller Support http://store.steampowered.com/app/523970/ true
+211206 Streets of Rage 3 619 Single-player, Shared/Split Screen http://store.steampowered.com/app/211206/ true
+ERRO: 405820
+ERRO: 393240
+ERRO: 23380
+405820 Turok 32 Single-player, Steam Achievements, Full controller support, Steam Cloud http://store.steampowered.com/app/405820/ true
+393240 Sir! I'd Like To Report A Bug! 32 Single-player, Steam Achievements, Steam Trading Cards, Partial Controller Support http://store.steampowered.com/app/393240/ true
+23380 Gyromancer 1095 Single-player http://store.steampowered.com/app/23380/ true
+ERRO: 503900
+ERRO: 37930
+ERRO: 424040
+503900 Candy Smash VR 32 Single-player http://store.steampowered.com/app/503900/ true
+37930 Family Feud II 0  http://store.steampowered.com/app/37930/ true
+ERRO: 322910
+ERRO: 320520
+ERRO: 519712
+322910 Warhammer 40,000: Regicide 32 Single-player, Multi-player, Cross-Platform Multiplayer, Steam Achievements, Steam Trading Cards, In-App Purchases http://store.steampowered.com/app/322910/ true
+320520 Oscura: Lost Light 32 Single-player, Steam Achievements, Steam Trading Cards, Partial Controller Support http://store.steampowered.com/app/320520/ true
+519712 Complete Figure Drawing Course HD: 116 - The Muscles of The Human Neck - Part 7 32 Full controller support, Native Steam Controller Support http://store.steampowered.com/app/519712/ true
+ERRO: 367350
+ERRO: 345820
+ERRO: 267900
+367350 Demon Hearts 32 Single-player, Steam Achievements, Full controller support, Steam Trading Cards http://store.steampowered.com/app/367350/ true
+345820 Shantae and the Pirate's Curse 32 Single-player, Steam Achievements, Full controller support, Steam Trading Cards, Steam Cloud http://store.steampowered.com/app/345820/ true
+267900 Guilty Gear Isuka 1936 Single-player, Shared/Split Screen, Steam Trading Cards, Partial Controller Support, Steam Cloud http://store.steampowered.com/app/267900/ true
+ERRO: 497150
+ERRO: 46400
+ERRO: 275290
+497150 DJ Streamer 32 Steam Cloud, Stats http://store.steampowered.com/app/497150/ true
+46400 Greed: Black Border 1643 Single-player, Co-op http://store.steampowered.com/app/46400/ true
+275290 Graviteam Tactics: Operation Star 2267 Single-player, Steam Achievements http://store.steampowered.com/app/275290/ true
+ERRO: 462530
+ERRO: 224660
+ERRO: 376130
+462530 8i - Make VR Human 32 Single-player, Partial Controller Support http://store.steampowered.com/app/462530/ true
+224660 Party of Sin Demo 0 Single-player, Shared/Split Screen, Game demo, Steam Achievements, Full controller support, Steam Cloud, Steam Leaderboards http://store.steampowered.com/app/224660/ true
+ERRO: 330990
+ERRO: 34279
+ERRO: 491650
+330990 Demon Hunter: Chronicles from Beyond 32 Single-player, Steam Achievements, Steam Trading Cards, Steam Cloud http://store.steampowered.com/app/330990/ true
+34279 Space Harrier™ II 289 Single-player, Partial Controller Support http://store.steampowered.com/app/34279/ true
+491650 Reset 1-1 32 Single-player, Steam Achievements, Full controller support, Steam Trading Cards http://store.steampowered.com/app/491650/ true
+ERRO: 372490
+ERRO: 420000
+ERRO: 324360
+372490 GROOVY 32 Single-player, Steam Achievements, Full controller support, Steam Trading Cards, Steam Leaderboards http://store.steampowered.com/app/372490/ true
+420000 Home Design 3D 32 Single-player http://store.steampowered.com/app/420000/ true
+324360 TOTM 32 Multi-player, Full controller support http://store.steampowered.com/app/324360/ true
+ERRO: 9710
+ERRO: 340580
+ERRO: 321860
+9710 Desperados 2: Cooper's Revenge 1693 Single-player http://store.steampowered.com/app/9710/ true
+340580 Armed with Wings: Rearmed 32 Single-player, Local Multi-Player, Shared/Split Screen, Partial Controller Support http://store.steampowered.com/app/340580/ true
+321860 Disney Infinity 2.0: Marvel Super Heroes 32 Single-player, Multi-player, Partial Controller Support http://store.steampowered.com/app/321860/ true
+ERRO: 313010
+ERRO: 530990
+ERRO: 504670
+313010 Cities XXL 32 Steam Achievements, Steam Trading Cards, Steam Workshop, Steam Cloud http://store.steampowered.com/app/313010/ true
+530990 Steam Controller Carrying Case 32  http://store.steampowered.com/app/530990/ true
+504670 FARIA: Ghosts of the Stream 32 Single-player, Full controller support, Steam Trading Cards http://store.steampowered.com/app/504670/ true
+ERRO: 371660
+ERRO: 388730
+ERRO: 402750
+371660 Far Cry® Primal 32 Single-player, Steam Trading Cards, Partial Controller Support http://store.steampowered.com/app/371660/ true
+388730 Brighter Day 32 Single-player http://store.steampowered.com/app/388730/ true
+402750 Giant Machines 2017 32 Single-player, Steam Achievements, Full controller support, Steam Trading Cards, Steam Cloud http://store.steampowered.com/app/402750/ true
+ERRO: 315690
+ERRO: 492610
+ERRO: 64000
+315690 Rooks Keep Demo 32 Single-player, Multi-player, Game demo, Partial Controller Support http://store.steampowered.com/app/315690/ true
+492610 One Day : The Sun Disappeared 32 Single-player, Steam Achievements, Full controller support, Steam Trading Cards http://store.steampowered.com/app/492610/ true
+64000 Men of War: Assault Squad 32 Single-player, Multi-player, Co-op, Steam Achievements, Steam Leaderboards, Includes level editor http://store.steampowered.com/app/64000/ true
+ERRO: 285690
+ERRO: 497330
+ERRO: 277751
+285690 Galactic Command Echo Squad SE - Demo 461 Single-player, Game demo http://store.steampowered.com/app/285690/ true
+497330 The Last Look Demo 244 Single-player, Game demo, Full controller support, Captions available, Steam Cloud http://store.steampowered.com/app/497330/ true
+277751 The Count of Monster Disco 1497 Single-player, Steam Achievements, Full controller support, Steam Trading Cards, Steam Workshop, Steam Cloud, Steam Leaderboards http://store.steampowered.com/app/277751/ true
+ERRO: 371660
+ERRO: 12120
+ERRO: 23490
+ERRO: 43110
+ERRO: 70000
+ERRO: 226700
+ERRO: 11020
+ERRO: 6940
+ERRO: 283370
+ERRO: 347780
+6940 Battlestations: Midway Demo 0 Multi-player, Game demo http://store.steampowered.com/app/6940/ true

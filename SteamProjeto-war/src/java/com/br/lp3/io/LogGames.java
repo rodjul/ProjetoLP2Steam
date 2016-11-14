@@ -45,7 +45,11 @@ public class LogGames implements Serializable{
         writer(gameString);
     }
     
-    public void writer(String a){
+    public void addStringTest(String a){
+        writer(a);
+    }
+    
+    public  void writer(String a){
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(this.path,true));
@@ -57,7 +61,8 @@ public class LogGames implements Serializable{
     }
     
     public String formatStringGame(Games game){
-        return "{"+getDate()+" - Nome:"+game.getNomeGame() + " APPID:"+game.getAppid() + " Descricao.length="+game.getDescricao().length() + " Tags.length:"+game.getTags().length()+"}\n";
+        return game.getAppid()+" "+ game.getNomeGame()+" "+ game.getDescricao().length()+" "+ game.getTags()+" "+ game.getUrlSteam()+" "+game.getPesquisa()+"\n";
+//        return "{"+getDate()+" - Nome:"+game.getNomeGame() + " APPID:"+game.getAppid() + " Descricao.length="+game.getDescricao().length() + " Tags.length:"+game.getTags().length()+"}\n";
     }
     
     public String getDate(){
