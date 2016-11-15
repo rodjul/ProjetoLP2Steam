@@ -46,14 +46,13 @@
             <p>${cookieuser}</p>
             <c:choose> 
                 <c:when test="${pagina.equals('meusJogos')}">
-                    <h3>Meus jogos</h3>
                     <j:meusJogos user="${cookieuser}"/>
                 </c:when>
                 <c:when test="${pagina.equals('pesquisarJogos')}">
                     <j:pesquisarJogos user="${cookieuser}"/>
                 </c:when>
                 <c:when test="${pagina.equals('mostrarJogos')}">
-                    <p>dasasd</p>
+                    <j:jogosPesquisados user="${cookieuser}"/>
                 </c:when>
             </c:choose>  
 <!--                <section id="teste" class="row">

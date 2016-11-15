@@ -215,3 +215,79 @@ ERRO: 6940
 ERRO: 283370
 ERRO: 347780
 6940 Battlestations: Midway Demo 0 Multi-player, Game demo http://store.steampowered.com/app/6940/ true
+ERRO: 6940
+ERRO: 533920
+ERRO: 528080
+ERRO: 390800
+533920 Battle Tank Armada 212 Single-player http://store.steampowered.com/app/533920/ true
+528080 Night Forest 194 Single-player http://store.steampowered.com/app/528080/ true
+390800 Circa Infinity Demo 134 Single-player, Game demo, Partial Controller Support http://store.steampowered.com/app/390800/ true
+ERRO: 325210
+ERRO: 227180
+ERRO: 505680
+325210 Eternal Winter 257 Single-player, Co-op, Online Co-op http://store.steampowered.com/app/325210/ true
+227180 Kingdom Wars 280 Single-player, Multi-player, MMO, Co-op, Steam Achievements, Steam Trading Cards, Includes level editor http://store.steampowered.com/app/227180/ true
+505680 Glaive 232 Single-player http://store.steampowered.com/app/505680/ true
+ERRO: 12120
+ERRO: 23490
+ERRO: 43110
+ERRO: 70000
+ERRO: 226700
+ERRO: 11020
+ERRO: 12120
+ERRO: 23490
+ERRO: 43110
+ERRO: 70000
+ERRO: 226700
+ERRO: 11020
+ERRO: 255340
+ERRO: 428080
+ERRO: 371070
+255340 Escape Goat 2 135 Single-player, Steam Achievements, Full controller support, Steam Trading Cards, Steam Workshop, Steam Cloud, Includes level editor http://store.steampowered.com/app/255340/ true
+428080 Racket: Nx 275 Single-player http://store.steampowered.com/app/428080/ true
+371070 Janky Tanks Demo 0 Single-player, Multi-player, Shared/Split Screen, Game demo, Full controller support http://store.steampowered.com/app/371070/ true
+ERRO: 371070
+ERRO: 371070
+ERRO: 272010
+ERRO: 354730
+ERRO: 274440
+272010 Aveyond 3-1: Lord of Twilight 2267 Single-player, Steam Achievements http://store.steampowered.com/app/272010/ true
+354730 Deadly Sin 126 Single-player http://store.steampowered.com/app/354730/ true
+274440 Assault Squad 2: Men of War Origins 136 Single-player, Multi-player, Co-op, Steam Achievements, Steam Trading Cards, Steam Workshop, Steam Cloud, Stats, Steam Leaderboards, Includes level editor http://store.steampowered.com/app/274440/ true
+ERRO: 463400
+ERRO: 445210
+ERRO: 433860
+463400 Spellbound 213 Single-player http://store.steampowered.com/app/463400/ true
+445210 Tiny Knight 159 Single-player, Steam Achievements, Full controller support http://store.steampowered.com/app/445210/ true
+433860 X Rebirth Demo 32 Single-player, Game demo, Steam Achievements, Full controller support, Steam Trading Cards, Captions available, Steam Workshop, Steam Cloud http://store.steampowered.com/app/433860/ true
+ERRO: 374170
+ERRO: 45000
+ERRO: 381610
+374170 Sniper Tactical 279 Single-player, Steam Achievements, Steam Leaderboards http://store.steampowered.com/app/374170/ true
+45000 Sol Survivor 2038 Single-player, Multi-player, Co-op, Steam Achievements, Steam Trading Cards, Partial Controller Support, Steam Cloud, Steam Leaderboards http://store.steampowered.com/app/45000/ true
+381610 Dandy: Or a Brief Glimpse Into the Life of the Candy Alchemist 184 Single-player, Shared/Split Screen, Cross-Platform Multiplayer, Steam Achievements, Full controller support, Steam Trading Cards, Stats http://store.steampowered.com/app/381610/ true
+ERRO: 381610
+ERRO: 3492
+ERRO: 90400
+ERRO: 244730
+3492 Venice Deluxe Free Demo 32 Single-player, Game demo http://store.steampowered.com/app/3492/ true
+90400 Blue Toad Murder Files™: The Mysteries of Little Riddle 1755 Single-player, Shared/Split Screen http://store.steampowered.com/app/90400/ true
+244730 Divekick 256 Single-player, Multi-player, Shared/Split Screen, Steam Achievements, Full controller support, Steam Trading Cards, Steam Cloud, Steam Leaderboards http://store.steampowered.com/app/244730/ true
+ERRO: 251890
+ERRO: 338120
+ERRO: 368780
+251890 World of Diving 167 Single-player, Multi-player, Co-op, Cross-Platform Multiplayer, Steam Achievements, Full controller support, Steam Trading Cards, VR Support, Includes level editor http://store.steampowered.com/app/251890/ true
+338120 Marble Duel 255 Single-player, Steam Achievements, Full controller support, Steam Trading Cards http://store.steampowered.com/app/338120/ true
+368780 President for a Day - Corruption 273 Single-player, Steam Achievements http://store.steampowered.com/app/368780/ true
+ERRO: 498700
+ERRO: 388430
+ERRO: 346470
+498700 The Ember Series: A New Fire 256 Single-player, Full controller support, Steam Trading Cards, Steam Workshop http://store.steampowered.com/app/498700/ true
+388430 TankZone Battle 190 Single-player, Multi-player, Full controller support http://store.steampowered.com/app/388430/ true
+346470 Tennis Elbow 2013 152 Single-player, Multi-player, Co-op, Shared/Split Screen, Steam Achievements, Partial Controller Support, Steam Cloud, Stats http://store.steampowered.com/app/346470/ true
+ERRO: 545450
+ERRO: 551210
+ERRO: 35420
+545450 Hollow Bliss 116 Single-player, Steam Trading Cards, Partial Controller Support, Steam Cloud http://store.steampowered.com/app/545450/ true
+551210 Nightcap 184 Full controller support, Native Steam Controller Support, Captions available http://store.steampowered.com/app/551210/ true
+35420 Defence Alliance 2 1105 Single-player, Multi-player, Co-op, Mods http://store.steampowered.com/app/35420/ true

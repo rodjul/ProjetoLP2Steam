@@ -61,8 +61,8 @@ public class LogGames implements Serializable{
     }
     
     public String formatStringGame(Games game){
-        return game.getAppid()+" "+ game.getNomeGame()+" "+ game.getDescricao().length()+" "+ game.getTags()+" "+ game.getUrlSteam()+" "+game.getPesquisa()+"\n";
-//        return "{"+getDate()+" - Nome:"+game.getNomeGame() + " APPID:"+game.getAppid() + " Descricao.length="+game.getDescricao().length() + " Tags.length:"+game.getTags().length()+"}\n";
+//        return game.getAppid()+" "+ game.getNomeGame()+" "+ game.getDescricao().length()+" "+ game.getTags()+" "+ game.getUrlSteam()+" "+game.getPesquisa()+"\n";
+        return "{"+getDate()+" - Nome:"+game.getNomeGame() + " APPID:"+game.getAppid() + " Descricao.length="+game.getDescricao().length() + " Tags.length:"+game.getTags().length()+"}\n";
     }
     
     public String getDate(){

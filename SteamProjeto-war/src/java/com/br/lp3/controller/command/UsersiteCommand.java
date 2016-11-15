@@ -20,6 +20,7 @@ import javax.naming.NamingException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -144,6 +145,10 @@ public class UsersiteCommand implements Command{
             responsePage = "error.jsp";
             request.getSession().setAttribute("error","Passwords don't match");
         }else{
+            HttpSession session = request.getSession(true);
+            if(session!=null && !session.isNew()){
+                session.invalidate();
+            }
             Cookie cookie = new Cookie("username", username);
             response.addCookie(cookie);
 //            Cookie ck [] = request.getCookies();
@@ -239,20 +244,7 @@ public class UsersiteCommand implements Command{
     
     public void meusJogos(){
         Cookie ck [] = request.getCookies();
-        String name_user = ck[1].getValue();
-//        
-//        List<Games> games = new ArrayList<>();
-//        Usersite temp = usersiteDAO.findByUsername(name_user);
-//        String userid = temp.getUserinfo().getUrlsteam().split("/")[2];
-//        List<Games> jogos_obtidos = SteamJSONParser.getOwnedGames(userid);
-//        for (Games jogos_obtido : jogos_obtidos) {
-//            String id = String.valueOf(jogos_obtido.getAppid());
-//            games.add(
-//                    SteamJSONParser.getAppDetails(id)
-//            );
-//            break;
-//            
-//        }
+        String name_user = ck[0].getValue();
         request.getSession().setAttribute("cookieuser",name_user);
         request.getSession().setAttribute("pagina", "meusJogos");
         responsePage = "novosjogos.jsp";
@@ -260,11 +252,17 @@ public class UsersiteCommand implements Command{
     }
     
     public void pesquisarJogos(){
+        Cookie ck [] = request.getCookies();
+        String name_user = ck[0].getValue();
+        request.getSession().setAttribute("cookieuser",name_user);
         request.getSession().setAttribute("pagina","pesquisarJogos");
         responsePage = "novosjogos.jsp";
     }
     
     public void mostrarJogos(){
+        Cookie ck [] = request.getCookies();
+        String name_user = ck[0].getValue();
+        request.getSession().setAttribute("cookieuser",name_user);
         request.getSession().setAttribute("pagina","mostrarJogos");
         responsePage = "novosjogos.jsp";
     }

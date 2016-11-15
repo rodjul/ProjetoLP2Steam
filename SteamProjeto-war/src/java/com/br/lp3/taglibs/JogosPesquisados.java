@@ -5,8 +5,6 @@
  */
 package com.br.lp3.taglibs;
 
-import com.br.lp3.io.LogGames;
-import com.br.lp3.json.SteamJSONParser;
 import com.br.lp3.model.dao.GamesDAO;
 import com.br.lp3.model.dao.UsersiteDAO;
 import com.br.lp3.model.entities.Games;
@@ -24,34 +22,27 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 /**
  *
- * @author Patrícia
+ * @author RodrigoPC
  */
-public class PesquisarJogoTag extends SimpleTagSupport{
-    public String user = "";
-    public void setUser(String user) {
+public class JogosPesquisados extends SimpleTagSupport{
+    
+    public String user;
+    public void setUser(String user){
         this.user = user;
     }
     
-        
     UsersiteDAO usersiteDAO = lookupUsersiteDAOBean();
     GamesDAO gamesDAO = lookupGamesDAOBean();
-
+    
+    
     @Override
     public void doTag() throws JspException, IOException {
         JspWriter out = getJspContext().getOut();
         
-        Usersite temp = usersiteDAO.findByUsername(user);
-        List<Games> games = SteamJSONParser.getNewGames();
-        LogGames log = new LogGames();
-        for (Games game : games) { //verificar se não ta no banco de dados
-            log.addLog(game);
-            gamesDAO.insert(new Games(game.getAppid(), game.getNomeGame(), game.getDescricao(), game.getTags(), game.getUrlSteam(), temp.getUserinfo(), game.getPesquisa() ));
-//            gamesDAO.insert(new Games(game.getAppid(),game.getNomeGame(),game.getDescricao(),game.getTags(),game.getUrlSteam(),temp.getUserinfo() ));
-        }
+        Usersite usersite = usersiteDAO.findByUsername(user);
+        List<Games> games = gamesDAO.findSearch(usersite.getUserinfo());
         
-        List<Games> test = gamesDAO.findSearch(temp.getUserinfo());
-        
-        out.println("<h3>Pesquisar jogo</h3><br>");
+        out.println("<h3>Jogos Pesquisados</h3>");
         
         out.println("<div class='container'>");
         out.println("<section id=\"teste\" class=\"row\">");
@@ -92,10 +83,9 @@ public class PesquisarJogoTag extends SimpleTagSupport{
         out.println("</section>");
         out.println("</div>");
         
+        
     }
 
-    
-    
     private GamesDAO lookupGamesDAOBean() {
         try {
             Context c = new InitialContext();
@@ -115,7 +105,6 @@ public class PesquisarJogoTag extends SimpleTagSupport{
             throw new RuntimeException(ne);
         }
     }
-    
     
     
     

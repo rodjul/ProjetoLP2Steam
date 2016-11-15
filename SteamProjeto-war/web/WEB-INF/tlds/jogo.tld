@@ -25,4 +25,15 @@
           <description>Name of the user</description>
       </attribute>
   </tag>
+  <tag>
+      <name>jogosPesquisados</name>
+      <tag-class>com.br.lp3.taglibs.JogosPesquisados</tag-class>
+      <body-content>empty</body-content>
+      <attribute>
+          <name>user</name>
+          <required>true</required>
+          <rtexprvalue>true</rtexprvalue>
+          <description>Name of the user</description>
+      </attribute>
+  </tag>
 </taglib>

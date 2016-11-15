@@ -266,7 +266,7 @@ public class SteamJSONParser {
                 if(description.equals("")){
                     String detailed_description = data.getString("detailed_description");
                     description = detailed_description;
-                }else if(description.equals("")){
+                }if(description.equals("")){
                     description = "Não existe descrição no momento.";
                 }
 

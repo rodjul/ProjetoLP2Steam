@@ -76,7 +76,7 @@ public class MeuJogoTag extends SimpleTagSupport {
         }
 //        gamesDAO.findByUser(temp.getUserinfo());
         
-        
+        out.println("<h3>Meus Jogos</h3>");
         out.println("<div class='container'>");
         out.println("<section id=\"teste\" class=\"row\">");
         

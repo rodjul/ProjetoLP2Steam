@@ -58,7 +58,7 @@ public class Games implements Serializable {
     private Long idGames;
     @Basic(optional = false)
 //    @NotNull
-    @Size(min = 1, max = 40)
+    @Size(min = 1, max = 100)
     @Column(name = "NOME_GAME")
     private String nomeGame;
     @Basic(optional = false)
