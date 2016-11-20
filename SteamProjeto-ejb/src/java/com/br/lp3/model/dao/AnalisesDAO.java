@@ -7,6 +7,7 @@ package com.br.lp3.model.dao;
 
 import com.br.lp3.model.entities.Userinfo;
 import com.br.lp3.model.entities.Analises;
+import com.br.lp3.model.entities.Games;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
@@ -43,6 +44,17 @@ public class AnalisesDAO implements GenericDAO<Analises>{
         return em.find(Analises.class, id);
     }
     
+    public List<Analises> findAllById(Games fkGame){
+        return em.createNamedQuery("Analises.findByFkGames").setParameter("fkGames", fkGame).getResultList();
+    }
+    public List<Analises> findAllByFkUser(Userinfo user){
+        return em.createNamedQuery("Analises.findByFkUser").setParameter("fkUserinfo", user).getResultList();
+    }
+    
+    public List<Analises> findAllByFkGameUser(Games fkGames, Userinfo user){
+        return em.createNamedQuery("Analises.findByFkGameFkUser").setParameter("fkGames", fkGames).setParameter("fkUserinfo", user).getResultList();
+    }
+    
     @Override
     public void modify(Analises e) {
         em.merge(e);
@@ -50,8 +62,7 @@ public class AnalisesDAO implements GenericDAO<Analises>{
 
     @Override
     public void remove(Analises e) {
-        em.merge(e);
-        em.remove(e);
+        em.remove(em.merge(e));
     }
     
 }

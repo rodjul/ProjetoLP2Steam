@@ -14,11 +14,13 @@ import com.br.lp3.model.entities.Games;
 import com.br.lp3.model.entities.GamesAnalise;
 import com.br.lp3.model.entities.Userinfo;
 import com.br.lp3.model.entities.Usersite;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,6 +29,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author 31597947
  */
 public class GamesCommand implements Command{
+    GamesAnaliseDAO gamesAnaliseDAO1 = lookupGamesAnaliseDAOBean1();
     GamesDAO gamesDAO = lookupGamesDAOBean();
     UsersiteDAO usersiteDAO = lookupUsersiteDAOBean();
     GamesAnaliseDAO gamesAnaliseDAO = lookupGamesAnaliseDAOBean();
@@ -46,15 +49,20 @@ public class GamesCommand implements Command{
     public void execute() {
         String action = request.getParameter("command").split("\\.")[1];
         switch(action){
-            case "analise":{
+            case "analise":
                 analiseGame();
                 break;
-            }
+            case "removerAnalise":
+                removerAnaliseMostrar();
+                break;
+            case "removerFinal":
+                removerAnalise();
+                break;
         }
     }
 
     public void analiseGame(){
-        System.out.println("chegou aqui ola");
+//        System.out.println("chegou aqui ola");
         
         String user = request.getParameter("user");
         String op_avaliacao = request.getParameter("op_avaliacao");
@@ -67,9 +75,41 @@ public class GamesCommand implements Command{
         
         analisesDAO.insert(analise);
         gamesAnaliseDAO.insert(new GamesAnalise(analise, game));
-        
-        System.out.println(user + " "+op_avaliacao + " "+comentario);
+
         responsePage = "novosjogos.jsp";
+    }
+
+    
+    public void removerAnaliseMostrar(){
+        Cookie ck [] = request.getCookies();
+        String name_user = ck[0].getValue();
+        
+        long gameid = Long.parseLong(request.getParameter("gameid"));
+        Games temp = gamesDAO.findById(gameid);
+        
+        Usersite user = usersiteDAO.findByUsername(name_user);
+        
+        List<Analises> allAnalises = analisesDAO.findAllByFkGameUser(temp,user.getUserinfo());
+        
+        request.getSession().setAttribute("allAnalisesUser",allAnalises);
+        responsePage = "removerAnalise.jsp";
+    }
+    
+    public void removerAnalise(){
+        
+        String username = request.getParameter("username");
+        Usersite user = usersiteDAO.findByUsername(username);
+        long id = Long.parseLong(request.getParameter("analiseid"));
+        Analises temp = analisesDAO.findById(id);
+        
+        analisesDAO.remove(temp);
+        
+        List<Analises> allAnalises = analisesDAO.findAllByFkUser(user.getUserinfo());
+        request.getSession().setAttribute("allAnalisesUser",allAnalises);
+        
+        
+        request.getSession().setAttribute("removido","Removido com sucesso");
+        responsePage = "removerAnalise.jsp";
     }
     
     @Override
@@ -113,6 +153,16 @@ public class GamesCommand implements Command{
         try {
             Context c = new InitialContext();
             return (GamesDAO) c.lookup("java:global/SteamProjeto/SteamProjeto-ejb/GamesDAO!com.br.lp3.model.dao.GamesDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private GamesAnaliseDAO lookupGamesAnaliseDAOBean1() {
+        try {
+            Context c = new InitialContext();
+            return (GamesAnaliseDAO) c.lookup("java:global/SteamProjeto/SteamProjeto-ejb/GamesAnaliseDAO!com.br.lp3.model.dao.GamesAnaliseDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

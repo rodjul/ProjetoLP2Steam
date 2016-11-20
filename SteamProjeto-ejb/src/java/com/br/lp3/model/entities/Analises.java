@@ -36,6 +36,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Analises.findByIdGameAnalises", query = "SELECT a FROM Analises a WHERE a.idGameAnalises = :idGameAnalises"),
     @NamedQuery(name = "Analises.findByAprovacao", query = "SELECT a FROM Analises a WHERE a.aprovacao = :aprovacao"),
     @NamedQuery(name = "Analises.findByHoras", query = "SELECT a FROM Analises a WHERE a.horas = :horas"),
+    @NamedQuery(name = "Analises.findByFkGames", query = "SELECT a FROM Analises a WHERE a.fkGames = :fkGames"),
+    @NamedQuery(name = "Analises.findByFkUser", query = "SELECT a FROM Analises a WHERE a.fkUserinfo = :fkUserinfo"),
+    @NamedQuery(name = "Analises.findByFkGameFkUser", query = "SELECT a FROM Analises a WHERE a.fkGames = :fkGames AND a.fkUserinfo = :fkUserinfo"),
     @NamedQuery(name = "Analises.findByAnalise", query = "SELECT a FROM Analises a WHERE a.analise = :analise")})
 public class Analises implements Serializable {
     @JoinColumn(name = "FK_USERINFO", referencedColumnName = "ID_USERINFO")

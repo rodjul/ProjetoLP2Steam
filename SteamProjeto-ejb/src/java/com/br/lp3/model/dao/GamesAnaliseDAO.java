@@ -43,6 +43,10 @@ public class GamesAnaliseDAO implements GenericDAO<GamesAnalise>{
         return em.find(GamesAnalise.class, id);
     }
 
+//    public List<GameAnalise> findAllByGame(long fkGame){
+        
+//    }
+    
     @Override
     public void modify(GamesAnalise e) {
         em.merge(e);
@@ -50,8 +54,7 @@ public class GamesAnaliseDAO implements GenericDAO<GamesAnalise>{
 
     @Override
     public void remove(GamesAnalise e) {
-        em.merge(e);
-        em.remove(e);
+        em.remove(em.merge(e));
     }
     
 }

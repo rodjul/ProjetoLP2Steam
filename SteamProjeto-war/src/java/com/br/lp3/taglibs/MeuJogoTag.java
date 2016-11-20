@@ -7,8 +7,10 @@ package com.br.lp3.taglibs;
 
 import com.br.lp3.controller.command.UsersiteCommand;
 import com.br.lp3.json.SteamJSONParser;
+import com.br.lp3.model.dao.AnalisesDAO;
 import com.br.lp3.model.dao.GamesDAO;
 import com.br.lp3.model.dao.UsersiteDAO;
+import com.br.lp3.model.entities.Analises;
 import com.br.lp3.model.entities.Games;
 import com.br.lp3.model.entities.Usersite;
 import java.io.IOException;
@@ -32,6 +34,7 @@ import javax.servlet.jsp.JspWriter;
  * @author Patrícia
  */
 public class MeuJogoTag extends SimpleTagSupport {
+    AnalisesDAO analisesDAO = lookupAnalisesDAOBean();
     
 
     public String user = "";
@@ -56,10 +59,10 @@ public class MeuJogoTag extends SimpleTagSupport {
             games = temp.getUserinfo().getGamesList();
             get = true;
         }else{
-            games1 = temp.getUserinfo().getGamesList();
-            for (Games game : games1) {
-                gamesDAO.remove(game);
-            }
+//            games1 = temp.getUserinfo().getGamesList();
+//            for (Games game : games1) {
+//                gamesDAO.remove(game);
+//            }
         }
         if(!get){
             List<Games> jogos_obtidos = SteamJSONParser.getOwnedGames(userid);
@@ -75,7 +78,7 @@ public class MeuJogoTag extends SimpleTagSupport {
                 }
         }
 //        gamesDAO.findByUser(temp.getUserinfo());
-        
+        List<Analises> analises = null;
         out.println("<h3>Meus Jogos</h3>");
         out.println("<div class='container'>");
         out.println("<section id=\"teste\" class=\"row\">");
@@ -96,28 +99,47 @@ public class MeuJogoTag extends SimpleTagSupport {
 "                                <a href='"+game.getUrlSteam()+"' target=\"_blank\"><input type=\"button\" class=\"btn btn-primary\" value=\"Ir para a Loja Steam\" />\n" +
 "                                \n" +
 "                                </a> <input type=\"button\" onfocus=\"teste('"+game.getNomeGame()+"')\" class=\"btn btn-primary\" value=\"Ver análises\"/>\n" +
+//"                                </a> <a href='Controller?command=Games.veranalise&gameid="+game.getIdGames()+"' ><input type=\"button\" class=\"btn btn-primary\" value=\"Ver análises\"/></a>\n" +
 "                                <br>\n" +
-"                                <input type=\"button\" id=\"botao_analise\" class=\"btn btn-primary\" onclick=\"form_analise("+game.getIdGames()+")\" value=\"Adicionar uma análise\"/>"+
-"                                <input type=\"button\" id=\"botao_analise_rm\" class=\"btn btn-primary\" onclick=\"\" value=\"Remover sua Análise\" />\n      "+                    
-"                                \n" +
+"                                <input type=\"button\" id=\"botao_analise\" class=\"btn btn-primary\" onclick=\"form_analise("+game.getIdGames()+")\" value=\"Adicionar uma análise\"/>\n"+
                     
-"                                <article id=\"epicbattlefantasy3\" class=\"modal\">\n" +
+"                                <a href='Controller?command=Games.removerAnalise&gameid="+game.getIdGames()+"'><input type=\"button\" id=\"botao_analise_rm\" class=\"btn btn-primary\"  value=\"Remover sua Análise\" /></a>\n      "+                    
+                    
+                    
+"                                <article id=\'"+game.getNomeGame()+"'\" class=\"modal\">\n" +
 "                                        <article class=\"modal-content\">\n" +
-"                                            <span class=\"close\" onclick=\"getElementById('"+game.getNomeGame()+"').style.display='none'\">x</span>\n" +
-"                                            <div class=\"thumbnail\"><div class=\"caption\">\n" +
-"                                            </div></div>\n" +
+"                                            <span class=\"close\" onclick=\"getElementById('"+game.getNomeGame()+"').style.display='none'\">x</span>\n" );
+                    
+            
+                    analises = analisesDAO.findAllById(game);
+                    for (Analises analise : analises) {
+//                        analise.getIdGameAnalises();
+//                        if(analise != null){
+out.println("                                        <div class=\"thumbnail\"><div class=\"caption\">\n"+
+"                                                           <h3>"+(analise.getAprovacao().equals("naorecomendo")?"Não Recomendado":"Recomendado")+"</h3>"+
+"                                                           <p>"+analise.getAnalise()+"</p>\n"+
+"                                                    </div></div>\n");
+//                        }
+                    }
+                    
+                    
+                    
+out.println(
 "                                        </article>\n" +
 "                                </article>\n" +
                     
 "                                <article id=\"formulario"+game.getIdGames()+"\" class=\"modal\">\n" +
 "                                    <article class=\"modal-content\">\n" +
-"                                        <span class=\"close\" onclick=\"getElementById('"+game.getNomeGame()+"').style.display='none'\">x</span>\n" +
+//"                                        <span class=\"close\" onclick=\"getElementById('"+game.getNomeGame()+"').style.display='none'\">x</span>\n" +
+"                                        <span class=\"close\" onclick=\"getElementById('formulario"+game.getIdGames()+"').style.display='none'\">x</span>\n" +
 "                                        <form method=\"post\" action=\"Controller\" class=\"form-group\">\n" +
+//"                                            <input type=\"hidden\" name=\"command\" value=\"Games.addanalise\" />\n" +
 "                                            <input type=\"hidden\" name=\"command\" value=\"Games.analise\" />\n" +
 "                                            <input type=\"hidden\" name=\"user\" value=\""+user+"\" />\n" +
 "                                            <input type=\"hidden\" name=\"gameid\" value=\""+game.getIdGames()+"\" />\n" +
-                    "<select class=\"form-control\" name=\"op_avaliacao\"> <option value=\"recomendo\">Recomendo</option> <option value=\"naorecomendo\">Não Recomendo</option>  </select>\n"+
-//"                                            <p><input type=\"text\" placeholder=\"Insira se recomenda ou não recomenda\" name=\"recomenda\" value=\"\" class=\"form-control\"/></p>\n" +
+"                                            <select class=\"form-control\" name=\"op_avaliacao\">\n"+
+"                                                   <option value=\"recomendo\">Recomendo</option>\n <option value=\"naorecomendo\">Não Recomendo</option>\n  "+
+"                                            </select>\n"+
 "                                            <br><label for=\"comment\">Comentário:</label>\n" +
 "                                            <textarea class=\"form-control\" rows=\"5\" id=\"comment\" name=\"comentario\"></textarea>\n" +
 "                                            <br><input type=\"submit\" value=\"Enviar análise\" class=\"btn btn-primary\"/> "+
@@ -175,6 +197,15 @@ public class MeuJogoTag extends SimpleTagSupport {
         }
     }
 
+    private AnalisesDAO lookupAnalisesDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (AnalisesDAO) c.lookup("java:global/SteamProjeto/SteamProjeto-ejb/AnalisesDAO!com.br.lp3.model.dao.AnalisesDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
     
     
 }

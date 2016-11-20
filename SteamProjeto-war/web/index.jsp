@@ -1,6 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -52,6 +50,7 @@
         </section>
         <%@include file="jspf/footer.jspf" %>
         <a href="Controller" >Cont</a>
+        <a href="Controller?command=Games.veranalise" >veranalise</a>
     </body>
     
     
