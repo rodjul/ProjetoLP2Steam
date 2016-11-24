@@ -42,9 +42,9 @@ public class PesquisarJogoTag extends SimpleTagSupport{
         
         Usersite temp = usersiteDAO.findByUsername(user);
         List<Games> games = SteamJSONParser.getNewGames();
-        LogGames log = new LogGames();
+//        LogGames log = new LogGames();
         for (Games game : games) { //verificar se não ta no banco de dados
-            log.addLog(game);
+//            log.addLog(game);
             gamesDAO.insert(new Games(game.getAppid(), game.getNomeGame(), game.getDescricao(), game.getTags(), game.getUrlSteam(), temp.getUserinfo(), game.getPesquisa() ));
 //            gamesDAO.insert(new Games(game.getAppid(),game.getNomeGame(),game.getDescricao(),game.getTags(),game.getUrlSteam(),temp.getUserinfo() ));
         }
@@ -116,7 +116,21 @@ public class PesquisarJogoTag extends SimpleTagSupport{
         }
     }
     
-    
+    public static void main(String[] args) {
+        String a = "<p>A tale of the planet's final love story told using the full force of minori's critically acclaimed illustrative style, engaging musical compositions, and";
+        String texto1 = null;
+        String texto2 = null;
+        for (int i=0; i<a.length(); i++){
+            if(i>=76) {
+                texto2 += a.charAt(i);
+            }else{
+                if((i+1)==76){
+                    System.out.print("... Ver mais\n"); 
+                }
+            }
+      
+        }
+    }
     
     
 }

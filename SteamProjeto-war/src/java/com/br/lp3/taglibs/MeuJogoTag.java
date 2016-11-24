@@ -59,10 +59,10 @@ public class MeuJogoTag extends SimpleTagSupport {
             games = temp.getUserinfo().getGamesList();
             get = true;
         }else{
-//            games1 = temp.getUserinfo().getGamesList();
-//            for (Games game : games1) {
-//                gamesDAO.remove(game);
-//            }
+            games1 = temp.getUserinfo().getGamesList();
+            for (Games game : games1) {
+                gamesDAO.remove(game);
+            }
         }
         if(!get){
             List<Games> jogos_obtidos = SteamJSONParser.getOwnedGames(userid);
@@ -90,8 +90,20 @@ public class MeuJogoTag extends SimpleTagSupport {
 "                            <img src=\"http://cdn.akamai.steamstatic.com//steam//apps//"+game.getAppid()+"//header.jpg\" alt=\"game\" />\n" +
 "                            <div class=\"caption\">\n" +
 "                                <h3>"+game.getNomeGame()+"</h3>\n" +
-"                                \n" +
-"                                <p>"+game.getDescricao()+"</p>\n" +
+"                                \n");
+            
+            String texto = game.getDescricao();
+            String parte1 = null;
+            String parte2 = null;
+        for(int posicao=0; posicao<texto.length(); posicao++){
+            if(posicao>=216){
+                parte1 += texto.charAt(posicao);
+            }
+        }    
+//"                                <p>"+game.getDescricao()+"</p>\n" +
+        
+        
+        out.println(
 "                                \n" +
 "                                <p><b>Categoria(s):</b></p>\n" +
 "                                <b><p class=\"fontstyle\">"+game.getTags()+"</p></b>\n" +
@@ -101,7 +113,7 @@ public class MeuJogoTag extends SimpleTagSupport {
 "                                </a> <input type=\"button\" onfocus=\"teste('"+game.getNomeGame()+"')\" class=\"btn btn-primary\" value=\"Ver análises\"/>\n" +
 //"                                </a> <a href='Controller?command=Games.veranalise&gameid="+game.getIdGames()+"' ><input type=\"button\" class=\"btn btn-primary\" value=\"Ver análises\"/></a>\n" +
 "                                <br>\n" +
-"                                <input type=\"button\" id=\"botao_analise\" class=\"btn btn-primary\" onclick=\"form_analise("+game.getIdGames()+")\" value=\"Adicionar uma análise\"/>\n"+
+"                                <input type=\"button\" id=\"botao_analise\" class=\"btn btn-primary\" onclick=\"form_analise("+game.getAppid()+")\" value=\"Adicionar uma análise\"/>\n"+
                     
 "                                <a href='Controller?command=Games.removerAnalise&gameid="+game.getIdGames()+"'><input type=\"button\" id=\"botao_analise_rm\" class=\"btn btn-primary\"  value=\"Remover sua Análise\" /></a>\n      "+                    
                     
@@ -128,15 +140,16 @@ out.println(
 "                                        </article>\n" +
 "                                </article>\n" +
                     
-"                                <article id=\"formulario"+game.getIdGames()+"\" class=\"modal\">\n" +
+"                                <article id=\"formulario"+game.getAppid()+"\" class=\"modal\">\n" +
+        "<p>"+game.getAppid()+"</p>"+
 "                                    <article class=\"modal-content\">\n" +
 //"                                        <span class=\"close\" onclick=\"getElementById('"+game.getNomeGame()+"').style.display='none'\">x</span>\n" +
-"                                        <span class=\"close\" onclick=\"getElementById('formulario"+game.getIdGames()+"').style.display='none'\">x</span>\n" +
+"                                        <span class=\"close\" onclick=\"getElementById('formulario"+game.getAppid()+"').style.display='none'\">x</span>\n" +
 "                                        <form method=\"post\" action=\"Controller\" class=\"form-group\">\n" +
 //"                                            <input type=\"hidden\" name=\"command\" value=\"Games.addanalise\" />\n" +
 "                                            <input type=\"hidden\" name=\"command\" value=\"Games.analise\" />\n" +
 "                                            <input type=\"hidden\" name=\"user\" value=\""+user+"\" />\n" +
-"                                            <input type=\"hidden\" name=\"gameid\" value=\""+game.getIdGames()+"\" />\n" +
+"                                            <input type=\"hidden\" name=\"gameid\" value=\""+game.getAppid()+"\" />\n" +
 "                                            <select class=\"form-control\" name=\"op_avaliacao\">\n"+
 "                                                   <option value=\"recomendo\">Recomendo</option>\n <option value=\"naorecomendo\">Não Recomendo</option>\n  "+
 "                                            </select>\n"+
@@ -159,21 +172,6 @@ out.println(
         out.println("</div>");
                             
     }
-//                                <a href="http://store.steampowered.com/app/521200/" target="_blank"><input type="button" class="btn btn-primary" value="Ir para a Loja Steam" />
-//                                </a> <input type="button" onfocus="teste('epicbattlefantasy3')" class="btn btn-primary" value="Ver análises"/>
-//                                <article id="epicbattlefantasy3" class="modal">
-//                                        <article class="modal-content">
-//                                            <span class="close" onclick="getElementById('epicbattlefantasy3').style.display='none'">x</span>
-//                                            <div class="thumbnail"><div class="caption">
-//                                            <p>Eu amei o jogo! O sistema de batalha é muito bom, arte bonita e cenários legais!
-//                                                10/10.</p>
-//                                            </div></div>
-//                                        </article>
-//                                </article>
-//                                
-//                            </div>
-//                        </div>
-//                    </article>
     
     private UsersiteDAO lookupUsersiteDAOBean() {
         try {

@@ -60,6 +60,12 @@ input[type='submit']{
     /*background-color:#2C3E50;*/
 }
 
+/********* tamanho do thumbnail **********/
+.thumbnail {
+    height: 600px;
+}
+/*******************/
+
 /*novos jogos */
 div.thumbnail{
     background-color:#E0E0E0;

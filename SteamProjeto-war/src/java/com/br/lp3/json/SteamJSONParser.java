@@ -49,10 +49,10 @@ public class SteamJSONParser {
         try {
             URL url = new URL(uri);
             //            sem proxy para usar em casa        
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+//            HttpURLConnection con = (HttpURLConnection)url.openConnection();
             //usar com proxy no mackenzie
-//            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10",3128));
-//            HttpURLConnection con = (HttpURLConnection)url.openConnection(proxy);
+            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10",3128));
+            HttpURLConnection con = (HttpURLConnection)url.openConnection(proxy);
             
             int code = con.getResponseCode();
             if(code == 407) System.out.println("Falha na autenticação do Proxy");

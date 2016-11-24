@@ -70,7 +70,8 @@ public class GamesCommand implements Command{
         long gameid = Long.parseLong(request.getParameter("gameid"));
         
         Usersite username = usersiteDAO.findByUsername(user);
-        Games game = gamesDAO.findById(gameid);
+//        Games game = gamesDAO.findById(gameid);
+        Games game = gamesDAO.findByAppid(gameid);
         Analises analise = new Analises(username.getUserinfo(), op_avaliacao, comentario, game);
         
         analisesDAO.insert(analise);

@@ -50,7 +50,8 @@
         </section>
         <%@include file="jspf/footer.jspf" %>
         <a href="Controller" >Cont</a>
-        <a href="Controller?command=Games.veranalise" >veranalise</a>
+        <a href="Controller?command=Games.veranalise" >veranalise</a> 
+        <a href="Controller?command=Games.analise&gameid=12120&user=rodrigo">12120</a>
     </body>
     
     

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+            <link href="css/style.css" rel="stylesheet" type="text/css"/>
+            <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+            <script src="bootstrap/js/jquery.min.js"></script>
+            <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>    
+    </head>
+    <style type="text/css" media="all">
+#box-toggle {
+	width:500px;
+	margin:0 auto;
+	text-align:justify;
+	font:12px/1.4 Arial, Helvetica, sans-serif;
+	}
+#box-toggle .tgl {margin-bottom:30px;}
+#box-toggle span {
+	display:block;
+	cursor:pointer;
+	font-weight:bold;
+	font-size:14px;
+	color:#c30; 
+	margin-top:15px;
+	}
+</style>
+    <body>
+<div id="box-toggle">
+
+<div class="tgl">
+<h2>Conteúdo um</h2>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi eleifend, purus quis laoreet faucibus, ante augue malesuada mi, id rhoncus augue lorem eget elit.</p>
+<p>Ut sollicitudin sodales purus. Phasellus libero felis, blandit nec, commodo ut, imperdiet ut, nibh. Suspendisse potenti. Donec ullamcorper cursus dolor. Duis vitae ipsum. Maecenas dapibus hendrerit diam. Morbi varius, massa id pretium accumsan, nunc lorem congue libero, ut euismod metus libero id nulla.</p>
+<p> Duis posuere odio sed velit vulputate venenatis. Suspendisse et dui ac metus auctor fringilla. Curabitur interdum augue a pede.</p>
+<p>Ut sollicitudin sodales purus. Phasellus libero felis, blandit nec, commodo ut, imperdiet ut, nibh. Suspendisse potenti. Donec ullamcorper cursus dolor. Duis vitae ipsum. Maecenas dapibus hendrerit diam. Morbi varius, massa id pretium accumsan, nunc lorem congue libero, ut euismod metus libero id nulla.</p>
+</div>
+    
+
+</div>
+        
+        <article  class="col-lg-4">
+                        <div class="thumbnail">
+                            <img src="http://cdn.akamai.steamstatic.com//steam//apps//315810//header.jpg" alt="game" />
+                            <div id="text-box" class="caption">
+                                <h3>eden*</h3>
+                                
+                                <p>A tale of the planet's final love story told using the full force of minori's critically acclaimed illustrative style, engaging musical compositions, and the highly talented staff that has led fans coming back for more every single time!<br />
+<br />
+                                <div  class="tgl">
+                                Eden tosses aside the traditional sprite and talking heads conventions used by many visual novels and instead employs a far more cinematic approach consisting of almost all event illustrations. Told using a widescreen resolution of 1024 x 640, eden promises a play-experience more akin to enjoying a movie than reading a book. We hope that this new approach to the visual novel medium provides a much more enjoyable experience for everyone.
+                                </div>
+                                </p>
+                                
+                                <p><b>Categoria(s):</b></p>
+                                <b><p class="fontstyle">Single-player, Steam Trading Cards, Steam Cloud</p></b>
+
+                                <a href='http://store.steampowered.com/app/315810/' target="_blank"><input type="button" class="btn btn-primary" value="Ir para a Loja Steam" />
+                                
+                                </a> <input type="button" onfocus="teste('eden*')" class="btn btn-primary" value="Ver análises"/>
+                                
+                                <article id="epicbattlefantasy3" class="modal">
+                                        <article class="modal-content">
+                                            <span class="close" onclick="getElementById('eden*').style.display='none'">x</span>
+                                            <div class="thumbnail"><div class="caption">
+                                            </div></div>
+                                        </article>
+                                </article>
+                                
+                            </div>
+                        </div>
+                    </article>
+
+
+    </body>
+</html>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
+
+<script type="text/javascript"> 
+jQuery.fn.toggleText = function(a,b) {
+return   this.html(this.html().replace(new RegExp("("+a+"|"+b+")"),function(x){return(x==a)?b:a;}));
+}
+
+$(document).ready(function(){
+$('.tgl').before('<span>Revelar2 conteúdo</span>');
+$('.tgl').css('display', 'none')
+$('span', '#text-box').click(function() {
+    $(this).next().slideToggle('slow').siblings('.tgl:visible').slideToggle('fast');
+    // aqui começa o funcionamento do plugin
+    $(this).toggleText('Revelar','Esconder').siblings('span').next('.tgl:visible').prev().toggleText('Revelar','Esconder')  
+});
+})
+</script>
