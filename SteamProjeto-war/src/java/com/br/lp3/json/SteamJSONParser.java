@@ -273,7 +273,7 @@ public class SteamJSONParser {
                 String url_game = "http://store.steampowered.com/app/"+appid+"/";
                 long appid_long = Long.parseLong(appid);
                 
-                LogGames log = new LogGames(); log.addStringTest("ERRO: "+appid+"\n");
+//                LogGames log = new LogGames(); log.addStringTest("ERRO: "+appid+"\n");
                 
                 JsonArray categories = data.getJsonArray("categories");
                 if(!(categories == null)){

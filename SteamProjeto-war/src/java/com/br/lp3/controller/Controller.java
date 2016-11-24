@@ -36,7 +36,7 @@ public class Controller extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-//            com.br.lp3.json.SteamJSONParser.getShortAppDetails("381610"); System.exit(1);
+//            com.br.lp3.json.SteamJSONParser.getShortAppDetails("11050"); System.exit(1);
             String commandstr = request.getParameter("command").split("\\.")[0];
             try{
                 Command command = (Command)Class.forName("com.br.lp3.controller.command."+commandstr+"Command").newInstance();

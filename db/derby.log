@@ -1,7 +1,7 @@
-Thu Nov 24 08:05:25 BRST 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+Thu Nov 24 13:34:27 BRST 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
 ----------------------------------------------------------------
-Thu Nov 24 08:05:25 BRST 2016:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0158-95cc-0275-00000f816c4e
+Thu Nov 24 13:34:28 BRST 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0158-96f9-3f97-00000f816c4e
 no diretório de banco de dados C:\Temp\rodrigo\ProjetoLP2Steam\db\SteamDB 
 
 java.vendor=Oracle Corporation
@@ -12,7 +12,7 @@ os.arch=amd64
 os.version=6.1
 derby.system.home=C:\Temp\rodrigo\ProjetoLP2Steam\db
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''
-Thu Nov 24 08:05:26 BRST 2016 Thread[DRDAConnThread_2,5,main] (XID = 6668), (SESSIONID = 0), (DATABASE = SteamDB), (DRDAID = {1}), Cleanup action starting
+Thu Nov 24 13:34:31 BRST 2016 Thread[DRDAConnThread_2,5,main] (XID = 8177), (SESSIONID = 0), (DATABASE = SteamDB), (DRDAID = {1}), Cleanup action starting
 java.sql.SQLNonTransientConnectionException: Connection authentication failure occurred.  Reason: Invalid authentication..
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.Util.newEmbedSQLException(Unknown Source)
@@ -62,4 +62,4 @@ java.sql.SQLException: Connection authentication failure occurred.  Reason: Inva
 	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
 ============= end nested exception, level (1) ===========
 Cleanup action completed
-Thu Nov 24 08:05:26 BRST 2016 Thread[DRDAConnThread_2,5,main] (DATABASE = SteamDB), (DRDAID = {1}), Connection authentication failure occurred.  Reason: Invalid authentication..
+Thu Nov 24 13:34:31 BRST 2016 Thread[DRDAConnThread_2,5,main] (DATABASE = SteamDB), (DRDAID = {1}), Connection authentication failure occurred.  Reason: Invalid authentication..

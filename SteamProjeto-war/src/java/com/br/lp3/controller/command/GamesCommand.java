@@ -50,7 +50,7 @@ public class GamesCommand implements Command{
         String action = request.getParameter("command").split("\\.")[1];
         switch(action){
             case "analise":
-                analiseGame();
+                addAnaliseGame();
                 break;
             case "removerAnalise":
                 removerAnaliseMostrar();
@@ -61,7 +61,7 @@ public class GamesCommand implements Command{
         }
     }
 
-    public void analiseGame(){
+    public void addAnaliseGame(){
 //        System.out.println("chegou aqui ola");
         
         String user = request.getParameter("user");

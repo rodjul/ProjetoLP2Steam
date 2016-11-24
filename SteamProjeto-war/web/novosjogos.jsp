@@ -73,8 +73,6 @@
     function form_analise(idgame){
 //        var articleModal = document.getElementById("formulario");
         var articleModal = document.getElementById("formulario"+idgame);
-//        document.getElementById("demo").innerHTML = "span";
-//        console.log(span); 
         articleModal.style.display = "block";
         
         // When the user clicks anywhere outside of the modal, close it
@@ -84,25 +82,20 @@
              }
         };
     }
-
+    
+    function ver_resto_descricao(idname){
+        var articleModal = document.getElementById("descricao"+idname);
+        articleModal.style.display = "block";
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+             if (event.target == articleModal) {
+                articleModal.style.display = "none";
+             }
+        };
+    }
  
     </script>
     
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
 
-<script type="text/javascript"> 
-jQuery.fn.toggleText = function(a,b) {
-return   this.html(this.html().replace(new RegExp("("+a+"|"+b+")"),function(x){return(x==a)?b:a;}));
-}
-
-$(document).ready(function(){
-$('.tgl').before('<span>Revelar2 conteúdo</span>');
-$('.tgl').css('display', 'none')
-$('span', '#text-box').click(function() {
-    $(this).next().slideToggle('slow').siblings('.tgl:visible').slideToggle('fast');
-    // aqui começa o funcionamento do plugin
-    $(this).toggleText('Revelar','Esconder').siblings('span').next('.tgl:visible').prev().toggleText('Revelar','Esconder')  
-});
-})
-</script>
 </html>

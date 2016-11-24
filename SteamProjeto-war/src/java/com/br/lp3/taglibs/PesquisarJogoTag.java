@@ -63,8 +63,33 @@ public class PesquisarJogoTag extends SimpleTagSupport{
 "                            <img src=\"http://cdn.akamai.steamstatic.com//steam//apps//"+game.getAppid()+"//header.jpg\" alt=\"game\" />\n" +
 "                            <div class=\"caption\">\n" +
 "                                <h3>"+game.getNomeGame()+"</h3>\n" +
-"                                \n" +
-"                                <p>"+game.getDescricao()+"</p>\n" +
+"                                \n");
+//----------------------------------separando o texto para alinhar com o css-------------------------------------------
+            String texto = game.getDescricao();
+            int dividirPosicao = 294;
+                
+            if(texto.length()>dividirPosicao){
+                int dividirPosicao2 = 145;
+                String parte1 = texto.substring(0,dividirPosicao2);
+out.println(
+"                               <p>"+parte1+"</p>\n"+
+"                               <p><input type\"button\" onclick=\"ver_resto_descricao('"+game.getNomeGame()+"')\" class=\"btn btn-primary\" value=\"Ver resto da descrição\"/></p> \n "+
+        "<br>\n"+
+"                               <article id=\"descricao"+game.getNomeGame()+"\" class=\"modal\">\n" +
+"                                    <article class=\"modal-content\">\n" +
+                                        "<span class=\"close\" onclick=\"getElementById('"+game.getNomeGame()+"').style.display='none'\">x</span>\n"+
+"                                       <p>"+texto+"</p>\n"+
+"                                    </article>\n"+
+"                               </article>\n"
+);  
+                
+            }else{
+out.println(
+"                                <p>"+game.getDescricao()+"</p>\n"
+);
+            }
+//----------------------------------------------- FIM da alinhação ------------------------------------------                    
+out.println(        
 "                                \n" +
 "                                <p><b>Categoria(s):</b></p>\n" +
 "                                <b><p class=\"fontstyle\">"+game.getTags()+"</p></b>\n" +
@@ -115,22 +140,4 @@ public class PesquisarJogoTag extends SimpleTagSupport{
             throw new RuntimeException(ne);
         }
     }
-    
-    public static void main(String[] args) {
-        String a = "<p>A tale of the planet's final love story told using the full force of minori's critically acclaimed illustrative style, engaging musical compositions, and";
-        String texto1 = "";
-        String texto2 = "";
-        for (int i=0; i<a.length(); i++){
-            if(i>=76) {
-                texto2 += a.charAt(i);
-            }else{
-                if((i+1)==76){
-                    System.out.print("... Ver mais\n"); 
-                }
-            }
-      
-        }
-    }
-    
-    
 }

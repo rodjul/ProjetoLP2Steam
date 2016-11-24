@@ -8,7 +8,6 @@
             <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
             <script src="bootstrap/js/jquery.min.js"></script>
             <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>    
-    </head>
     <style type="text/css" media="all">
 #box-toggle {
 	width:500px;
@@ -26,6 +25,7 @@
 	margin-top:15px;
 	}
 </style>
+    </head>
     <body>
 <div id="box-toggle">
 
@@ -71,6 +71,79 @@
                             </div>
                         </div>
                     </article>
+        
+        
+        
+        <hr>
+        <article class="col-lg-4">
+                        <div class="thumbnail">
+                            <img src="http://cdn.akamai.steamstatic.com//steam//apps//23490//header.jpg" alt="game" />
+                            <div  id='text-box'  class="caption">
+                                <h3>Tropico 3 - Steam Special Edition</h3>
+                                
+
+                               <p>The Steam Special Edition of Tropico 3 contains the following additional content:
+<br>					Two additional maps for the sandbox mode:
+    <div class='tgl'>
+<br>					<ul class="bb_ul"><li>Verde Playa
+        <br>					</li><li>Coco Cico Map</li>
+					</ul>Two additional costumes for the el presidente avatar editor:
+<br>					<ul class="bb_ul"><li><strong>Female Avatar:</strong> Casual Clothes
+<br>					</li><li><strong>Male Avatar:</strong> Casual Clothes
+<br>					</li></ul>Two additional accessories for the el presidente avatar editor:
+<br>					<ul class="bb_ul"><li><strong>Female Avatar:</strong> Baseball Hat
+<br>					</li><li><strong>Male Avatar:</strong> Commie Hat
+<br>					</li></ul>Engage in a tropical power trip! Become the dictator of a remote island during the Cold War. Charm, persuade, intimidate, oppress, or cheat your people to stay in power! Are you a kind and generous leader? A corrupt and ruthless tyrant ruling with an iron fist? Turn your island into a tourist paradise or an industrial power. Make promises to the electorate or slander political adversaries to get the crucial votes for the upcoming elections. Send your avatar to congratulate the people, visit the island of another player, or just sun-bathe on the Caribbean beach. 
+<br>                    Play the Cold War superpowers against each other to your maximum advantage. Tropico 3 offers a tongue-in-cheek, light-hearted take on real world issues like third world politics, corruption and totalitarian regimes. 
+<br>                    <ul class="bb_ul"><li>A campaign consisting of 15 missions 
+<br>                    </li><li>Random map generator 
+<br>                    </li><li>Timeline editor 
+<br>                    </li><li>The Avatar — customizable and under the player's control 
+<br>                    </li><li>Election speeches 
+<br>                    </li><li>Simulation of the life, family, and political views of each Tropican 
+<br>                    </li><li>Vehicles and Roads 
+<br>                    </li><li>New buildings and new units 
+<br>                    </li><li>Online Scoring 
+<br>                    </li><li>Visits to islands controlled by other players 
+<br>                    </li></ul>
+                               </div>
+
+                                
+                                <p><b>Categoria(s):</b></p>
+                                <b><p class="fontstyle">Single-player</p></b>
+
+                                <a href='http://store.steampowered.com/app/23490/' target="_blank"><input type="button" class="btn btn-primary" value="Ir para a Loja Steam" />
+                                
+                                </a> <input type="button" onfocus="teste('Tropico 3 - Steam Special Edition')" class="btn btn-primary" value="Ver análises"/>
+                                <br>
+                                <input type="button" id="botao_analise" class="btn btn-primary" onclick="form_analise(23490)" value="Adicionar uma análise"/>
+                                <a href='Controller?command=Games.removerAnalise&gameid=381'><input type="button" id="botao_analise_rm" class="btn btn-primary"  value="Remover sua Análise" /></a>
+                                <article id='Tropico 3 - Steam Special Edition' class="modal">
+                                        <article class="modal-content">
+                                            <span class="close" onclick="getElementById('Tropico 3 - Steam Special Edition').style.display='none'">x</span>
+
+                                        </article>
+                                </article>
+                                <article id="formulario23490" class="modal">
+<p>23490</p>                                    <article class="modal-content">
+                                        <span class="close" onclick="getElementById('formulario23490').style.display='none'">x</span>
+                                        <form method="post" action="Controller" class="form-group">
+                                            <input type="hidden" name="command" value="Games.analise" />
+                                            <input type="hidden" name="user" value="rodrigo" />
+                                            <input type="hidden" name="gameid" value="23490" />
+                                            <select class="form-control" name="op_avaliacao">
+                                                   <option value="recomendo">Recomendo</option>
+ <option value="naorecomendo">Não Recomendo</option>
+                                              </select>
+                                            <br><label for="comment">Comentário:</label>
+                                            <textarea class="form-control" rows="5" id="comment" name="comentario"></textarea>
+                                            <br><input type="submit" value="Enviar análise" class="btn btn-primary"/>                                         </form>
+                                    </article>
+                                </article>                                
+                            </div>
+                        </div>
+                    </article>
+
 
 
     </body>

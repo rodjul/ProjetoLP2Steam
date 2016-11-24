@@ -88,31 +88,44 @@ public class MeuJogoTag extends SimpleTagSupport {
             out.println("<article class=\"col-lg-4\">\n" +
 "                        <div class=\"thumbnail\">\n" +
 "                            <img src=\"http://cdn.akamai.steamstatic.com//steam//apps//"+game.getAppid()+"//header.jpg\" alt=\"game\" />\n" +
-"                            <div  id='text-box'  class=\"caption\">\n" +
+"                            <div class=\"caption\">\n" +
 "                                <h3>"+game.getNomeGame()+"</h3>\n" +
-"                                \n"+
+"                                \n");
             
-//            String texto = game.getDescricao();
-//            String parte1 = texto.substring(0,216);
-//            String parte2 = texto.substring(217, texto.length());
-//out.println(
-//"                               <p>"+parte1+"</p>\n"+
-//"                               <div class='tgl'>\n"+
-//"                                    <p>"+parte2+"</p>\n"+
-//"                               </div>"
-//);  
-
-"                                <p>"+game.getDescricao()+"</p>\n" +
-        
-        
-//        out.println(
+//----------------------------------separando o texto para alinhar com o css-------------------------------------------
+            String texto = game.getDescricao();
+            int dividirPosicao = 294;
+                
+            if(texto.length()>dividirPosicao){
+                int dividirPosicao2 = 145;
+                String parte1 = texto.substring(0,dividirPosicao2);
+out.println(
+"                               <p>"+parte1+"</p>\n"+
+"                               <p><input type\"button\" onclick=\"ver_resto_descricao('"+game.getNomeGame()+"')\" class=\"btn btn-primary\" value=\"Ver resto da descrição\"/></p> \n "+
+        "<br>\n"+
+"                               <article id=\"descricao"+game.getNomeGame()+"\" class=\"modal\">\n" +
+"                                    <article class=\"modal-content\">\n" +
+                                        "<span class=\"close\" onclick=\"getElementById('"+game.getNomeGame()+"').style.display='none'\">x</span>\n"+
+"                                       <p>"+texto+"</p>\n"+
+"                                    </article>\n"+
+"                               </article>\n"
+);  
+                
+            }else{
+out.println(
+"                                <p>"+game.getDescricao()+"</p>\n"
+);
+            }
+//----------------------------------------------- FIM da alinhação ------------------------------------------
+            
+        out.println(
 "                                \n" +
 "                                <p><b>Categoria(s):</b></p>\n" +
 "                                <b><p class=\"fontstyle\">"+game.getTags()+"</p></b>\n" +
 "\n" +
 "                                <a href='"+game.getUrlSteam()+"' target=\"_blank\"><input type=\"button\" class=\"btn btn-primary\" value=\"Ir para a Loja Steam\" />\n" +
 "                                \n" +
-"                                </a> <input type=\"button\" onfocus=\"teste('"+game.getNomeGame()+"')\" class=\"btn btn-primary\" value=\"Ver análises\"/>\n" +
+"                                </a> <input type=\"button\" onclick=\"teste('"+game.getNomeGame()+"')\" class=\"btn btn-primary\" value=\"Ver análises\"/>\n" +
 //"                                </a> <a href='Controller?command=Games.veranalise&gameid="+game.getIdGames()+"' ><input type=\"button\" class=\"btn btn-primary\" value=\"Ver análises\"/></a>\n" +
 "                                <br>\n" +
 "                                <input type=\"button\" id=\"botao_analise\" class=\"btn btn-primary\" onclick=\"form_analise("+game.getAppid()+")\" value=\"Adicionar uma análise\"/>\n"+
@@ -120,11 +133,11 @@ public class MeuJogoTag extends SimpleTagSupport {
 "                                <a href='Controller?command=Games.removerAnalise&gameid="+game.getIdGames()+"'><input type=\"button\" id=\"botao_analise_rm\" class=\"btn btn-primary\"  value=\"Remover sua Análise\" /></a>\n      "+                    
                     
                     
-"                                <article id=\'"+game.getNomeGame()+"'\" class=\"modal\">\n" +
+"                                <article id=\'"+game.getNomeGame()+"' class=\"modal\">\n" +
 "                                        <article class=\"modal-content\">\n" +
 "                                            <span class=\"close\" onclick=\"getElementById('"+game.getNomeGame()+"').style.display='none'\">x</span>\n" );
                     
-            
+//---------------------------obtendo as analises e imprimindo ----------------------------
                     analises = analisesDAO.findAllById(game);
                     for (Analises analise : analises) {
 //                        analise.getIdGameAnalises();
@@ -136,14 +149,13 @@ out.println("                                        <div class=\"thumbnail\"><d
 //                        }
                     }
                     
-                    
+//------------------------fim -----------------------------------------              
                     
 out.println(
 "                                        </article>\n" +
 "                                </article>\n" +
                     
 "                                <article id=\"formulario"+game.getAppid()+"\" class=\"modal\">\n" +
-        "<p>"+game.getAppid()+"</p>"+
 "                                    <article class=\"modal-content\">\n" +
 //"                                        <span class=\"close\" onclick=\"getElementById('"+game.getNomeGame()+"').style.display='none'\">x</span>\n" +
 "                                        <span class=\"close\" onclick=\"getElementById('formulario"+game.getAppid()+"').style.display='none'\">x</span>\n" +
