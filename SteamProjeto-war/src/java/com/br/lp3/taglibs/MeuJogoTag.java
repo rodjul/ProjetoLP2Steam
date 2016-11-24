@@ -88,22 +88,24 @@ public class MeuJogoTag extends SimpleTagSupport {
             out.println("<article class=\"col-lg-4\">\n" +
 "                        <div class=\"thumbnail\">\n" +
 "                            <img src=\"http://cdn.akamai.steamstatic.com//steam//apps//"+game.getAppid()+"//header.jpg\" alt=\"game\" />\n" +
-"                            <div class=\"caption\">\n" +
+"                            <div  id='text-box'  class=\"caption\">\n" +
 "                                <h3>"+game.getNomeGame()+"</h3>\n" +
-"                                \n");
+"                                \n"+
             
-            String texto = game.getDescricao();
-            String parte1 = null;
-            String parte2 = null;
-        for(int posicao=0; posicao<texto.length(); posicao++){
-            if(posicao>=216){
-                parte1 += texto.charAt(posicao);
-            }
-        }    
-//"                                <p>"+game.getDescricao()+"</p>\n" +
+//            String texto = game.getDescricao();
+//            String parte1 = texto.substring(0,216);
+//            String parte2 = texto.substring(217, texto.length());
+//out.println(
+//"                               <p>"+parte1+"</p>\n"+
+//"                               <div class='tgl'>\n"+
+//"                                    <p>"+parte2+"</p>\n"+
+//"                               </div>"
+//);  
+
+"                                <p>"+game.getDescricao()+"</p>\n" +
         
         
-        out.println(
+//        out.println(
 "                                \n" +
 "                                <p><b>Categoria(s):</b></p>\n" +
 "                                <b><p class=\"fontstyle\">"+game.getTags()+"</p></b>\n" +

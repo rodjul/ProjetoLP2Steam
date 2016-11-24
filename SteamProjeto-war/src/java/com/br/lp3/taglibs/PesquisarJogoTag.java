@@ -118,8 +118,8 @@ public class PesquisarJogoTag extends SimpleTagSupport{
     
     public static void main(String[] args) {
         String a = "<p>A tale of the planet's final love story told using the full force of minori's critically acclaimed illustrative style, engaging musical compositions, and";
-        String texto1 = null;
-        String texto2 = null;
+        String texto1 = "";
+        String texto2 = "";
         for (int i=0; i<a.length(); i++){
             if(i>=76) {
                 texto2 += a.charAt(i);
