@@ -32,7 +32,7 @@
             <input type="text" name="email" class="form-control" placeholder="Insira o email" />
             
             <label for="urlsteam">URL da Steam: </label>
-            <input type="text" name="urlsteam" class="form-control" placeholder="Insira sua url da steam" />
+            <input type="text" name="urlsteam" class="form-control" placeholder="Insira sua url da steam" value="www.steamcommunity.com/profiles/76561198056805863" />
             
             <label for="login">Login: </label>
             <c:if test="${erroruser != null}">

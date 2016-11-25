@@ -47,8 +47,8 @@
                         <div class="col-lg-13 text-center">
                             <form method="post" action="Controller">
                                 <input type="hidden" name="command" value="Games.removerFinal" />
-                                <input type="hidden" name="username" value="${user.username}" />
                                 <input type="hidden" name="analiseid" value="${analise.idGameAnalises}"/>
+                                <input type="hidden" name="game-id" value="${gameid}" />
                                 <input type="submit" value="Sim" class="btn btn-danger" /><input type="button" value="Não" class="btn btn-primary" onclick="getElementById('deletar-analise').style.display='none'" />
                             </form>
                         </div>

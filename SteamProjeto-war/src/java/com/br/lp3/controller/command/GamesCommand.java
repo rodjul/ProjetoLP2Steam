@@ -70,7 +70,7 @@ public class GamesCommand implements Command{
         long gameid = Long.parseLong(request.getParameter("gameid"));
         
         Usersite username = usersiteDAO.findByUsername(user);
-//        Games game = gamesDAO.findById(gameid);
+//        Games game1 = gamesDAO.findById(gameid);
         Games game = gamesDAO.findByAppid(gameid);
         Analises analise = new Analises(username.getUserinfo(), op_avaliacao, comentario, game);
         
@@ -86,26 +86,32 @@ public class GamesCommand implements Command{
         String name_user = ck[0].getValue();
         
         long gameid = Long.parseLong(request.getParameter("gameid"));
-        Games temp = gamesDAO.findById(gameid);
+//        Games temp = gamesDAO.findById(gameid);
+        Games temp = gamesDAO.findByAppid(gameid);
         
         Usersite user = usersiteDAO.findByUsername(name_user);
         
         List<Analises> allAnalises = analisesDAO.findAllByFkGameUser(temp,user.getUserinfo());
-        
+        request.getSession().setAttribute("gameid",gameid);
         request.getSession().setAttribute("allAnalisesUser",allAnalises);
         responsePage = "removerAnalise.jsp";
     }
     
     public void removerAnalise(){
-        
-        String username = request.getParameter("username");
-        Usersite user = usersiteDAO.findByUsername(username);
+        Cookie ck [] = request.getCookies();
+        String name_user = ck[0].getValue();
+
+        Usersite user = usersiteDAO.findByUsername(name_user);
         long id = Long.parseLong(request.getParameter("analiseid"));
-        Analises temp = analisesDAO.findById(id);
+        long gameid = Long.parseLong(request.getParameter("game-id"));
         
-        analisesDAO.remove(temp);
+        Games temp = gamesDAO.findByAppid(gameid);
         
-        List<Analises> allAnalises = analisesDAO.findAllByFkUser(user.getUserinfo());
+        Analises analiseTemp = analisesDAO.findById(id);
+        analisesDAO.remove(analiseTemp);
+        
+//        List<Analises> allAnalises = analisesDAO.findAllByFkUser(user.getUserinfo());
+        List<Analises> allAnalises = analisesDAO.findAllByFkGameUser(temp,user.getUserinfo());
         request.getSession().setAttribute("allAnalisesUser",allAnalises);
         
         

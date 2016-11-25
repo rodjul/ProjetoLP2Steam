@@ -61,8 +61,11 @@ input[type='submit']{
 }
 
 /********* tamanho do thumbnail **********/
-.thumbnail {
+.col-lg-4 .thumbnail {
     height: 600px;
+}
+#thumbnail-auto .thumbnail{
+    height:auto;
 }
 /*******************/
 

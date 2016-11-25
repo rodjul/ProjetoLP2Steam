@@ -54,12 +54,17 @@ public class MeuJogoTag extends SimpleTagSupport {
         
         Usersite temp = usersiteDAO.findByUsername(user);
         String userid = temp.getUserinfo().getUrlsteam().split("/")[2];
-        //verifica se já tem 6 games no banco para não precisar processar os request
-        if(temp.getUserinfo().getGamesList().size() == 6){
-            games = temp.getUserinfo().getGamesList();
+        //verifica se já tem temp.getUserinfo().getGamesList().size()6 games no banco para não precisar processar os request
+//        games = gamesDAO.findByFkUser(temp.getUserinfo());
+        games = gamesDAO.findByFkUserNotSearch(temp.getUserinfo());
+        
+//        if(temp.getUserinfo().getGamesList().size() == 6){
+        if(games.size() == 6){
+//            games = temp.getUserinfo().getGamesList();
             get = true;
         }else{
-            games1 = temp.getUserinfo().getGamesList();
+//            games1 = temp.getUserinfo().getGamesList();
+            games1 = games;
             for (Games game : games1) {
                 gamesDAO.remove(game);
             }
@@ -72,7 +77,7 @@ public class MeuJogoTag extends SimpleTagSupport {
                     if(game != null){
                         games.add(game);
                         gamesDAO.insert(
-                                new Games(game.getAppid(),game.getNomeGame(),game.getDescricao(),game.getTags(),game.getUrlSteam(),temp.getUserinfo())
+                                new Games(game.getAppid(),game.getNomeGame(),game.getDescricao(),game.getTags(),game.getUrlSteam(),temp.getUserinfo(), false)
                         );
                     }
                 }
@@ -130,7 +135,7 @@ out.println(
 "                                <br>\n" +
 "                                <input type=\"button\" id=\"botao_analise\" class=\"btn btn-primary\" onclick=\"form_analise("+game.getAppid()+")\" value=\"Adicionar uma análise\"/>\n"+
                     
-"                                <a href='Controller?command=Games.removerAnalise&gameid="+game.getIdGames()+"'><input type=\"button\" id=\"botao_analise_rm\" class=\"btn btn-primary\"  value=\"Remover sua Análise\" /></a>\n      "+                    
+"                                <a href='Controller?command=Games.removerAnalise&gameid="+game.getAppid()+"'><input type=\"button\" id=\"botao_analise_rm\" class=\"btn btn-primary\"  value=\"Remover sua Análise\" /></a>\n      "+                    
                     
                     
 "                                <article id=\'"+game.getNomeGame()+"' class=\"modal\">\n" +
@@ -138,17 +143,15 @@ out.println(
 "                                            <span class=\"close\" onclick=\"getElementById('"+game.getNomeGame()+"').style.display='none'\">x</span>\n" );
                     
 //---------------------------obtendo as analises e imprimindo ----------------------------
+out.println("<div id=\"thumbnail-auto\">");
                     analises = analisesDAO.findAllById(game);
                     for (Analises analise : analises) {
-//                        analise.getIdGameAnalises();
-//                        if(analise != null){
 out.println("                                        <div class=\"thumbnail\"><div class=\"caption\">\n"+
 "                                                           <h3>"+(analise.getAprovacao().equals("naorecomendo")?"Não Recomendado":"Recomendado")+"</h3>"+
 "                                                           <p>"+analise.getAnalise()+"</p>\n"+
 "                                                    </div></div>\n");
-//                        }
                     }
-                    
+out.println("</div>");
 //------------------------fim -----------------------------------------              
                     
 out.println(

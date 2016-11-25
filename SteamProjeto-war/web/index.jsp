@@ -30,7 +30,6 @@
         
         
         <section class="container">
-            <h1>ARRUMAR ADD ANALISE</h1>
             <h1>Bem vindo!</h1> 
             <p>Para ter acesso as funcionalidades, precisa se logar.</p>
             <br>
@@ -49,9 +48,9 @@
             
         </section>
         <%@include file="jspf/footer.jspf" %>
-        <a href="Controller" >Cont</a>
+<!--        <a href="Controller" >Cont</a>
         <a href="Controller?command=Games.veranalise" >veranalise</a> 
-        <a href="Controller?command=Games.analise&gameid=12120&user=rodrigo">12120</a>
+        <a href="Controller?command=Games.analise&gameid=12120&user=rodrigo">12120</a>-->
     </body>
     
     
